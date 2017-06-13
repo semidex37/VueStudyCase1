@@ -1,0 +1,243 @@
+
+.viewer-app {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: solid 1px lightgray;
+}
+
+.app-header {
+    position: relative;
+    width: 100%;
+    height: 100px;
+    box-sizing: border-box;
+}
+
+.app-body {
+    position: relative;
+    height: calc(100% - 100px);
+    box-sizing: border-box;
+}
+
+.app-left {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    box-sizing: border-box;
+    border: solid 1px lightgray;
+}
+
+.app-center {
+    position: absolute;
+    left: 0;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    width: calc(100% - 205px);
+    margin-left: 205px;
+    box-sizing: border-box;
+    border: solid 1px lightgray;
+}
+
+.app-right {
+    position: absolute;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: 200px;
+    box-sizing: border-box;
+}
+
+.app-footer {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    box-sizing: border-box;
+}
+
+.app-paper {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    box-sizing: border-box;
+    margin: 0;
+    /*border: solid 1px lightgray;*/
+}
+
+.app-paper-grid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJ2LTYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzIGlkPSJ2LTUiPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuXzAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHJlY3QgaWQ9InYtNyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0FBQUFBQSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgaWQ9InYtOSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuXzApIi8+PC9zdmc+");
+}
+
+.app-svg {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.app-panel {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.app-popup {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+}
+
+.app-menu {
+
+}
+
+.app-search {
+
+}
+
+.app-tree {
+
+}
+
+.app-selection {
+    position: absolute;
+    border: solid 1px #000066;
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+.app-arrow-selection {
+    position: absolute;
+    /*border: solid 1px #000066;*/
+    box-sizing: border-box;
+    cursor: pointer;
+}
+
+
+.resize {
+    position: absolute;
+    width: 6px;
+    height: 6px;
+    background-color: grey;
+}
+
+/* 북서 */
+.resize.nw {
+    left: -3px;
+    top: -3px;
+}
+
+.resize.nw:hover {
+    cursor: nw-resize;
+}
+
+/* 북 */
+.resize.n {
+    left: 50%;
+    top: -3px;
+    margin-left: -3px;
+}
+
+.resize.n:hover {
+    cursor: n-resize;
+}
+
+/* 북동 */
+.resize.ne {
+    top: -3px;
+    right: -3px;
+}
+
+.resize.ne:hover {
+    cursor: ne-resize;
+}
+
+/* 동 */
+.resize.e {
+    right: -3px;
+    top: 50%;
+    margin-top: -3px;
+}
+
+.resize.e:hover {
+    cursor: e-resize;
+}
+
+/* 남동 */
+.resize.se {
+    cursor: se-resize;
+    right: -3px;
+    bottom: -3px;
+}
+
+/* 남 */
+.resize.s {
+    cursor: s-resize;
+    left: 50%;
+    bottom: -3px;
+    margin-left: -3px;
+}
+
+/* 남서 */
+.resize.sw {
+    cursor: sw-resize;
+    left: -3px;
+    bottom: 0;
+    margin-bottom: -3px;
+}
+
+/* 서 */
+.resize.w {
+    cursor: w-resize;
+    left: -3px;
+    top: 50%;
+    margin-top: -3px;
+}
+
+.app-store {
+
+}
+
+.app-store-item {
+    cursor: pointer;
+}
+
+.marker-point {
+    position: absolute;
+    cursor: pointer;
+}
+
+.marker-point-start {
+    width: 8px;
+    height: 8px;
+}
+
+.marker-point-mid {
+    width: 8px;
+    height: 8px;
+}
+
+.marker-point-end {
+    width: 12px;
+    height: 12px;
+}
+
+div {
+    /*border: solid 1px red;*/
+}
