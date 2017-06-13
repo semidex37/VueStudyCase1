@@ -13,6 +13,7 @@
 <body>
     <div id="app" class="viewer-app" style="width: 100%; height: 600px;">
         <div id="app-header" class="app-header">
+
             <div id="app-header-group1" class="app-header-group">
                 <div id="app-header-item11" class="app-header-item app-header-icon">Undo</div>
                 <div id="app-header-item12" class="app-header-item app-header-icon">Redo</div>
@@ -37,13 +38,18 @@
                 <div id="app-header-item26" class="app-header-item app-header-text">10</div>
             </div>
 
-            <div class="app-header-split"></div>
-
         </div>
         <div id="app-body" class="app-body">
             <div id="app-left" class="app-left">
-                <div id="app-left-menu" class="app-menu app-left-menu"></div>
-                <div id="app-left-search" class="app-search app-left-search"></div>
+                <div id="app-left-menu" class="app-menu app-left-menu">
+                    <div id="app-left-menu-group" class="app-left-menu-group">
+                        <div id="app-left-menu-item1" class="app-left-menu-item app-left-menu-icon">+</div>
+                        <div id="app-left-menu-item2" class="app-left-menu-item app-left-menu-icon">-</div>
+                    </div>
+                </div>
+                <div id="app-left-search" class="app-search app-left-search">
+
+                </div>
                 <div id="app-left-tree" class="app-tree app-left-tree">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                         <g class="app-store">
@@ -53,7 +59,7 @@
                                         <g class="scalable" transform="scale(0.6, 0.6)">
                                             <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
                                             <g transform="translate(5, 5)">
-                                                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                                                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은 고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
                                                 <tspan class="" dy="0em" x="0">1-A</tspan>
                                                 <tspan class="" dy="1em" x="0">123456789</tspan>
                                                 <tspan class="" dy="1em" x="0">ABCDEF</tspan>

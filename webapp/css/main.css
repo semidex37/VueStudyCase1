@@ -1,4 +1,4 @@
-
+/*********** Template - START ************/
 .viewer-app {
     position: relative;
     width: 100%;
@@ -11,40 +11,16 @@
 
 .app-header {
     position: relative;
-    width: 100%;
-    height: 100px;
+    width: calc(100% - 5px);
+    margin-left: 2px;
+    margin-top: 5px;
+    height: 35px;
     box-sizing: border-box;
-}
-
-.app-header-group {
-    position: relative;
-}
-
-.app-header-item {
-    float: left;
-    margin-left: 5px;
-    cursor: pointer;
-}
-
-.app-header-icon {
-
-}
-
-.app-header-button {
-
-}
-
-.app-header-text {
-
-}
-
-.app-header-range {
-
 }
 
 .app-body {
     position: relative;
-    height: calc(100% - 100px);
+    height: calc(100% - 40px);
     box-sizing: border-box;
 }
 
@@ -70,29 +46,6 @@
     border: solid 1px lightgray;
 }
 
-.app-mini-map {
-    position: absolute;
-    left: 1px;
-    bottom: 1px;
-    width: 150px;
-    height: 100px;
-    border: solid 1px black;
-}
-
-.app-mini-map-background {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background-color: #ffffff;
-}
-
-.app-mini-map-svg {
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    cursor: pointer;
-}
-
 .app-right {
     position: absolute;
     right: 0;
@@ -108,7 +61,88 @@
     height: 50px;
     box-sizing: border-box;
 }
+/*********** Template - END ************/
 
+/*********** app-header Area - START ************/
+.app-header-group {
+    position: relative;
+    /*padding-top: 5px;*/
+    /*margin-top: 5px;*/
+    /*box-sizing: border-box;*/
+}
+
+.app-header-split {
+    float: left;
+    width: 1px;
+    height: 19px;
+    margin-left: 5px;
+    margin-top: 2px;
+    background-color: darkgray;
+}
+
+.app-header-item {
+    float: left;
+    margin-left: 5px;
+    padding: 1px;
+    font-size: 14px;
+}
+
+.app-header-icon {
+    cursor: pointer;
+    border: solid 1px darkgray;
+    border-radius: 50px;
+    user-select: none;
+}
+
+.app-header-icon:active {
+    color: #F0F0F0;
+    background-color: #454545;
+}
+
+.app-header-button {
+    cursor: pointer;
+    border: solid 1px darkgray;
+    border-radius: 5px;
+    user-select: none;
+    color: #d0d0d0;
+    background-color: #333333
+}
+
+.app-header-button:hover {
+    color: darkgray;
+    background-color: #F0F0F0;
+}
+
+.app-header-button:active {
+    color: #F0F0F0;
+    background-color: #454545;
+}
+
+.app-header-text {
+    font-family: "맑은 고딕", "돋움", Arial, sans-serif ;
+    user-select: none;
+}
+
+.app-header-range {
+
+}
+/*********** app-header Area - END ************/
+
+/*********** app-left Area - START ************/
+.app-left-menu {
+
+}
+
+.app-left-search {
+
+}
+
+.app-left-tree {
+
+}
+/*********** app-left Area - END ************/
+
+/*********** app-center Area - START ************/
 .app-paper {
     position: relative;
     display: block;
@@ -117,15 +151,6 @@
     box-sizing: border-box;
     margin: 0;
     /*border: solid 1px lightgray;*/
-}
-
-.app-paper-grid {
-    position: absolute;
-    left: 0;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJ2LTYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzIGlkPSJ2LTUiPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuXzAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHJlY3QgaWQ9InYtNyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0FBQUFBQSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgaWQ9InYtOSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuXzApIi8+PC9zdmc+");
 }
 
 .app-svg {
@@ -152,6 +177,61 @@
     bottom: 0;
 }
 
+/* Paper Area */
+.app-paper-grid {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-image: url("data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2ZXJzaW9uPSIxLjEiIGlkPSJ2LTYiIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzIGlkPSJ2LTUiPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuXzAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHg9IjAiIHk9IjAiIHdpZHRoPSIxMCIgaGVpZ2h0PSIxMCI+PHJlY3QgaWQ9InYtNyIgd2lkdGg9IjEiIGhlaWdodD0iMSIgZmlsbD0iI0FBQUFBQSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3QgaWQ9InYtOSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuXzApIi8+PC9zdmc+");
+}
+
+/* MiniMap Area */
+.app-mini-map {
+    position: absolute;
+    left: 1px;
+    bottom: 1px;
+    width: 150px;
+    height: 100px;
+    border: solid 1px black;
+}
+
+.app-mini-map-background {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: #ffffff;
+}
+
+.app-mini-map-svg {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+}
+
+/*********** app-center Area- END ************/
+
+/*********** app-right Area - START ************/
+.app-right-menu {
+
+}
+
+.app-right-search {
+
+}
+
+.app-right-tree {
+
+}
+/*********** app-right Area - END ************/
+
+/*********** app-footer Area - START ************/
+
+/*********** app-footer Area - END ************/
+
+
 .app-menu {
 
 }
@@ -164,6 +244,7 @@
 
 }
 
+/*********** Selection Area - START ************/
 .app-selection {
     position: absolute;
     border: solid 1px #000066;
@@ -177,8 +258,9 @@
     box-sizing: border-box;
     cursor: pointer;
 }
+/*********** Selection Area - END ************/
 
-
+/*********** Resize Area - START ************/
 .resize {
     position: absolute;
     width: 6px;
@@ -258,7 +340,9 @@
     top: 50%;
     margin-top: -3px;
 }
+/*********** Resize Area - END ************/
 
+/*********** app-store Area - START ************/
 .app-store {
 
 }
@@ -266,6 +350,8 @@
 .app-store-item {
     cursor: pointer;
 }
+/*********** app-store Area - END ************/
+
 
 .marker-point {
     position: absolute;
