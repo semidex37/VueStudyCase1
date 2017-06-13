@@ -12,7 +12,34 @@
 </head>
 <body>
     <div id="app" class="viewer-app" style="width: 100%; height: 600px;">
-        <div id="app-header" class="app-header"></div>
+        <div id="app-header" class="app-header">
+            <div id="app-header-group1" class="app-header-group">
+                <div id="app-header-item11" class="app-header-item app-header-icon">Undo</div>
+                <div id="app-header-item12" class="app-header-item app-header-icon">Redo</div>
+                <div id="app-header-item13" class="app-header-item app-header-icon">Trash</div>
+                <div id="app-header-item15" class="app-header-item app-header-button">Export SVG</div>
+                <div id="app-header-item16" class="app-header-item app-header-button">Export PNG</div>
+                <div id="app-header-item17" class="app-header-item app-header-icon">Print</div>
+            </div>
+
+            <div class="app-header-split"></div>
+
+            <div id="app-header-group2" class="app-header-group">
+                <div id="app-header-item21" class="app-header-item app-header-text">Zoom To Fit:</div>
+                <div id="app-header-item22" class="app-header-item app-header-range">
+                    <input type="range" min="20" max="500" value="100" step="20" width="200">
+                </div>
+                <div id="app-header-item23" class="app-header-item app-header-text">100%</div>
+                <div id="app-header-item24" class="app-header-item app-header-text">Grid Size:</div>
+                <div id="app-header-item25" class="app-header-item app-header-range">
+                    <input type="range" min="5" max="50" value="10" width="220">
+                </div>
+                <div id="app-header-item26" class="app-header-item app-header-text">10</div>
+            </div>
+
+            <div class="app-header-split"></div>
+
+        </div>
         <div id="app-body" class="app-body">
             <div id="app-left" class="app-left">
                 <div id="app-left-menu" class="app-menu app-left-menu"></div>
@@ -21,13 +48,49 @@
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                         <g class="app-store">
                             <g class="app-store-item">
-                                <rect x="10" y="10" width="60" height="60" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
+                                <g class="translate" transform="translate(10, 10)">
+                                    <g class="rotatable">
+                                        <g class="scalable" transform="scale(0.6, 0.6)">
+                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
+                                            <g transform="translate(5, 5)">
+                                                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                                                <tspan class="" dy="0em" x="0">1-A</tspan>
+                                                <tspan class="" dy="1em" x="0">123456789</tspan>
+                                                <tspan class="" dy="1em" x="0">ABCDEF</tspan>
+                                                <tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>
+                                            </text>
+                                            </g>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
                             <g class="app-store-item">
-                                <rect x="80" y="10" width="60" height="60" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>
+                                <g class="translate" transform="translate(80, 10)">
+                                    <g class="rotatable">
+                                        <g class="scalable" transform="scale(0.6, 0.6)">
+                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
                             <g class="app-store-item">
-                                <rect x="10" y="80" width="60" height="60" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>
+                                <g class="translate" transform="translate(10, 80)">
+                                    <g class="rotatable">
+                                        <g class="scalable" transform="scale(0.6, 0.6)">
+                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+
+                            <g class="app-store-item">
+                                <g class="translate" transform="translate(80, 80)">
+                                    <g class="rotatable">
+                                        <g class="scalable" transform="scale(0.6, 0.6)">
+                                            <polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>
+                                        </g>
+                                    </g>
+                                </g>
                             </g>
                         </g>
                     </svg>
@@ -195,6 +258,12 @@
 
                 </div>
                 <div id="app-popup" class="app-popup" style="display: none;"></div>
+                <div id="app-mini-map" class="app-mini-map">
+                    <div id="app-mini-map-background" class="app-mini-map-background"></div>
+                    <div id="app-mini-map-svg" class="app-mini-map-svg">
+
+                    </div>
+                </div>
             </div>
             <div id="app-right" class="app-right">
                 <div id="app-right-menu" class="app-menu app-left-menu"></div>
