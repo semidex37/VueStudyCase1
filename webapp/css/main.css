@@ -53,6 +53,7 @@
     bottom: 0;
     width: 200px;
     box-sizing: border-box;
+    display: none;
 }
 
 .app-footer {
@@ -60,6 +61,7 @@
     width: 100%;
     height: 50px;
     box-sizing: border-box;
+    /*clear: both;*/
 }
 /*********** Template - END ************/
 
@@ -129,17 +131,147 @@
 /*********** app-header Area - END ************/
 
 /*********** app-left Area - START ************/
-.app-left-menu {
+.app-menu {
+    width: calc(100% - 4px);
+    height: 21px;
+    margin: 1px;
+    /*margin-left: 1px;*/
+    /*margin-top: 1px;*/
+    /*margin-right: -3px;*/
+    /*margin-bottom: -3px;*/
+    border: solid 1px darkgray;
+}
 
+.app-left-menu {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+
+    /*position: relative;*/
+    /*border: solid 1px darkgray;*/
+    /*width: 100%;*/
+    /*height: 21px;*/
+    /*width: calc(100% - 6px);*/
+    height: 24px;
+    padding-top: 1px;
+}
+
+.app-left-menu-group {
+    position: relative;
+}
+
+.app-left-menu-item {
+    float: left;
+    margin-left: 5px;
+    height: 21px;
+}
+
+.app-left-menu-icon {
+    cursor: pointer;
+    /*border: solid 1px darkgray;*/
 }
 
 .app-left-search {
+    position: absolute;
+    left: 0;
+    top: 28px;
+    right: 0;
+    height: 24px;
+    box-sizing: border-box;
+    margin-left: 1px;
+    margin-top: 1px;
+}
 
+.app-search-box {
+    position: absolute;
+    left: 0;
+    width: calc(100% - 1px);
+    /*border: solid 1px darkgray;*/
+    box-sizing: border-box;
+}
+
+.app-search-text {
+    width: 100%;
+    /*width: 100%;*/
+    font-size: 14px;
+    font-family: "맑은 고딕", "돋움", Arial, sans-serif;
 }
 
 .app-left-tree {
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 54px;
+    bottom: 0;
+    background-color: #F0F0F0;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.app-tree-root {
+    position: relative;
+    width: 100%;
+    height: auto;
 
 }
+
+.app-tree-node {
+    margin-bottom: 5px;
+    user-select: none;
+}
+
+.app-tree-header {
+    width: 100%;
+    height: 21px;
+    margin-left: 5px;
+}
+
+.app-tree-header > * {
+    float: left;
+}
+
+.app-tree-contents {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin-left: 20px;
+}
+
+.app-tree-contents > * {
+    float: left;
+}
+
+.app-tree-contents > .app-tree-content {
+    margin-bottom: 1px;
+}
+
+.app-tree-contents > .app-tree-content:last-child {
+    margin-bottom: 5px;
+}
+
+.app-tree-content {
+    width: 100%;
+}
+
+.app-tree-content:hover {
+    cursor: pointer;
+}
+
+.app-tree-content > * {
+    float: left;
+}
+
+.app-tree-content-icon {
+    height: 21px;
+    margin-left: 3px;
+}
+
+.app-tree-content-text {
+    margin-left: 5px;
+}
+
+
 /*********** app-left Area - END ************/
 
 /*********** app-center Area - START ************/
@@ -373,6 +505,152 @@
     height: 12px;
 }
 
+/*********** icon Area - END ************/
+
+.app-tree-icon {
+
+}
+
+.app-icon {
+
+}
+
+.app-icon-button {
+
+}
+
+.app-icon-chart {
+
+}
+
+.app-icon-event {
+    background-image: url("../image/icon/zap.png"); width:10px; height:16px;
+}
+
+.app-icon-folder-open {
+    background-image: url("../image/icon/folder_open.png"); width:16px; height:16px;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+
+.app-icon-folder-close {
+    background-image: url("../image/icon/folder_close.png"); width:16px; height:16px;
+    margin-left: 3px;
+    margin-top: 3px;
+    margin-right: 3px;
+}
+
+.app-icon-grid {
+
+}
+
+.app-icon-pivot {
+
+}
+
+.app-icon-add {
+
+}
+
+.app-icon-delete {
+
+}
+
+.app-icon-save {
+
+}
+
+.app-icon-plus {
+    background-image: url("../image/icon/menu_tree_plus.png"); width:9px; height:9px;
+    margin-top: 6px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+.app-icon-minus {
+    background-image: url("../image/icon/menu_tree_minus.png"); width:9px; height:9px;
+    margin-top: 6px;
+    margin-left: 3px;
+    cursor: pointer;
+}
+
+
+
+.app-icon-control-browser {
+    background-image: url("../image/control/browser.png"); width:28px; height:24px;
+}
+.app-icon-control-button {
+    background-image: url("../image/control/button.png"); width:28px; height:24px;
+}
+.app-icon-control-chart {
+    background-image: url("../image/control/chart.png"); width:28px; height:24px;
+}
+.app-icon-control-checkbox {
+    background-image: url("../image/control/checkbox.png"); width:28px; height:24px;
+}
+.app-icon-control-combobox {
+    background-image: url("../image/control/combobox.png"); width:28px; height:24px;
+}
+.app-icon-control-custom {
+    background-image: url("../image/control/custom.png"); width:28px; height:24px;
+}
+.app-icon-control-datepicker {
+    background-image: url("../image/control/datepicker.png"); width:28px; height:24px;
+}
+.app-icon-control-groupbox {
+    background-image: url("../image/control/groupbox.png"); width:28px; height:24px;
+}
+.app-icon-control-image {
+    background-image: url("../image/control/image.png"); width:28px; height:24px;
+}
+.app-icon-control-inputbox {
+    background-image: url("../image/control/inputbox.png"); width:28px; height:24px;
+}
+.app-icon-control-listgrid {
+    background-image: url("../image/control/listgrid.png"); width:28px; height:24px;
+}
+.app-icon-control-multicombo {
+    background-image: url("../image/control/multicombo.png"); width:28px; height:24px;
+}
+.app-icon-control-picklist {
+    background-image: url("../image/control/picklist.png"); width:28px; height:24px;
+}
+.app-icon-control-piechart {
+    background-image: url("../image/control/piechart.png"); width:28px; height:24px;
+}
+.app-icon-control-pivotgrid {
+    background-image: url("../image/control/pivotgrid.png"); width:28px; height:24px;
+}
+.app-icon-control-polarchart {
+    background-image: url("../image/control/polarchart.png"); width:28px; height:24px;
+}
+.app-icon-control-polygon {
+    background-image: url("../image/control/polygon.png"); width:28px; height:24px;
+}
+.app-icon-control-radiobutton {
+    background-image: url("../image/control/radiobutton.png"); width:28px; height:24px;
+}
+.app-icon-control-scatterchart {
+    background-image: url("../image/control/scatterchart.png"); width:28px; height:24px;
+}
+.app-icon-control-tablelayout {
+    background-image: url("../image/control/tablelayout.png"); width:28px; height:24px;
+}
+.app-icon-control-textbox {
+    background-image: url("../image/control/textbox.png"); width:28px; height:24px;
+}
+
+
+
+
+
+    /*********** icon Area - START ************/
+
+
+
 div {
     /*border: solid 1px red;*/
 }
+
+
