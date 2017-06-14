@@ -15,6 +15,12 @@ requirejs.config({
 // requirejs(['app/main']);
 console.log("Loaded: app.js");
 
+requirejs(['js/iWorkflow']);
+
+// var iWorkflow = require(['js/iWorkflow'], function(iWorkflow){
+//
+// });
+
 // var iStudioVersion;
 // var config = require(['js/lib/require/text!istudio.version.txt'], function(config) {
 //     iStudioVersion = config;
