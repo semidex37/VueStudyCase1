@@ -3,118 +3,41 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(factory);
+        console.log('export as AMD!');
+        define(['js/data/dataObject'], factory);
     }else {
-        global.iWorkFlow = factory();
+        console.log('export Global!');
+        global.iWorkFlow = factory( global.dataObject );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(global) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject) {
+    console.log("Loaded: iWorkflow.js");
 
-    console.log("Loaded: iWorkflow!");
-
-    var items = {
-        name: 'Root',
-        type: 'Root',
-        children: [
-            {
-                name: 'Group 1',
-                type: 'Group',
-                children: [
-                    {
-                        type: 'Icon',
-                        text: 'Undo'
-                    },
-                    {
-                        type: 'Icon',
-                        text: 'Redo'
-                    },
-                    {
-                        type: 'Icon',
-                        text: 'Trash'
-                    },
-                    {
-                        type: 'Button',
-                        text: 'Export SVG'
-                    },
-                    {
-                        type: 'Button',
-                        text: 'Export PNG'
-                    },
-                    {
-                        type: 'Icon',
-                        text: 'Print'
-                    }
-                ]
-
-            },
-            {
-                name: 'Group 2',
-                type: 'Group',
-                children: [
-                    {
-                        type: 'Text',
-                        text: 'Zoom To Fit:'
-                    },
-                    {
-                        type: 'Range',
-                        id: 'rangeZoomToFit',
-                        min: 20,
-                        max: 500,
-                        value: 100,
-                        step: 20
-                    },
-                    {
-                        type: 'Text',
-                        text: '100%'
-                    },
-                    {
-                        type: 'Text',
-                        text: 'Grid Size:'
-                    },
-                    {
-                        type: 'Range',
-                        id: 'rangeZoomToFit',
-                        min: 20,
-                        max: 500,
-                        value: 100,
-                        step: 20
-                    },
-                    {
-                        type: 'Text',
-                        text: '10'
-                    }
-                ]
-            }
-        ]
-    };
+    var headerItems = dataObject.headerObject;
+    var leftMenuItems = dataObject.leftMenuObject;
 
     Vue.component('app-header', {
-        props: ['groups'],
-        template: '#app-header-template',
-        computed: {
-            total: function() {
-                // console.log("typeof groups: ", typeof this.groups);
-                // console.log("groups.length: ", this.groups.children.length);
-                // console.log("groups: ", this.groups);
-                return this.groups.children.length;
-            }
-        }
+        // props: ['groups'],
+        props: {
+            groups: Object
+        },
+        template: '#app-header-template'
     });
 
     Vue.component('app-header-group', {
-        props: ['group', 'index'],
+        // props: ['group', 'index'],
+        props: {
+            group: Object,
+            index: Number
+        },
         template: '#app-header-group-template',
         computed: {
             total: function() {
-                // console.log("typeof group: ", typeof this.group);
-                // console.log("group.length: ", this.group.length);
-                // console.log("group: ", this.group);
                 return this.group.children.length;
             }
         },
         methods: {
             getId: function() {
-                // console.log("this.index", this.index);
                 return 'app-header-group-' + this.index;
             },
             pIndex: function(index) {
@@ -124,7 +47,12 @@
     });
 
     Vue.component('app-header-item', {
-        props: ['item', 'index', 'pIndex'],
+        // props: ['item', 'index', 'pIndex'],
+        props: {
+            item: Object,
+            index: Number,
+            pIndex: String
+        },
         template: '#app-header-item-template',
         computed: {
             classObject: function() {
@@ -143,11 +71,90 @@
         }
     });
 
+    Vue.component('app-body', {
+        props: ['leftObject', 'centerObject', 'rightObject', 'str'],
+        template: '#app-body-template',
+        computed: {
+            ss: function() {
+                console.log("str", this.str);
+            },
+            gg: function() {
+                console.log("app-body-leftObject", this.leftObject);
+                return typeof this.leftObject;
+            }
+            // leftMenuItems: function() {
+            //     return this.leftObject;
+            // }
+        }
+    });
+
+    Vue.component('app-left', {
+        props: ['leftObject'],
+        template: '#app-left-template',
+        computed: {
+            menuItems: function() {
+                console.log('menuItems', this.leftObject.menuItems);
+                return this.leftObject.menuItems;
+            },
+            isSearch: function() {
+                return this.leftObject.isSerach;
+            },
+            treeItems: function() {
+                return this.leftObject.treeItems;
+            }
+        }
+    });
+
+    Vue.component('app-center', {
+        template: '#app-center-template'
+    });
+
+    Vue.component('app-right', {
+        template: '#app-right-template'
+    });
+
+    Vue.component('app-footer', {
+        template: '#app-footer-template'
+    });
+
+    Vue.component('app-left-menu', {
+        template: '#app-left-menu-template'
+    });
+
+    Vue.component('app-left-search', {
+        template: '#app-left-search-template'
+    });
+
+    Vue.component('app-left-tree', {
+        template: '#app-left-tree-template'
+    });
+
+    Vue.component('app-left-menu-item', {
+        template: '#app-left-menu-item-template'
+    });
+
+
     var appHeader = new Vue({
         el: '#app-header',
         data: {
-            groups: items
+            groups: headerItems
         }
+    });
+
+    var appBody = new Vue({
+        el: '#app-body',
+        data: {
+            str: ['str1'],
+            leftObject: {
+                menuItems: leftMenuItems,
+                isSearch: true,
+                treeItems: []
+            }
+        }
+    });
+
+    var appFooter = new Vue({
+        el: '#app-footer'
     });
 
     // var app = new Vue({
@@ -158,6 +165,10 @@
     // });
 
 
-    return {};
+    return {
+        Hello: function() {
+            return "Hello! Work!";
+        }
+    };
 
 });
