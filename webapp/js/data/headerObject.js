@@ -85,10 +85,9 @@
                     {
                         type: 'Range',
                         id: 'rangeZoomToFit',
-                        min: 20,
-                        max: 500,
-                        value: 100,
-                        step: 20,
+                        min: 5,
+                        max: 50,
+                        value: 10,
                         index: 5,
                     },
                     {

@@ -3,12 +3,12 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/dataObject'], factory);
+        define(['js/data/dataObject', 'js/core/appLeft'], factory);
     }else {
-        global.appHeader = factory( global.dataObject );
+        global.appHeader = factory( global.dataObject, global.appLeft );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dataObject) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject, appLeft) {
 
     Vue.component('app-body', {
         // props: ['leftObject', 'centerObject', 'rightObject', 'str'],
@@ -29,22 +29,6 @@
         }
     });
 
-    Vue.component('app-left', {
-        props: ['items'],
-        template: '#app-left-template',
-        computed: {
-            menuItems: function() {
-                return this.items.menuItems;
-            },
-            isSearch: function() {
-                return this.items.isSerach;
-            },
-            treeItems: function() {
-                return this.items.treeItems;
-            }
-        }
-    });
-
     Vue.component('app-center', {
         props: ['items'],
         template: '#app-center-template'
@@ -53,32 +37,6 @@
     Vue.component('app-right', {
         props: ['items'],
         template: '#app-right-template'
-    });
-
-    Vue.component('app-left-menu', {
-        props: ['items'],
-        template: '#app-left-menu-template'
-    });
-
-    Vue.component('app-left-search', {
-        template: '#app-left-search-template'
-    });
-
-    Vue.component('app-left-tree', {
-        template: '#app-left-tree-template'
-    });
-
-    Vue.component('app-left-menu-item', {
-        props: {
-            item: Object,
-            index: Number
-        },
-        template: '#app-left-menu-item-template',
-        methods: {
-            getId: function() {
-                return 'app-left-menu-item-' + this.index;
-            }
-        }
     });
 
     return {
@@ -90,7 +48,7 @@
                         leftObject: {
                             menuItems: dataObject.leftMenuObject,
                             isSearch: true,
-                            treeItems: []
+                            treeItems: dataObject.leftMenuTree
                         },
                         centerObject: {},
                         rightObject: {}

@@ -36,9 +36,10 @@
     <script type="text/x-template" id="app-header-item-template">
         <div v-bind:id="getId()" v-bind:class="classObject">
             <span v-if="item.text">{{item.text}}</span>
-            <input v-if="item.type == 'Range'" v-bind:id="item.id" type="range" v-bind:min="item.min" v-bind:max="item.max" v-bind:value="item.value" step="20" style="width:100px;">
+            <input v-if="item.type == 'Range'" v-bind:id="item.id" type="range" v-bind:min="item.min" v-bind:max="item.max" v-bind:value="item.value" v-bind:step="item.step" style="width:100px;">
         </div>
     </script>
+
     <!-- app-body -->
     <script type="text/x-template" id="app-body-template">
         <div class="app-body">
@@ -50,8 +51,8 @@
     <script type="text/x-template" id="app-left-template">
         <div class="app-left">
             <app-left-menu :items="menuItems"></app-left-menu>
-            <!--<app-left-search v-if="isSearch"></app-left-search>-->
-            <!--<app-left-tree :items="treeItems"></app-left-tree>-->
+            <app-left-search v-if="isSearch"></app-left-search>
+            <app-left-tree :items="treeItems"></app-left-tree>
         </div>
     </script>
     <script type="text/x-template" id="app-center-template">
@@ -77,8 +78,14 @@
             </div>
         </div>
     </script>
+
+    <!-- app-left-serach -->
     <script type="text/x-template" id="app-left-search-template">
-        <div class="app-search app-left-search"></div>
+        <div class="app-search app-left-search">
+            <div class="app-search-box">
+                <input type="search" class="app-search-text" placeholder="Search TextBox">
+            </div>
+        </div>
     </script>
     <script type="text/x-template" id="app-left-menu-item-template">
         <div v-bind:id="getId()" class="app-left-menu-item app-left-menu-icon" v-bind:title="item.title">
@@ -86,17 +93,116 @@
         </div>
     </script>
 
-    <!-- app-left-serach -->
-    <script type="text/x-template" id="app-left-menu-search-template">
-        <div class="app-search app-left-search"></div>
-    </script>
-    <script type="text/x-template" id="app-search-box-template">
-        <div class="app-search-box">
-            <input type="search" class="app-search-text" placeholder="Search TextBox">
+    <!-- app-left-tree -->
+    <script type="text/x-template" id="app-left-tree-template">
+        <div class="app-tree app-left-tree">
+            <app-tree-root :items="items"></app-tree-root>
         </div>
     </script>
 
-    <!-- app-left-tree -->
+    <script type="text/x-template" id="app-tree-root-template">
+        <div class="app-tree-root">
+            <app-tree-node
+                v-for="(item, index) in items.children"
+                :key="item.index"
+                :item="item"
+                :index="index">
+            </app-tree-node>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-tree-node-template">
+        <div class="app-tree-node">
+            <app-tree-header :name="item.name"></app-tree-header>
+            <app-tree-contents :item="item"></app-tree-contents>
+        </div>
+        <!--<div class="app-tree-node" v-if="item.type == 'Folder'">-->
+            <!--<app-tree-header :name="item.name"></app-tree-header>-->
+            <!--<app-tree-contents :item="item"></app-tree-contents>-->
+        <!--</div>-->
+        <!--<div class="app-tree-node" v-else-if="item.type == 'SVG'">-->
+            <!--<app-tree-header :name="item.name"></app-tree-header>-->
+        <!--</div>-->
+    </script>
+
+    <script type="text/x-template" id="app-tree-header-template">
+        <div class="app-tree-header">
+            <div class="app-tree-icon app-icon-minus"></div>
+            <div class="app-tree-icon app-icon-folder-close"></div>
+            <div class="app-tree-title">{{name}}</div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-tree-contents-template">
+        <div class="app-tree-contents" v-if="item.type == 'Folder'">
+            <app-tree-content
+                    v-for="(_item, index) in item.children"
+                    :key="_item.index"
+                    :item="_item"
+                    :index="index">
+            </app-tree-content>
+        </div>
+        <div class="app-tree-contents" v-else-if="item.type == 'SVG'">
+            <div class="app-tree-content">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
+                    <g class="app-store">
+                        <g class="app-store-item">
+                            <g class="translate" transform="translate(10, 10)">
+                                <g class="rotatable">
+                                    <g class="scalable" transform="scale(0.6, 0.6)">
+                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
+                                        <g transform="translate(5, 5)">
+                                            <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은 고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                                                <tspan class="" dy="0em" x="0">1-A</tspan>
+                                                <tspan class="" dy="1em" x="0">123456789</tspan>
+                                                <tspan class="" dy="1em" x="0">ABCDEF</tspan>
+                                                <tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>
+                                            </text>
+                                        </g>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <g class="app-store-item">
+                            <g class="translate" transform="translate(80, 10)">
+                                <g class="rotatable">
+                                    <g class="scalable" transform="scale(0.6, 0.6)">
+                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                        <g class="app-store-item">
+                            <g class="translate" transform="translate(10, 80)">
+                                <g class="rotatable">
+                                    <g class="scalable" transform="scale(0.6, 0.6)">
+                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+
+                        <g class="app-store-item">
+                            <g class="translate" transform="translate(80, 80)">
+                                <g class="rotatable">
+                                    <g class="scalable" transform="scale(0.6, 0.6)">
+                                        <polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>
+                                    </g>
+                                </g>
+                            </g>
+                        </g>
+                    </g>
+                </svg>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-tree-content-template">
+        <div class="app-tree-content">
+            <div v-bind:class="classObjectIcon"></div>
+            <div class="app-tree-content-text">{{item.name}}</div>
+        </div>
+    </script>
 
     <script type="text/x-template" id="app-template">
         <div class=""></div>
