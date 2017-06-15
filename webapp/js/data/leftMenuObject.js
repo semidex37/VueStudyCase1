@@ -14,23 +14,19 @@
         name: 'Root',
         type: 'Root',
         index: 0,
+        title: 'Root',
         children: [
             {
-                name: 'Group 1',
-                type: 'Group',
+                type: 'Icon',
+                text: '[+]',
+                title: 'Expand All',
                 index: 1,
-                children: [
-                    {
-                        type: 'Icon',
-                        text: '[+]',
-                        index: 1,
-                    },
-                    {
-                        type: 'Icon',
-                        text: '[-]',
-                        index: 2,
-                    }
-                ]
+            },
+            {
+                type: 'Icon',
+                text: '[-]',
+                title: 'Collapse All',
+                index: 2,
             }
         ]
     };

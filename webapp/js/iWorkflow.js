@@ -72,44 +72,47 @@
     });
 
     Vue.component('app-body', {
-        props: ['leftObject', 'centerObject', 'rightObject', 'str'],
+        // props: ['leftObject', 'centerObject', 'rightObject', 'str'],
+        props: {
+            dataObject: Object
+        },
         template: '#app-body-template',
         computed: {
-            ss: function() {
-                console.log("str", this.str);
+            leftObject: function() {
+                return this.dataObject.leftObject;
             },
-            gg: function() {
-                console.log("app-body-leftObject", this.leftObject);
-                return typeof this.leftObject;
+            centerObject: function() {
+                return this.dataObject.centerObject;
+            },
+            rightObject: function() {
+                return this.dataObject.rightObject;
             }
-            // leftMenuItems: function() {
-            //     return this.leftObject;
-            // }
         }
     });
 
     Vue.component('app-left', {
-        props: ['leftObject'],
+        props: ['items'],
         template: '#app-left-template',
         computed: {
             menuItems: function() {
-                console.log('menuItems', this.leftObject.menuItems);
-                return this.leftObject.menuItems;
+                return this.items.menuItems;
             },
             isSearch: function() {
-                return this.leftObject.isSerach;
+                return this.items.isSerach;
             },
             treeItems: function() {
-                return this.leftObject.treeItems;
+                return this.items.treeItems;
             }
         }
     });
 
     Vue.component('app-center', {
+        props: ['items'],
         template: '#app-center-template'
     });
 
     Vue.component('app-right', {
+        props: ['items'],
         template: '#app-right-template'
     });
 
@@ -118,6 +121,7 @@
     });
 
     Vue.component('app-left-menu', {
+        props: ['items'],
         template: '#app-left-menu-template'
     });
 
@@ -130,7 +134,16 @@
     });
 
     Vue.component('app-left-menu-item', {
-        template: '#app-left-menu-item-template'
+        props: {
+            item: Object,
+            index: Number
+        },
+        template: '#app-left-menu-item-template',
+        methods: {
+            getId: function() {
+                return 'app-left-menu-item-' + this.index;
+            }
+        }
     });
 
 
@@ -144,31 +157,22 @@
     var appBody = new Vue({
         el: '#app-body',
         data: {
-            str: ['str1'],
-            leftObject: {
-                menuItems: leftMenuItems,
-                isSearch: true,
-                treeItems: []
+            dataObject: {
+                leftObject: {
+                    menuItems: leftMenuItems,
+                    isSearch: true,
+                    treeItems: []
+                },
+                centerObject: {},
+                rightObject: {}
             }
         }
     });
 
-    var appFooter = new Vue({
-        el: '#app-footer'
-    });
-
-    // var app = new Vue({
-    //     el: '#app',
-    //     data: {
-    //         groups: items
-    //     }
+    // var appFooter = new Vue({
+    //     el: '#app-footer'
     // });
 
-
-    return {
-        Hello: function() {
-            return "Hello! Work!";
-        }
-    };
+    return {};
 
 });

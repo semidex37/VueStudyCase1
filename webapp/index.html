@@ -39,20 +39,14 @@
     </script>
     <script type="text/x-template" id="app-body-template">
         <div class="app-body">
-            [{{leftObject}}]
-            <app-left
-                :items="leftObject"
-                >
-            </app-left>
+            <app-left :items="leftObject"></app-left>
             <app-center :items="centerObject"></app-center>
             <app-right :items="rightObject"></app-right>
         </div>
     </script>
     <script type="text/x-template" id="app-left-template">
         <div class="app-left">
-            App-Left: {{typeof leftObject}}
-            <!--<app-left-menu></app-left-menu>-->
-            <!--<app-left-menu :items="menuItems"></app-left-menu>-->
+            <app-left-menu :items="menuItems"></app-left-menu>
             <!--<app-left-search v-if="isSearch"></app-left-search>-->
             <!--<app-left-tree :items="treeItems"></app-left-tree>-->
         </div>
@@ -70,7 +64,7 @@
         <div class="app-menu app-left-menu">
             <div class="app-left-menu-group">
                 <app-left-menu-item
-                    v-for="(item, index) in group.children"
+                    v-for="(item, index) in items.children"
                     :key="item.index"
                     :item="item"
                     :index="index">
@@ -82,7 +76,9 @@
         <div class="app-search app-left-search"></div>
     </script>
     <script type="text/x-template" id="app-left-menu-item-template">
-        <div v-bind:id="getId()" class="app-left-menu-item app-left-menu-icon" v-bind:title="item.title"></div>
+        <div v-bind:id="getId()" class="app-left-menu-item app-left-menu-icon" v-bind:title="item.title">
+            <span v-if="item.text">{{item.text}}</span>
+        </div>
     </script>
     <script type="text/x-template" id="app-template">
         <div class=""></div>
@@ -95,7 +91,7 @@
     <div id="app" class="viewer-app" style="width: 100%; height: 600px;">
 
         <app-header id="app-header" :groups="groups"></app-header>
-        <app-body id="app-body"></app-body>
+        <app-body id="app-body" :data-object="dataObject"></app-body>
 
         <div id="app-body1" class="app-body">
             <div id="app-left" class="app-left">
