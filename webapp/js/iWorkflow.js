@@ -6,31 +6,24 @@
         console.log('export as AMD!');
         define([
             'js/core/appHeader',
-            'js/core/appBody'
+            'js/core/appBody',
+            'js/core/appFooter'
         ], factory);
     }else {
         console.log('export Global!');
         global.iWorkFlow = factory(
             global.appHeader,
-            global.appBody
+            global.appBody,
+            global.appFooter
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(appHeader, appBody) {
+})(typeof window !== 'undefined' ? window : this, function(appHeader, appBody, appFooter) {
     console.log("Loaded: iWorkflow.js");
 
     appHeader.init();
     appBody.init();
-
-    Vue.component('app-footer', {
-        template: '#app-footer-template'
-    });
-
-
-
-    // var appFooter = new Vue({
-    //     el: '#app-footer'
-    // });
+    appFooter.init();
 
     return {};
 
