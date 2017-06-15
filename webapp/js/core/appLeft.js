@@ -11,7 +11,9 @@
 })(typeof window !== 'undefined' ? window : this, function(leftMenuTree) {
 
     Vue.component('app-left', {
-        props: ['items'],
+        props: {
+            items: Object
+        },
         template: '#app-left-template',
         computed: {
             menuItems: function() {
@@ -27,7 +29,9 @@
     });
 
     Vue.component('app-left-menu', {
-        props: ['items'],
+        props: {
+            items: Object
+        },
         template: '#app-left-menu-template'
     });
 
@@ -36,7 +40,9 @@
     });
 
     Vue.component('app-left-tree', {
-        props: ['items'],
+        props: {
+            items: Object
+        },
         template: '#app-left-tree-template'
     });
 
@@ -54,27 +60,39 @@
     });
 
     Vue.component('app-tree-header', {
-        props: ['name'],
+        props: {
+            name: String
+        },
         template: '#app-tree-header-template',
     });
 
     Vue.component('app-tree-root', {
-        props: ['items'],
+        props: {
+            items: Object
+        },
         template: '#app-tree-root-template'
     });
 
     Vue.component('app-tree-node', {
-        props: ['item', 'index'],
+        props: {
+            item: Object,
+            index: Number
+        },
         template: '#app-tree-node-template'
     });
 
     Vue.component('app-tree-contents', {
-        props: ['item'],
+        props: {
+            item: Object
+        },
         template: '#app-tree-contents-template'
     });
 
     Vue.component('app-tree-content', {
-        props: ['item', 'index'],
+        props: {
+            item: Object,
+            index: Number
+        },
         template: '#app-tree-content-template',
         computed: {
             classObjectIcon: function() {
