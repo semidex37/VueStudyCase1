@@ -8,6 +8,8 @@
     <!--<link rel="stylesheet" href="">-->
     <!--<style type="text/css"></style>-->
     <link rel="stylesheet" href="css/main.css">
+
+    <!-- app-header -->
     <script type="text/x-template" id="app-header-template">
         <div class="app-header">
             <app-header-group
@@ -37,6 +39,7 @@
             <input v-if="item.type == 'Range'" v-bind:id="item.id" type="range" v-bind:min="item.min" v-bind:max="item.max" v-bind:value="item.value" step="20" style="width:100px;">
         </div>
     </script>
+    <!-- app-body -->
     <script type="text/x-template" id="app-body-template">
         <div class="app-body">
             <app-left :items="leftObject"></app-left>
@@ -60,6 +63,8 @@
     <script type="text/x-template" id="app-footer-template">
         <div class="app-footer"></div>
     </script>
+
+    <!-- app-left-menu -->
     <script type="text/x-template" id="app-left-menu-template">
         <div class="app-menu app-left-menu">
             <div class="app-left-menu-group">
@@ -80,11 +85,24 @@
             <span v-if="item.text">{{item.text}}</span>
         </div>
     </script>
+
+    <!-- app-left-serach -->
+    <script type="text/x-template" id="app-left-menu-search-template">
+        <div class="app-search app-left-search"></div>
+    </script>
+    <script type="text/x-template" id="app-search-box-template">
+        <div class="app-search-box">
+            <input type="search" class="app-search-text" placeholder="Search TextBox">
+        </div>
+    </script>
+
+    <!-- app-left-tree -->
+
     <script type="text/x-template" id="app-template">
         <div class=""></div>
     </script>
     <!--<script type="text/x-template" id="app-template">-->
-    <!--<div class=""></div>-->
+    <!--    <div class=""></div>-->
     <!--</script>-->
 </head>
 <body>
