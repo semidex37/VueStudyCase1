@@ -99,7 +99,6 @@
             <app-tree-root :items="items"></app-tree-root>
         </div>
     </script>
-
     <script type="text/x-template" id="app-tree-root-template">
         <div class="app-tree-root">
             <app-tree-node
@@ -110,21 +109,12 @@
             </app-tree-node>
         </div>
     </script>
-
     <script type="text/x-template" id="app-tree-node-template">
         <div class="app-tree-node">
             <app-tree-header :name="item.name"></app-tree-header>
             <app-tree-contents :item="item"></app-tree-contents>
         </div>
-        <!--<div class="app-tree-node" v-if="item.type == 'Folder'">-->
-            <!--<app-tree-header :name="item.name"></app-tree-header>-->
-            <!--<app-tree-contents :item="item"></app-tree-contents>-->
-        <!--</div>-->
-        <!--<div class="app-tree-node" v-else-if="item.type == 'SVG'">-->
-            <!--<app-tree-header :name="item.name"></app-tree-header>-->
-        <!--</div>-->
     </script>
-
     <script type="text/x-template" id="app-tree-header-template">
         <div class="app-tree-header">
             <div class="app-tree-icon app-icon-minus"></div>
@@ -132,7 +122,6 @@
             <div class="app-tree-title">{{name}}</div>
         </div>
     </script>
-
     <script type="text/x-template" id="app-tree-contents-template">
         <div class="app-tree-contents" v-if="item.type == 'Folder'">
             <app-tree-content
@@ -196,7 +185,6 @@
             </div>
         </div>
     </script>
-
     <script type="text/x-template" id="app-tree-content-template">
         <div class="app-tree-content">
             <div v-bind:class="classObjectIcon"></div>

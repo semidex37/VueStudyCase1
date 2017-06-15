@@ -3,12 +3,17 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/dataObject', 'js/core/appLeft'], factory);
+        define([
+            'js/data/dataObject',
+            'js/core/appLeft',
+            'js/core/appCenter',
+            'js/core/appRight'
+        ], factory);
     }else {
         global.appHeader = factory( global.dataObject, global.appLeft );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dataObject, appLeft) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject, appLeft, appCenter, appRight) {
 
     Vue.component('app-body', {
         // props: ['leftObject', 'centerObject', 'rightObject', 'str'],
@@ -27,16 +32,6 @@
                 return this.dataObject.rightObject;
             }
         }
-    });
-
-    Vue.component('app-center', {
-        props: ['items'],
-        template: '#app-center-template'
-    });
-
-    Vue.component('app-right', {
-        props: ['items'],
-        template: '#app-right-template'
     });
 
     return {
