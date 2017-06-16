@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml">
+<html lang="en" xmlns:v-bind="http://www.w3.org/1999/xhtml" xmlns:v-on="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>WorkFlow-C</title>
@@ -111,17 +111,21 @@
     </script>
     <script type="text/x-template" id="app-tree-node-template">
         <div class="app-tree-node">
-            <app-tree-header :name="item.name"></app-tree-header>
-            <app-tree-contents :item="item"></app-tree-contents>
+            <div class="app-tree-header">
+                <div class="app-tree-icon" v-bind:class="classObjectSign" v-on:click="expand"></div>
+                <div class="app-tree-icon" v-bind:class="classObjectFolder" v-on:click="expand"></div>
+                <div class="app-tree-title">{{item.name}}</div>
+            </div>
+            <app-tree-contents :item="item" v-if="isExpand"></app-tree-contents>
         </div>
     </script>
-    <script type="text/x-template" id="app-tree-header-template">
-        <div class="app-tree-header">
-            <div class="app-tree-icon app-icon-minus"></div>
-            <div class="app-tree-icon app-icon-folder-close"></div>
-            <div class="app-tree-title">{{name}}</div>
-        </div>
-    </script>
+    <!--<script type="text/x-template" id="app-tree-header-template">-->
+        <!--<div class="app-tree-header">-->
+            <!--<div class="app-tree-icon" v-bind:class="classObjectSign" v-on:click="expand"></div>-->
+            <!--<div class="app-tree-icon" v-bind:class="classObjectFolder" v-on:click="expand"></div>-->
+            <!--<div class="app-tree-title">{{name}}</div>-->
+        <!--</div>-->
+    <!--</script>-->
     <script type="text/x-template" id="app-tree-contents-template">
         <div class="app-tree-contents" v-if="item.type == 'Folder'">
             <app-tree-content

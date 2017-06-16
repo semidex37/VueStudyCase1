@@ -210,15 +210,20 @@
 }
 
 .app-tree-root {
-    position: relative;
-    width: 100%;
-    height: auto;
-
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
 }
 
 .app-tree-node {
+    width: 100%;
+    float: left;
     margin-bottom: 5px;
     user-select: none;
+
+
 }
 
 .app-tree-header {
@@ -232,10 +237,9 @@
 }
 
 .app-tree-contents {
-    position: relative;
     width: 100%;
-    height: 100%;
     margin-left: 20px;
+    float: left;
 }
 
 .app-tree-contents > * {
@@ -247,7 +251,7 @@
 }
 
 .app-tree-contents > .app-tree-content:last-child {
-    margin-bottom: 5px;
+    margin-bottom: 2px;
 }
 
 .app-tree-content {
@@ -527,18 +531,19 @@
     background-image: url("../image/icon/zap.png"); width:10px; height:16px;
 }
 
-.app-icon-folder-open {
-    background-image: url("../image/icon/folder_open.png"); width:16px; height:16px;
+.app-icon-folder {
     margin-left: 3px;
     margin-top: 3px;
     margin-right: 3px;
+    cursor: pointer;
+}
+
+.app-icon-folder-open {
+    background-image: url("../image/icon/folder_open.png"); width:16px; height:16px;
 }
 
 .app-icon-folder-close {
     background-image: url("../image/icon/folder_close.png"); width:16px; height:16px;
-    margin-left: 3px;
-    margin-top: 3px;
-    margin-right: 3px;
 }
 
 .app-icon-grid {

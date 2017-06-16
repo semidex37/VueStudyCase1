@@ -63,7 +63,7 @@
         props: {
             name: String
         },
-        template: '#app-tree-header-template',
+        template: '#app-tree-header-template'
     });
 
     Vue.component('app-tree-root', {
@@ -78,7 +78,32 @@
             item: Object,
             index: Number
         },
-        template: '#app-tree-node-template'
+        template: '#app-tree-node-template',
+        data: function() {
+            return {
+                isExpand: true
+            }
+        },
+        computed: {
+            classObjectSign: function() {
+                return {
+                    'app-icon-minus': this.isExpand,
+                    'app-icon-plus': !this.isExpand
+                }
+            },
+            classObjectFolder: function() {
+                return {
+                    'app-icon-folder': true,
+                    'app-icon-folder-open': this.isExpand,
+                    'app-icon-folder-close': !this.isExpand
+                }
+            },
+        },
+        methods: {
+            expand: function() {
+                this.isExpand = !this.isExpand;
+            }
+        }
     });
 
     Vue.component('app-tree-contents', {
