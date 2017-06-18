@@ -12,18 +12,18 @@
 
     Vue.component('app-left', {
         props: {
-            items: Object
+            dataObject: Object
         },
         template: '#app-left-template',
         computed: {
             menuItems: function() {
-                return this.items.menuItems;
+                return this.dataObject.leftMenuObject;
             },
             isSearch: function() {
-                return this.items.isSearch;
+                return true; // dataObject.isSearch
             },
             treeItems: function() {
-                return this.items.treeItems;
+                return this.dataObject.leftMenuTree;
             }
         }
     });

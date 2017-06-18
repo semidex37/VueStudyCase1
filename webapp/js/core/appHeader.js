@@ -3,12 +3,20 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/dataObject'], factory);
+        define([
+            'js/data/publicObject',
+            'js/data/dataObject'
+        ], factory);
     }else {
-        global.appHeader = factory( global.dataObject );
+        global.appHeader = factory(
+            global.publicObject,
+            global.dataObject
+        );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dataObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, dataObject) {
+
+    // console.log("appHeader-publicObject", publicObject);
 
     Vue.component('app-header', {
         // props: ['groups'],
@@ -22,13 +30,14 @@
         // props: ['group', 'index'],
         props: {
             group: Object,
-            index: Number
+            index: Number,
+            data: {
+                type: Number,
+                default: 37
+            }
         },
         template: '#app-header-group-template',
         computed: {
-            total: function() {
-                return this.group.children.length;
-            }
         },
         methods: {
             getId: function() {
@@ -61,6 +70,23 @@
         methods: {
             getId: function() {
                 return 'app-header-item-' + this.pIndex
+            },
+            updateSize: function(value) {
+                if(typeof this.item.changed == 'function') {
+                    this.item.changed(value);
+                }
+            },
+            result: function() {
+                var value = "";
+                if(this.item.hasOwnProperty('preValue')) {
+                    value = this.item.preValue;
+                }
+                value += this.item.value;
+                if(this.item.hasOwnProperty('afterValue')) {
+                    value += this.item.afterValue;
+                }
+                console.log("result", value);
+                return value;
             }
         }
     });
@@ -70,7 +96,7 @@
             new Vue({
                 el: '#app-header',
                 data: {
-                    groups: dataObject.headerObject
+                    groups: dataObject.headerObject.root
                 }
             });
         }
