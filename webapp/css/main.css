@@ -293,25 +293,25 @@
     top: 0;
     right: 0;
     bottom: 0;
-    display: none;
+    /*display: none;*/
 }
 
 .app-panel {
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*display: none;*/
 }
 
 .app-popup {
     position: absolute;
     left: 0;
     top: 0;
-    right: 0;
-    bottom: 0;
-    display: none;
+    /*right: 0;*/
+    /*bottom: 0;*/
+    /*display: none;*/
 }
 
 /* Paper Area */

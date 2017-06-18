@@ -85,7 +85,6 @@
                 if(this.item.hasOwnProperty('afterValue')) {
                     value += this.item.afterValue;
                 }
-                console.log("result", value);
                 return value;
             }
         }

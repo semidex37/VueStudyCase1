@@ -22,7 +22,6 @@
         template: '#app-paper-template',
         computed: {
             classObject: function() {
-                console.log("this.paperSize", publicObject.PaperSize);
                 // var paperSize = 'app-paper-grid-'+this.dataObject.publicObject.root.PaperSize;
                 var paperSize = 'app-paper-grid-'+publicObject.PaperSize;
                 var classObject = {};
@@ -34,22 +33,36 @@
     });
 
     Vue.component('app-svg', {
-        props: ['items'],
-        template: '#app-svg-template'
+        props: ['dataObject'],
+        template: '#app-svg-template',
+        computed: {
+            items: function() {
+                return this.dataObject.itemObject
+            },
+            transform: function() {
+                var zoomToFit = publicObject.ZoomToFit / 100;
+                return 'matrix('+zoomToFit+',0,0,'+zoomToFit+',0,0)';
+            },
+            classObject: function() {
+                return {
+
+                };
+            }
+        }
     });
 
     Vue.component('app-panel', {
-        props: ['items'],
+        props: ['dataObject'],
         template: '#app-panel-template'
     });
 
     Vue.component('app-popup', {
-        props: ['items'],
+        props: ['dataObject'],
         template: '#app-popup-template'
     });
 
     Vue.component('app-mini-map', {
-        props: ['items'],
+        props: ['dataObject'],
         template: '#app-mini-map-template'
     });
 

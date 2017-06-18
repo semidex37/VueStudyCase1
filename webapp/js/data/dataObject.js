@@ -20,14 +20,18 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, headerObject, leftMenuObject, leftMenuTree) {
     console.log("Loaded: dataObject!");
+    // console.log("dataObject-publicObject", publicObject);
 
-    console.log("dataObject-publicObject", publicObject);
+    var itemObject = {
+        list: []
+    };
 
     return {
         publicObject: publicObject,
         headerObject: headerObject,
         leftMenuObject: leftMenuObject,
-        leftMenuTree: leftMenuTree
+        leftMenuTree: leftMenuTree,
+        itemObject: itemObject
     };
 
 });
