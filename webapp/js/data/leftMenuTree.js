@@ -3,12 +3,16 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(factory);
+        define([
+            'js/data/controlObject'
+        ], factory);
     }else {
-        global.leftMenuTree = factory();
+        global.leftMenuTree = factory(
+            global.controlObject
+        );
     }
 
-})(typeof window !== 'undefined' ? window : this, function() {
+})(typeof window !== 'undefined' ? window : this, function(controlObject) {
 
     var leftMenuTree = {
         name: 'Root',
@@ -19,54 +23,54 @@
                 name: 'i-CANVAS 6.0',
                 type: 'Folder',
                 children: [
-                    { type: 'Event', name: 'AutoRefresh' },
-                    { type: 'Event', name: 'doRefresh' },
-                    { type: 'Event', name: 'doExport' }
+                    controlObject.AutoRefresh,
+                    controlObject.doRefresh,
+                    controlObject.doExport,
                 ]
             }, {
                 name: 'Form1',
                 type: 'Folder',
                 children: [
-                    { type: 'browser', name: 'Browser' },
-                    { type: 'button', name: 'Button' },
-                    { type: 'chart', name: 'Chart' },
-                    { type: 'checkbox', name: 'Checkbox' },
-                    { type: 'combobox', name: 'Combobox' },
-                    { type: 'custom', name: 'Custom' },
-                    { type: 'datepicker', name: 'DatePicker' },
-                    { type: 'groupbox', name: 'GroupBox' },
-                    { type: 'image', name: 'Image' },
-                    { type: 'inputbox', name: 'Inputbox' },
-                    { type: 'listgrid', name: 'ListGrid' },
-                    { type: 'multicombo', name: 'MultiCombo' },
-                    { type: 'picklist', name: 'PickList' },
-                    { type: 'piechart', name: 'PieChart' },
-                    { type: 'pivotgrid', name: 'PivotGrid' },
-                    { type: 'polarchart', name: 'PolarChart' },
-                    { type: 'polygon', name: 'Polygon' },
-                    { type: 'radiobutton', name: 'RadioButton' },
-                    { type: 'scatterchart', name: 'ScatterChart' },
-                    { type: 'tablelayout', name: 'TableLayout' },
-                    { type: 'textbox', name: 'TextBox' }
+                    controlObject.browser,
+                    controlObject.button,
+                    controlObject.chart,
+                    controlObject.checkbox,
+                    controlObject.combobox,
+                    controlObject.custom,
+                    controlObject.datepicker,
+                    controlObject.groupbox,
+                    controlObject.image,
+                    controlObject.inputbox,
+                    controlObject.listgrid,
+                    controlObject.multicombo,
+                    controlObject.picklist,
+                    controlObject.piechart,
+                    controlObject.pivotgrid,
+                    controlObject.polarchart,
+                    controlObject.polygon,
+                    controlObject.radiobutton,
+                    controlObject.scatterchart,
+                    controlObject.tablelayout,
+                    controlObject.textbox
                 ]
             }, {
                 name: 'Actions',
                 type: 'Folder',
                 children: [
-                    { type: 'Refresh', name: 'Refresh' },
-                    { type: 'SetProperties', name: 'SetProperties' },
-                    { type: 'ClearData', name: 'ClearData' },
-                    { type: 'Export', name: 'Export' },
-                    { type: 'CreateRow', name: 'CreateRow' },
-                    { type: 'DeleteRow', name: 'DeleteRow' },
-                    { type: 'Update', name: 'Update' }
+                    controlObject.Refresh,
+                    controlObject.SetProperties,
+                    controlObject.ClearData,
+                    controlObject.Export,
+                    controlObject.CreateRow,
+                    controlObject.DeleteRow,
+                    controlObject.Update
                 ]
             }, {
                 name: 'Condition',
                 type: 'Folder',
                 children: [
-                    { type: 'If', name: 'If' },
-                    { type: 'For', name: 'For' }
+                    controlObject.If,
+                    controlObject.For
                 ]
             }, {
                 name: 'Diagram',

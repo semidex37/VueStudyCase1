@@ -86,6 +86,13 @@
                     value += this.item.afterValue;
                 }
                 return value;
+            },
+            showMessage: function(message) {
+                alert(message);
+
+                // test
+                console.log('Clear-itemObject', dataObject.itemObject.children.length);
+
             }
         }
     });

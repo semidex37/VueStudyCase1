@@ -7,24 +7,22 @@
             'js/data/publicObject',
             'js/data/headerObject',
             'js/data/leftMenuObject',
-            'js/data/leftMenuTree'
+            'js/data/leftMenuTree',
+            'js/data/itemObject'
         ], factory);
     }else {
         global.dataObject = factory(
             global.publicObject,
             global.headerObject,
             global.leftMenuObject,
-            global.leftMenuTree
+            global.leftMenuTree,
+            global.itemObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, headerObject, leftMenuObject, leftMenuTree) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, headerObject, leftMenuObject, leftMenuTree, itemObject) {
     console.log("Loaded: dataObject!");
     // console.log("dataObject-publicObject", publicObject);
-
-    var itemObject = {
-        list: []
-    };
 
     return {
         publicObject: publicObject,

@@ -3,12 +3,18 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/leftMenuTree'], factory);
+        define([
+            'js/data/leftMenuTree',
+            'js/data/itemObject'
+        ], factory);
     }else {
-        global.appLeft = factory( global.leftMenuTree );
+        global.appLeft = factory(
+            global.leftMenuTree,
+            global.itemObject
+        );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(leftMenuTree) {
+})(typeof window !== 'undefined' ? window : this, function(leftMenuTree, itemObject) {
 
     Vue.component('app-left', {
         props: {
@@ -160,6 +166,9 @@
         methods: {
             onDblClick: function() {
                 console.log('itemDblClick', this.item.type, this.item.name);
+
+                itemObject.AddItem(this.item);
+
             },
             mouseDown: function() {
                 this.isDrag = true;

@@ -3,12 +3,15 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/publicObject'], factory);
+        define([
+            'js/data/publicObject',
+            'js/control/controls'
+        ], factory);
     }else {
-        global.appCenter = factory(global.publicObject);
+        global.appCenter = factory(global.publicObject, global.controls);
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, controls) {
 
     Vue.component('app-center', {
         props: ['dataObject', 'items'],
@@ -36,6 +39,9 @@
         props: ['dataObject'],
         template: '#app-svg-template',
         computed: {
+            id: function () {
+                return 'app-controls';
+            },
             items: function() {
                 return this.dataObject.itemObject
             },

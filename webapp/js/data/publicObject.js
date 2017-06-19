@@ -11,7 +11,7 @@
 })(typeof window !== 'undefined' ? window : this, function() {
 
     var publicObject = {
-        PaperSize: 15,
+        PaperSize: 10,
         ZoomToFit: 100
     };
 

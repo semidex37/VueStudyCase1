@@ -236,8 +236,9 @@
     <script type="text/x-template" id="app-svg-template">
         <div class="app-svg">
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
-                <g v-bind:transform="transform"></g>
-
+                <g v-bind:transform="transform">
+                    <app-controls v-bind:id="id"></app-controls>
+                </g>
             </svg>
         </div>
     </script>
@@ -258,6 +259,77 @@
             <div class="app-mini-map-background"></div>
             <div class="app-mini-map-svg"></div>
         </div>
+    </script>
+
+    <!-- app-controls-template -->
+    <script type="text/x-template" id="app-controls-template">
+        <g class="app-controls">
+            <app-control v-for="(item, index) in itemObject.children"
+                         :key="index"
+                         :item="item"
+                         :index="index"
+            ></app-control>
+        </g>
+    </script>
+
+    <!-- app-control-template -->
+    <script type="text/x-template" id="app-control-template">
+        <g class="app-control">
+            <g class="translate" v-bind:transform="transform">
+                <g class="rotatable">
+                    <g class="scalable">
+                        <app-control-button v-if="item.type == 'button'"
+                                            :item="item">
+                        </app-control-button>
+                        <!--<app-control-arrow v-else-if="item-type == 'arrow"-->
+                                           <!--:item="item">-->
+                        <!--</app-control-arrow>-->
+                        <g v-else>
+                            <rect width="100" height="80" fill="rgb(198, 217, 241)" rx="2" ry="2" stroke="rgb(85, 142, 123)"></rect>
+                            <g transform="translate(5, 5)">
+                                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                                    <tspan class="" dy="0em" x="0">Else Control</tspan>
+                                    <tspan class="" dy="1em" x="0">Type: {{item.type}}</tspan>
+                                    <tspan class="" dy="1em" x="0">Name: {{item.name}}</tspan>
+                                    <tspan class="" dy="1em" x="0">Id: {{item.id}}</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </script>
+
+    <!-- app-control-button-template -->
+    <script type="text/x-template" id="app-control-button-template">
+        <g class="app-control-button">
+            <rect v-bind:width="width"
+                  v-bind:height="height"
+                    fill="rgb(198, 217, 241)" rx="2" ry="2" stroke="rgb(85, 142, 123)"></rect>
+            <g transform="translate(5, 5)">
+                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                    <tspan class="" dy="0em" x="0">Type: {{item.type}}</tspan>
+                    <tspan class="" dy="1em" x="0">Name: {{item.name}}</tspan>
+                    <tspan class="" dy="1em" x="0">Id: {{item.id}}</tspan>
+                </text>
+            </g>
+        </g>
+    </script>
+
+    <!-- app-control-arrow-template -->
+    <script type="text/x-template" id="app-control-arrow-template">
+        <g class="app-control-arrow-template"></g>
+    </script>
+
+    <!-- app-control-arrow--normal-template -->
+    <script type="text/x-template" id="app-control-arrow-normal-template">
+        <g class="app-control-arrow-normal-template"></g>
+    </script>
+
+    <!-- app-control-event-auto-refresh-template -->
+    <script type="text/x-template" id="app-control-event-auto-refresh-template">
+        <g class="app-auto-refresh"></g>
     </script>
 
     <!-- app-template -->
