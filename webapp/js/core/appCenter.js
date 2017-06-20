@@ -68,12 +68,7 @@
                 // publicObject.ActiveObject = null;
             },
             onMouseMove: function(e) {
-
-                if(eventObject.ActiveObject
-                    && eventObject.isDrag) {
-                    eventObject.ControlDrag(document.getElementById('app-svg'), e);
-                }
-
+                eventObject.ControlDrag(e);
             },
             onMouseUpLeft: function() {
                 console.log('app-svg', 'onMouseUpLeft');
@@ -116,7 +111,7 @@
                 var height = 0;
 
                 if(eventObject.ActiveObject) {
-                    console.log('app-panel', 'calculatorRect', eventObject.ActiveObject.item.left);
+                    // console.log('app-panel', 'calculatorRect', eventObject.ActiveObject.item.left);
                     left = eventObject.ActiveObject.item.left;
                     top = eventObject.ActiveObject.item.top;
                     width = eventObject.ActiveObject.item.width;
@@ -133,43 +128,14 @@
         },
         methods: {
             onMouseDownLeft: function (e){
-                console.log('app-panel', 'onMouseDownLeft');
-                if(eventObject) {
-                    eventObject.isDrag = true;
-
-                    var elPoint = util.mouseEvent.CalculatorMousePoint(this.$el, e.clientX, e.clientY);
-                    // console.log('app-panel', 'onMouseDownLeft', 'elPoint', elPoint.X, elPoint.Y);
-
-                    eventObject.MouseDownDiffPoint.X = elPoint.X;
-                    eventObject.MouseDownDiffPoint.Y = elPoint.Y;
-
-                    console.log('app-panel', 'onMouseDownLeft', eventObject.ActiveObject.item.id, e.clientX, e.clientY);
-                }
+                eventObject.setSelection(this, e);
             },
             onMouseMove: function (e){
-                // console.log('app-panel', 'onMouseMove');
-                if(eventObject.ActiveObject
-                    && eventObject.isDrag) {
-                    // console.log('app-panel', 'onMouseDrag', eventObject.ActiveObject.item.id);
-
-                    eventObject.ControlDrag(document.getElementById('app-svg'), e);
-
-                    // var svg = document.getElementById('app-svg');
-                    // var svgPoint = util.mouseEvent.CalculatorMousePoint(svg, e.clientX, e.clientY);
-                    //
-                    // eventObject.ActiveObject.item.left = svgPoint.X - eventObject.MouseDownDiffPoint.X;
-                    // eventObject.ActiveObject.item.top = svgPoint.Y - eventObject.MouseDownDiffPoint.Y;
-                    //
-                    // console.log('app-panel', 'onMouseDrag', eventObject.ActiveObject.item.id,
-                    //     eventObject.ActiveObject.item.left, eventObject.ActiveObject.item.top);
-
-                }
+                eventObject.ControlDrag(e);
             },
             onMouseUpLeft: function (){
                 console.log('app-panel', 'onMouseUpLeft');
-                if(eventObject.ActiveObject) {
-                    eventObject.isDrag = false;
-                }
+                eventObject.disableMouseDrag();
             },
 
             onResizeDown: function(value) {

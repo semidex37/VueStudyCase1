@@ -144,31 +144,11 @@
             //     console.log("setMouseDragPoint", '[', this.MouseDragPointX, this.MouseDragPointY, ']');
             // },
             onMouseDownLeft: function(e) {
-                // console.log('onMouseDownLeft', e);
-                // this.isDrag = true;
-
-                // this.setMouseDownPoint(calculatorMousePoint(this.$el, e.clientX, e.clientY));
-                // this.setMouseDownPoint(e.clientX, e.clientY);
-                // console.log('app-control-button', 'onMouseDownLeft', this.item.id, e.clientX, e.clientY);
-                eventObject.ActiveObject = this;
-                eventObject.isDrag = true;
-                eventObject.MouseDownPoint.X = e.clientX;
-                eventObject.MouseDownPoint.Y = e.clientY;
-
-                var elPoint = util.mouseEvent.CalculatorMousePoint(this.$el, e.clientX, e.clientY);
-                console.log('app-control-button', 'onMouseDownLeft', this.item.id,
-                    this.item,
-                    '[', e.clientX, e.clientY, ']',
-                    '[', elPoint.X, elPoint.Y, ']'
-                );
-                eventObject.MouseDownDiffPoint.X = elPoint.X;
-                eventObject.MouseDownDiffPoint.Y = elPoint.Y;
-
+                eventObject.setActiveObject(this, e);
+                // eventObject.setSelection(this, e);
             },
             onMouseMove: function(e) {
                 console.log('app-control-button', 'onMouseMove', e);
-
-
             },
             onMouseUp: function(e) {
                 console.log('app-control-button', 'onMouseUp', e);
