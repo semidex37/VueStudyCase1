@@ -4,28 +4,47 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/util/generator'
+            'js/util/generator',
+            'js/data/controlObject'
         ], factory);
     }else {
         global.itemObject = factory(
-            global.Generator
+            global.Generator,
+            global.controlObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(generator) {
+})(typeof window !== 'undefined' ? window : this, function(generator, controlObject) {
 
     var itemObject = {};
     var items = [];
 
-    var AddItem = function(item) {
+    var AddItem = function(item, addArgs) {
         var id = generator.GeneratorId('item');
-        var item = {
-            id: id,
-            type: item.type,
-            name: item.name
-        };
-        itemObject[id] = item;
-        items.push(item);
+        var _item, idx;
+        if(typeof item.generator == "function") {
+            _item = item.generator();
+        }else {
+            _item = {};
+            for(idx in item) {
+                _item[idx] = item[idx];
+            }
+        }
+
+        // New ID
+        _item['id'] = id;
+
+        if(typeof addArgs == 'object') {
+            for(idx in addArgs) {
+                _item[idx] = addArgs[idx];
+            }
+        }
+
+        // console.log("AddItem", _item);
+        itemObject[id] = _item;
+        items.push(_item);
+
+        return _item;
     };
 
     var RemoveItem = function(item) {
@@ -54,19 +73,30 @@
     };
 
 
-    AddItem({
-       type: 'button',
-        name: 'Button 1'
+    AddItem(controlObject.button, {
+        name: 'D-Button',
+        left: 220,
+        top: 20
+    });
+
+    AddItem(controlObject.button, {
+        name: 'D-Button 2',
+        left: 220,
+        top: 120
     });
 
     AddItem({
         type: 'text',
-        name: 'Text 1'
+        name: 'D-Text 1',
+        left: 20,
+        top: 120
     });
 
     AddItem({
         type: 'arrow',
-        name: 'Arrow 1'
+        name: 'D-Arrow 1',
+        left: 20,
+        top: 220,
     });
 
     return {

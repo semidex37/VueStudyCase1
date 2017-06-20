@@ -234,9 +234,15 @@
 
     <!-- app-svg -->
     <script type="text/x-template" id="app-svg-template">
-        <div class="app-svg">
+        <div id="app-svg" class="app-svg"
+             v-on:mousedown.left="onMouseDownLeft"
+             v-on:mousemove="onMouseMove"
+             v-on:mouseup.left="onMouseUpLeft"
+             v-on:click.left="onClickLeft"
+        >
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
-                <g v-bind:transform="transform">
+                <g v-bind:transform="transform"
+                >
                     <app-controls v-bind:id="id"></app-controls>
                 </g>
             </svg>
@@ -245,7 +251,23 @@
 
     <!-- app-panel -->
     <script type="text/x-template" id="app-panel-template">
-        <div class="app-panel"></div>
+        <div class="app-panel app-selection"
+             v-show="isActiveObject"
+             v-on:mousedown.left="onMouseDownLeft"
+             v-on:mousemove="onMouseMove"
+             v-on:mouseup.left="onMouseUpLeft"
+             v-bind:style="styleObject"
+            >
+                <div class="resize"
+                     v-for="(value, key) in direction"
+                     v-bind:class="value"
+                     v-on:mousedown.left.stop="onResizeDown(value)"
+                     v-on:mouseup.left.stop="onResizeUp(value)"
+                >
+                </div>
+            </div>
+
+        </div>
     </script>
 
     <!-- app-popup -->
@@ -265,6 +287,7 @@
     <script type="text/x-template" id="app-controls-template">
         <g class="app-controls">
             <app-control v-for="(item, index) in itemObject.children"
+                         v-bind:id="item.id"
                          :key="index"
                          :item="item"
                          :index="index"
@@ -304,11 +327,26 @@
     <!-- app-control-button-template -->
     <script type="text/x-template" id="app-control-button-template">
         <g class="app-control-button">
-            <rect v-bind:width="width"
+            <rect class="app-cursor-move"
+                  v-bind:width="width"
                   v-bind:height="height"
-                    fill="rgb(198, 217, 241)" rx="2" ry="2" stroke="rgb(85, 142, 123)"></rect>
-            <g transform="translate(5, 5)">
-                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
+                  v-bind:fill="fill"
+                  v-bind:rx="rx"
+                  v-bind:ry="ry"
+                  v-bind:stroke="stroke"
+                  v-on:mousedown.left.stop="onMouseDownLeft"
+            >
+            </rect>
+            <g class="app-cursor-pointer"
+               v-bind:transform="addButtonTransform">
+                <image xlink:href="image/icon/btn_add.png"
+                       width="16"
+                       height="16"
+                       v-on:click.left="onMouseDownAddItem"
+                ></image>
+            </g>
+            <g v-bind:transform="textTransform">
+                <text font-size="14" y="0.8em" xml:space="preserve" fill="#000" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
                     <tspan class="" dy="0em" x="0">Type: {{item.type}}</tspan>
                     <tspan class="" dy="1em" x="0">Name: {{item.name}}</tspan>
                     <tspan class="" dy="1em" x="0">Id: {{item.id}}</tspan>
@@ -626,7 +664,7 @@
                 <div id="app-paper" class="app-paper">
                     <div id="app-paper-grid" class="app-paper-grid"></div>
                 </div>
-                <div id="app-svg" class="app-svg">
+                <div id="app-svg2" class="app-svg">
                     <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                         <g style="">
                             <g class="translate" transform="translate(20, 20)">

@@ -4,22 +4,22 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-
+            'js/control/button'
             ], factory);
     }else {
         global.controlObject = factory(
-
+            global.button
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function() {
+})(typeof window !== 'undefined' ? window : this, function(button) {
 
     var AutoRefresh =   {   type: 'Event',          name: 'AutoRefresh'     };
     var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
     var doExport =      {   type: 'Event',          name: 'doExport'        };
 
     var browser =       {   type: 'browser',        name: 'Browser'         };
-    var button =        {   type: 'button',         name: 'Button'          };
+    // var button =        {   type: 'button',         name: 'Button 1'        };
     var chart =         {   type: 'chart',          name: 'Chart'           };
     var checkbox =      {   type: 'checkbox',       name: 'Checkbox'        };
     var combobox =      {   type: 'combobox',       name: 'Combobox'        };

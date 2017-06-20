@@ -167,7 +167,7 @@
             onDblClick: function() {
                 console.log('itemDblClick', this.item.type, this.item.name);
 
-                itemObject.AddItem(this.item);
+                var item = itemObject.AddItem(this.item);
 
             },
             mouseDown: function() {
