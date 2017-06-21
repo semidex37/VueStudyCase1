@@ -63,22 +63,41 @@
 
 
                 if(this.isDiffMode) {
-                    var diffX = Math.abs(this.ActiveObject.item.left - x);
-                    var diffY = Math.abs(this.ActiveObject.item.top - y);
+                    // var diffX = x - this.ActiveObject.item.left ;
+                    // var diffY = y - this.ActiveObject.item.top;
 
-                    if(publicObject.ZoomToFit < diffX) {
+                    // console.log("diffX", diffX);
+                    // if(publicObject.PaperSize > 0
+                    //     && publicObject.PaperSize > diffX) {
+                    //     console.log('left', publicObject.PaperSize * Math.round(diffX/publicObject.PaperSize));
+                    //     // diffX = (publicObject.PaperSize * Math.round(diffX/publicObject.PaperSize));
+                    //     diffX = publicObject.PaperSize;
+                    //
+                    //     this.ActiveObject.item.left += diffX;
+                    //
+                    // }else if(publicObject.PaperSize < diffX) {
+                    //     console.log('right', publicObject.PaperSize * Math.round(diffX/publicObject.PaperSize));
+                    //     // diffX = (publicObject.PaperSize * Math.round(diffX/publicObject.PaperSize));
+                    //     diffX = publicObject.PaperSize;
+                    //
+                    //     this.ActiveObject.item.left -= diffX;
+                    //
+                    // }
 
-                    }
+                    // if(publicObject.PaperSize > diffY) {
+                    //     this.ActiveObject.item.top += publicObject.PaperSize;
+                    //
+                    // }else if(publicObject.PaperSize < diffY) {
+                    //     this.ActiveObject.item.top -= publicObject.PaperSize;
+                    //
+                    // }
 
-                    if(publicObject.ZoomToFit < diffY) {
+                    // console.log("ControlDrag", this.ActiveObject.item.id,
+                    //     '[', this.ActiveObject.item.left, '-->', diffX, ']',
+                    //     '[', this.ActiveObject.item.top, '-->', diffY, ']',
+                    //     '[', diffX, '-', diffY, ']',
+                    // );
 
-                    }
-
-                    console.log("ControlDrag", this.ActiveObject.item.id,
-                        '[', this.ActiveObject.item.left, '-->', x, ']',
-                        '[', this.ActiveObject.item.top, '-->', y, ']',
-                        '[', diffX, '-', diffY, ']',
-                    );
 
                 }else {
                     console.log("ControlDrag", this.ActiveObject.item.id,
