@@ -72,9 +72,8 @@
             },
             onMouseUpLeft: function() {
                 console.log('app-svg', 'onMouseUpLeft');
-                if(eventObject.isDrag) {
-                    eventObject.isDrag = false;
-                }
+                eventObject.disableMouseDrag();
+                eventObject.disableMouseResize();
             },
             onClickLeft: function () {
                 if(eventObject.ActiveObject) {
@@ -88,8 +87,8 @@
         props: ['dataObject'],
         data: function() {
             return {
-                // direction: ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w']
-                direction: ['nw', 'ne', 'se', 'sw']
+                direction: ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w']
+                // direction: ['nw', 'ne', 'se', 'sw']
             }
         },
         template: '#app-panel-template',
@@ -136,23 +135,19 @@
             onMouseUpLeft: function (){
                 console.log('app-panel', 'onMouseUpLeft');
                 eventObject.disableMouseDrag();
+                eventObject.disableMouseResize();
             },
 
-            onResizeDown: function(value) {
+            onResizeDown: function(e, value) {
                 console.log('app-panel', 'onResizeDown', value);
-                if(eventObject) {
-                    eventObject.isDrag = false;
-                    eventObject.isResize = true;
-                }
-
-            },
-            onResizeMove: function(value) {
-                console.log('app-panel', 'onResizeMove', value);
+                eventObject.setSelection(this, e);
+                eventObject.enableMouseResize(value);
 
             },
             onResizeUp: function(value) {
                 console.log('app-panel', 'onResizeUp', value);
-
+                eventObject.disableMouseDrag();
+                eventObject.disableMouseResize();
             },
         }
     });

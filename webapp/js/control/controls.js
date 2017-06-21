@@ -102,7 +102,6 @@
             //     return this.item.top ? this.item.top : 20;
             // },
             width: function() {
-                console.log("this.item", this.item);
                 return this.item.width ? this.item.width : 50;
             },
             height: function() {

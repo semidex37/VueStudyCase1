@@ -460,6 +460,7 @@
     border: solid 1px #000066;
     box-sizing: border-box;
     cursor: pointer;
+    user-select: none;
 }
 
 .app-arrow-selection {

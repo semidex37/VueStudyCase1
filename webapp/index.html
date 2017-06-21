@@ -261,7 +261,7 @@
                 <div class="resize"
                      v-for="(value, key) in direction"
                      v-bind:class="value"
-                     v-on:mousedown.left.stop="onResizeDown(value)"
+                     v-on:mousedown.left.stop="onResizeDown($event, value)"
                      v-on:mouseup.left.stop="onResizeUp(value)"
                 >
                 </div>
