@@ -5,26 +5,27 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/data/publicObject',
+            'js/data/itemObject',
             'js/data/eventObject'
         ], factory);
     }else {
         global.appSVG = factory(
             global.publicObject,
+            global.itemObject,
             global.eventObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
 
     Vue.component('app-svg', {
-        props: ['dataObject'],
         template: '#app-svg-template',
         computed: {
             id: function () {
                 return 'app-controls';
             },
             items: function() {
-                return this.dataObject.itemObject
+                return this.itemObject;
             },
             transform: function() {
                 var zoomToFit = publicObject.ZoomToFit / 100;

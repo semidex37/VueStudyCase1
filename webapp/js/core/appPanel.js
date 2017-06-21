@@ -17,7 +17,6 @@
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {
 
     Vue.component('app-panel', {
-        props: ['dataObject'],
         data: function() {
             return {
                 direction: ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w']
@@ -43,7 +42,6 @@
                 var height = 0;
 
                 if(eventObject.ActiveObject) {
-                    // console.log('app-panel', 'calculatorRect', eventObject.ActiveObject.item.left);
                     left = eventObject.ActiveObject.item.left;
                     top = eventObject.ActiveObject.item.top;
                     width = eventObject.ActiveObject.item.width;

@@ -61,9 +61,9 @@
     <!-- app-body -->
     <script type="text/x-template" id="app-body-template">
         <div class="app-body">
-            <app-left :data-object="dataObject"></app-left>
-            <app-center :data-object="dataObject"></app-center>
-            <app-right :data-object="dataObject"></app-right>
+            <app-left></app-left>
+            <app-center></app-center>
+            <app-right></app-right>
         </div>
     </script>
     <script type="text/x-template" id="app-left-template">
@@ -75,10 +75,11 @@
     </script>
     <script type="text/x-template" id="app-center-template">
         <div class="app-center">
-            <app-paper :data-object="dataObject"></app-paper>
-            <app-svg :data-object="dataObject"></app-svg>
-            <app-panel :data-object="dataObject"></app-panel>
-            <app-popup :data-object="dataObject"></app-popup>
+            <app-paper></app-paper>
+            <app-svg></app-svg>
+            <app-panel></app-panel>
+            <app-popup></app-popup>
+            <!--<app-action :data-object="dataObject"></app-action>-->
             <app-mini-map :data-object="dataObject"></app-mini-map>
         </div>
     </script>

@@ -4,32 +4,31 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/leftMenuObject',
             'js/data/leftMenuTree',
             'js/data/itemObject'
         ], factory);
     }else {
         global.appLeft = factory(
+            global.leftMenuObject,
             global.leftMenuTree,
             global.itemObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(leftMenuTree, itemObject) {
+})(typeof window !== 'undefined' ? window : this, function(leftMenuObject, leftMenuTree, itemObject) {
 
     Vue.component('app-left', {
-        props: {
-            dataObject: Object
-        },
         template: '#app-left-template',
         computed: {
             menuItems: function() {
-                return this.dataObject.leftMenuObject;
+                return leftMenuObject;
             },
             isSearch: function() {
                 return true; // dataObject.isSearch
             },
             treeItems: function() {
-                return this.dataObject.leftMenuTree;
+                return leftMenuTree;
             }
         }
     });
