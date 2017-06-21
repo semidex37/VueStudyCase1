@@ -85,15 +85,13 @@
         top: 120
     });
 
-    AddItem({
-        type: 'text',
+    AddItem(controlObject.dummy, {
         name: 'D-Text 1',
         left: 20,
         top: 120
     });
 
-    AddItem({
-        type: 'arrow',
+    AddItem(controlObject.dummy, {
         name: 'D-Arrow 1',
         left: 20,
         top: 220,

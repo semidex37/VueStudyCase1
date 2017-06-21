@@ -4,15 +4,17 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/control/dummy',
             'js/control/button'
             ], factory);
     }else {
         global.controlObject = factory(
+            global.dummy,
             global.button
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(button) {
+})(typeof window !== 'undefined' ? window : this, function(dummy, button) {
 
     var AutoRefresh =   {   type: 'Event',          name: 'AutoRefresh'     };
     var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
@@ -51,7 +53,20 @@
     var If =            {   type: 'If',             name: 'If'              };
     var For =           {   type: 'For',            name: 'For'             };
 
+    var setDefaultProperties = function(obj, properties) {
+        var obj = {
+            left: null,
+            top: null,
+            type: 'dummy',
+
+        };
+
+        return obj;
+    };
+
     return {
+        dummy: dummy,
+
         AutoRefresh: AutoRefresh,
         doRefresh: doRefresh,
         doExport: doExport,
