@@ -75,7 +75,7 @@
         return {
             computed: {
                 isActiveObject: function() {
-                    return eventObject.ActiveObject != null
+                    return eventObject.ActiveObject != null;
                 },
                 styleObject: function() {
                     var rect = this.calculatorRect;
@@ -104,7 +104,7 @@
                         top: top,
                         width: width,
                         height: height,
-                    }
+                    };
                 }
             }
         };

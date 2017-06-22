@@ -84,6 +84,8 @@
                 }else if(item.type == 'rotation') {
 
                 }else if(item.type == 'add') {
+                    eventObject.setMousePoint(this, e);
+                    eventObject.enablePopup();
 
                 }else if(item.type == 'arrow') {
 

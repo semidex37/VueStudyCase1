@@ -37,9 +37,9 @@
             },
             onClick: function(e) {
                 console.log('app-control-button', 'onClick', e);
-            },
-            onMouseDownAddItem: function(e) {
-                console.log('app-control-button', 'onMouseDownAddItem');
+            // },
+            // onMouseDownAddItem: function(e) {
+            //     console.log('app-control-button', 'onMouseDownAddItem');
             }
         }
     });

@@ -29,6 +29,24 @@
     //     return this.ActiveObject;
     // };
 
+    var setMouseDownPoint = function(x, y) {
+        this.MouseDownPoint.X = x;
+        this.MouseDownPoint.Y = y;
+    };
+
+    var setMouseDownDiffPoint = function(x, y) {
+        this.MouseDownDiffPoint.X = x;
+        this.MouseDownDiffPoint.Y = y;
+    };
+
+    var setMousePoint = function(vue, e) {
+        setMouseDownPoint.call(this, e.clientX, e.clientY);
+
+        var elPoint = util.mouseEvent.CalculatorMousePoint(vue.$el, e.clientX, e.clientY);
+
+        setMouseDownDiffPoint.call(this, elPoint.X, elPoint.Y);
+    };
+
     var setActiveObject = function(vue, /* MouseEvent */ e) {
         this.ActiveObject = vue;
 
@@ -41,13 +59,7 @@
     var setSelection = function(vue, e) {
         console.log('setSelection', this.ActiveObject.item.id);
         this.isDrag = true;
-        this.MouseDownPoint.X = e.clientX;
-        this.MouseDownPoint.Y = e.clientY;
-
-        var elPoint = util.mouseEvent.CalculatorMousePoint(vue.$el, e.clientX, e.clientY);
-
-        this.MouseDownDiffPoint.X = elPoint.X;
-        this.MouseDownDiffPoint.Y = elPoint.Y;
+        setMousePoint.call(this, vue, e);
     };
 
     /**
@@ -235,6 +247,15 @@
         disableMouseDrag.call(this);
         disableMouseResize.call(this);
         disableMouseRotation.call(this);
+        disablePopup.call(this);
+    };
+
+    var enablePopup = function() {
+        this.isPopup = true;
+    };
+
+    var disablePopup = function() {
+        this.isPopup = false;
     };
 
     var SaveReferItem = function(item) {
@@ -267,15 +288,18 @@
         isDrag: false,
         isResize: false,
         isRotation: false,
+        isPopup: false,
         setActiveObject: setActiveObject,
         setSelection: setSelection,
+        setMousePoint: setMousePoint,
         ControlDrag: ControlDrag,
         disableMouseMode: disableMouseMode,
         disableMouseDrag: disableMouseDrag,
         disableMouseResize: disableMouseResize,
         disableMouseRotation: disableMouseRotation,
         enableMouseResize: enableMouseResize,
-        enableMouseRotation: enableMouseRotation
+        enableMouseRotation: enableMouseRotation,
+        enablePopup: enablePopup
     };
 
     return eventObject;

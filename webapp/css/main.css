@@ -218,14 +218,14 @@
 }
 
 .app-tree-node {
-    width: 100%;
+    /*width: 100%;*/
     float: left;
     margin-bottom: 5px;
     user-select: none;
 }
 
 .app-tree-header {
-    width: 100%;
+    /*width: 100%;*/
     height: 21px;
     margin-left: 5px;
 }
@@ -235,7 +235,7 @@
 }
 
 .app-tree-contents {
-    width: 100%;
+    /*width: 100%;*/
     margin-left: 20px;
     float: left;
 }
@@ -305,6 +305,39 @@
 
 .app-popup {
     position: absolute;
+}
+
+.app-contexts {
+    position: absolute;
+    border: solid 1px #99BCE1;
+    background-color: #99BCE1;
+}
+
+.app-context {
+    border: solid 1px #99BCE1;
+    background-color: #ffffff;
+    height: 24px;
+    cursor: pointer;
+}
+
+.app-context > * {
+    float: left;
+}
+
+.app-context:hover {
+    color: rgb(104, 137, 188);
+    background-color: rgb(210, 229, 250);
+}
+
+.app-context-icon {
+    width: 28px;
+    height: 24px;
+    background-color: rgb(210, 229, 250);
+}
+
+.app-context-text {
+    margin-left: 5px;
+    margin-right: 5px;
 }
 
 /* Paper Area */
@@ -799,7 +832,8 @@
 }
 
 
-    /*********** icon Area - START ************/
+/*********** icon Area - START ************/
+
 
 
 

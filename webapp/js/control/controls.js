@@ -23,7 +23,7 @@
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, itemObject, util, dummy, button) {
-    console.log("Loaded: controls");
+    // console.log("Loaded: controls");
 
     var controls = {};
 

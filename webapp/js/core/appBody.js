@@ -15,7 +15,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(dataObject, appLeft, appCenter, appRight) {
 
-    console.log("appBody-dataObject", dataObject);
+    // console.log("appBody-dataObject", dataObject);
 
     Vue.component('app-body-template', {
         // props: ['leftObject', 'centerObject', 'rightObject', 'dataObject'],

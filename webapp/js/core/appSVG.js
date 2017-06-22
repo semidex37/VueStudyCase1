@@ -47,8 +47,7 @@
             },
             onMouseUpLeft: function() {
                 console.log('app-svg', 'onMouseUpLeft');
-                eventObject.disableMouseDrag();
-                eventObject.disableMouseResize();
+                eventObject.disableMouseMode();
             },
             onClickLeft: function () {
                 if(eventObject.ActiveObject) {
