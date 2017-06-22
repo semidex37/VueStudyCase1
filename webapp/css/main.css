@@ -306,6 +306,10 @@
     /*display: none;*/
 }
 
+.app-selection {
+    position: absolute;
+}
+
 .app-popup {
     position: absolute;
     left: 0;
@@ -456,13 +460,20 @@
 }
 
 /*********** Selection Area - START ************/
-.app-selection {
-    position: absolute;
+.app-panel-selection {
     border: solid 1px #000066;
     box-sizing: border-box;
     cursor: pointer;
     user-select: none;
 }
+
+/*.app-selection {*/
+    /*position: absolute;*/
+    /*!*border: solid 1px #000066;*!*/
+    /*!*box-sizing: border-box;*!*/
+    /*!*cursor: pointer;*!*/
+    /*!*user-select: none;*!*/
+/*}*/
 
 .app-arrow-selection {
     position: absolute;

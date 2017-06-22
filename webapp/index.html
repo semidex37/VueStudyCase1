@@ -77,6 +77,7 @@
         <div class="app-center">
             <app-paper></app-paper>
             <app-svg></app-svg>
+            <app-selection></app-selection>
             <app-panel></app-panel>
             <app-popup></app-popup>
             <!--<app-action :data-object="dataObject"></app-action>-->
@@ -252,7 +253,7 @@
 
     <!-- app-panel -->
     <script type="text/x-template" id="app-panel-template">
-        <div class="app-panel app-selection"
+        <div class="app-panel app-panel-selection"
              v-show="isActiveObject"
              v-on:mousedown.left="onMouseDownLeft"
              v-on:mousemove="onMouseMove"
@@ -268,6 +269,14 @@
                 </div>
             </div>
 
+        </div>
+    </script>
+
+    <!-- app-selection -->
+    <script type="text/x-template" id="app-selection-template">
+        <div class="app-selection"
+             v-show="isActiveObject"
+             v-bind:style="styleObject">
         </div>
     </script>
 
