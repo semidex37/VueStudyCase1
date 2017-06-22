@@ -18,7 +18,7 @@
 
     // console.log("appHeader-publicObject", publicObject);
 
-    Vue.component('app-header', {
+    Vue.component('app-header-template', {
         // props: ['groups'],
         props: {
             groups: Object
@@ -26,7 +26,7 @@
         template: '#app-header-template'
     });
 
-    Vue.component('app-header-group', {
+    Vue.component('app-header-group-template', {
         // props: ['group', 'index'],
         props: {
             group: Object,
@@ -49,7 +49,7 @@
         }
     });
 
-    Vue.component('app-header-item', {
+    Vue.component('app-header-item-template', {
         // props: ['item', 'index', 'pIndex'],
         props: {
             item: Object,

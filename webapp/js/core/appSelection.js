@@ -20,7 +20,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, itemObject, mixins) {
 
-    Vue.component('app-selection', {
+    Vue.component('app-selection-template', {
         props: ['item'],
         mixins: [mixins.getPanelMixin()],
         data: function() {

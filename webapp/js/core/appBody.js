@@ -17,7 +17,7 @@
 
     console.log("appBody-dataObject", dataObject);
 
-    Vue.component('app-body', {
+    Vue.component('app-body-template', {
         // props: ['leftObject', 'centerObject', 'rightObject', 'dataObject'],
         props: {
             dataObject: Object,

@@ -28,7 +28,7 @@
     var controls = {};
 
     // controls
-    Vue.component('app-controls', {
+    Vue.component('app-controls-template', {
         props: {
             dataObject: {
                 type: Object
@@ -43,7 +43,7 @@
     });
 
     // control
-    Vue.component('app-control', {
+    Vue.component('app-control-template', {
         props: {
             index: {
                 type: Number
@@ -76,7 +76,7 @@
 
 
     // arrow
-    Vue.component('app-control-arrow', {
+    Vue.component('app-control-arrow-template', {
         template: '#app-control-arrow-template'
     });
 

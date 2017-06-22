@@ -38,7 +38,7 @@
     appPopup,
     controls) {
 
-    Vue.component('app-center', {
+    Vue.component('app-center-template', {
         props: ['dataObject', 'items'],
         template: '#app-center-template'
     });

@@ -20,7 +20,7 @@
     var height = 60;
     var fill = 'rgb(198, 217, 241)';
 
-    Vue.component('app-control-button', {
+    Vue.component('app-control-button-template', {
         mixins: [mixins.getComponentMixin()],
         template: '#app-control-button-template',
         computed: {

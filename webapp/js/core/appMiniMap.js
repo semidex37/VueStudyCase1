@@ -20,7 +20,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, appPanel, appSVG, controls) {
 
-    Vue.component('app-mini-map', {
+    Vue.component('app-mini-map-template', {
         props: ['dataObject'],
         template: '#app-mini-map-template'
     });

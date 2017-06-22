@@ -18,7 +18,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(leftMenuObject, leftMenuTree, itemObject) {
 
-    Vue.component('app-left', {
+    Vue.component('app-left-template', {
         template: '#app-left-template',
         computed: {
             menuItems: function() {
@@ -33,25 +33,25 @@
         }
     });
 
-    Vue.component('app-left-menu', {
+    Vue.component('app-left-menu-template', {
         props: {
             items: Object
         },
         template: '#app-left-menu-template'
     });
 
-    Vue.component('app-left-search', {
+    Vue.component('app-left-search-template', {
         template: '#app-left-search-template'
     });
 
-    Vue.component('app-left-tree', {
+    Vue.component('app-left-tree-template', {
         props: {
             items: Object
         },
         template: '#app-left-tree-template'
     });
 
-    Vue.component('app-left-menu-item', {
+    Vue.component('app-left-menu-item-template', {
         props: {
             item: Object,
             index: Number
@@ -64,21 +64,21 @@
         }
     });
 
-    Vue.component('app-tree-header', {
+    Vue.component('app-tree-header-template', {
         props: {
             name: String
         },
         template: '#app-tree-header-template'
     });
 
-    Vue.component('app-tree-root', {
+    Vue.component('app-tree-root-template', {
         props: {
             items: Object
         },
         template: '#app-tree-root-template'
     });
 
-    Vue.component('app-tree-node', {
+    Vue.component('app-tree-node-template', {
         props: {
             item: Object,
             index: Number
@@ -111,14 +111,14 @@
         }
     });
 
-    Vue.component('app-tree-contents', {
+    Vue.component('app-tree-contents-template', {
         props: {
             item: Object
         },
         template: '#app-tree-contents-template'
     });
 
-    Vue.component('app-tree-content', {
+    Vue.component('app-tree-content-template', {
         props: {
             item: Object,
             index: Number

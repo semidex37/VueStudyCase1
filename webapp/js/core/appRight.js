@@ -10,7 +10,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(/* RGBColor, stackBlur */) {
 
-    Vue.component('app-right', {
+    Vue.component('app-right-template', {
         props: ['items'],
         template: '#app-right-template'
     });

@@ -20,7 +20,7 @@
     var height = 60;
     var fill = 'rgb(198, 217, 241)';
 
-    Vue.component('app-control-dummy', {
+    Vue.component('app-control-dummy-template', {
         mixins: [mixins.getComponentMixin()],
         template: '#app-control-dummy-template',
         methods: {

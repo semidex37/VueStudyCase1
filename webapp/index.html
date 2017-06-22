@@ -12,18 +12,18 @@
     <!-- app-header -->
     <script type="text/x-template" id="app-header-template">
         <div class="app-header">
-            <app-header-group
+            <app-header-group-template
                 v-for="(group, index) in groups.children"
                 :key="group.index"
                 :group="group"
                 :index="index">
-            </app-header-group>
+            </app-header-group-template>
             <!--<div class="app-header-split"></div>-->
         </div>
     </script>
     <script type="text/x-template" id="app-header-group-template">
         <div v-bind:id="getId()" class="app-header-group">
-            <app-header-item
+            <app-header-item-template
                 v-for="(item, index) in group.children"
                 v-model="item.value"
                 :key="item.index"
@@ -31,7 +31,7 @@
                 :index="index"
                 :pIndex="pIndex(index)"
             >
-            </app-header-item>
+            </app-header-item-template>
         </div>
     </script>
     <script type="text/x-template" id="app-header-item-template">
@@ -61,27 +61,27 @@
     <!-- app-body -->
     <script type="text/x-template" id="app-body-template">
         <div class="app-body">
-            <app-left></app-left>
-            <app-center></app-center>
-            <app-right></app-right>
+            <app-left-template></app-left-template>
+            <app-center-template></app-center-template>
+            <app-right-template></app-right-template>
         </div>
     </script>
     <script type="text/x-template" id="app-left-template">
         <div class="app-left">
-            <app-left-menu :items="menuItems"></app-left-menu>
-            <app-left-search v-if="isSearch"></app-left-search>
-            <app-left-tree :items="treeItems"></app-left-tree>
+            <app-left-menu-template :items="menuItems"></app-left-menu-template>
+            <app-left-search-template v-if="isSearch"></app-left-search-template>
+            <app-left-tree-template :items="treeItems"></app-left-tree-template>
         </div>
     </script>
     <script type="text/x-template" id="app-center-template">
         <div class="app-center">
-            <app-paper></app-paper>
-            <app-svg></app-svg>
-            <app-selection></app-selection>
-            <app-panel></app-panel>
-            <app-popup></app-popup>
-            <!--<app-action :data-object="dataObject"></app-action>-->
-            <app-mini-map :data-object="dataObject"></app-mini-map>
+            <app-paper-template></app-paper-template>
+            <app-svg-template></app-svg-template>
+            <app-selection-template></app-selection-template>
+            <app-panel-template></app-panel-template>
+            <app-popup-template></app-popup-template>
+            <!--<app-action-template :data-object="dataObject"></app-action-template>-->
+            <app-mini-map-template :data-object="dataObject"></app-mini-map-template>
         </div>
     </script>
     <script type="text/x-template" id="app-right-template">
@@ -95,12 +95,12 @@
     <script type="text/x-template" id="app-left-menu-template">
         <div class="app-menu app-left-menu">
             <div class="app-left-menu-group">
-                <app-left-menu-item
+                <app-left-menu-item-template
                     v-for="(item, index) in items.children"
                     :key="item.index"
                     :item="item"
                     :index="index">
-                </app-left-menu-item>
+                </app-left-menu-item-template>
             </div>
         </div>
     </script>
@@ -122,17 +122,17 @@
     <!-- app-left-tree -->
     <script type="text/x-template" id="app-left-tree-template">
         <div class="app-tree app-left-tree">
-            <app-tree-root :items="items"></app-tree-root>
+            <app-tree-root-template :items="items"></app-tree-root-template>
         </div>
     </script>
     <script type="text/x-template" id="app-tree-root-template">
         <div class="app-tree-root">
-            <app-tree-node
+            <app-tree-node-template
                 v-for="(item, index) in items.children"
                 :key="item.index"
                 :item="item"
                 :index="index">
-            </app-tree-node>
+            </app-tree-node-template>
         </div>
     </script>
     <script type="text/x-template" id="app-tree-node-template">
@@ -142,7 +142,7 @@
                 <div class="app-tree-icon" v-bind:class="classObjectFolder" v-on:click="expand"></div>
                 <div class="app-tree-title">{{item.name}}</div>
             </div>
-            <app-tree-contents :item="item" v-if="isExpand"></app-tree-contents>
+            <app-tree-contents-template :item="item" v-if="isExpand"></app-tree-contents-template>
         </div>
     </script>
     <!--<script type="text/x-template" id="app-tree-header-template">-->
@@ -154,12 +154,12 @@
     <!--</script>-->
     <script type="text/x-template" id="app-tree-contents-template">
         <div class="app-tree-contents" v-if="item.type == 'Folder'">
-            <app-tree-content
+            <app-tree-content-template
                     v-for="(_item, index) in item.children"
                     :key="_item.index"
                     :item="_item"
                     :index="index">
-            </app-tree-content>
+            </app-tree-content-template>
         </div>
         <div class="app-tree-contents" v-else-if="item.type == 'SVG'">
             <div class="app-tree-content">
@@ -245,7 +245,7 @@
             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                 <g v-bind:transform="transform"
                 >
-                    <app-controls v-bind:id="id"></app-controls>
+                    <app-controls-template v-bind:id="id"></app-controls-template>
                 </g>
             </svg>
         </div>
@@ -293,7 +293,9 @@
 
     <!-- app-popup -->
     <script type="text/x-template" id="app-popup-template">
-        <div class="app-popup"></div>
+        <div class="app-popup">
+
+        </div>
     </script>
 
     <!-- app-mini-map -->
@@ -307,12 +309,12 @@
     <!-- app-controls-template -->
     <script type="text/x-template" id="app-controls-template">
         <g class="app-controls">
-            <app-control v-for="(item, index) in itemObject.children"
+            <app-control-template v-for="(item, index) in itemObject.children"
                          v-bind:id="item.id"
                          :key="index"
                          :item="item"
                          :index="index"
-            ></app-control>
+            ></app-control-template>
         </g>
     </script>
 
@@ -322,15 +324,15 @@
             <g class="translate" v-bind:transform="transform">
                 <g class="rotatable" v-bind:transform="rotate">
                     <g class="scalable">
-                        <app-control-button v-if="item.type == 'button'"
+                        <app-control-button-template v-if="item.type == 'button'"
                                             :item="item">
-                        </app-control-button>
+                        </app-control-button-template>
                         <!--<app-control-arrow v-else-if="item-type == 'arrow"-->
                                            <!--:item="item">-->
                         <!--</app-control-arrow>-->
-                        <app-control-dummy v-else
+                        <app-control-dummy-template v-else
                                            :item="item">
-                        </app-control-dummy>
+                        </app-control-dummy-template>
                     </g>
                 </g>
             </g>
@@ -418,8 +420,8 @@
 <body>
     <div id="app" class="viewer-app" style="width: 100%; height: 600px;">
 
-        <app-header id="app-header" :groups="groups"></app-header>
-        <app-body id="app-body" :data-object="dataObject"></app-body>
+        <app-header-template id="app-header" :groups="groups"></app-header-template>
+        <app-body-template id="app-body" :data-object="dataObject"></app-body-template>
 
         <div id="app-body1" class="app-body">
             <div id="app-left" class="app-left">
@@ -872,7 +874,7 @@
             </div>
         </div>
 
-        <app-footer id="app-footer"></app-footer>
+        <app-footer-template id="app-footer"></app-footer-template>
         <!--<div id="app-footer" class="app-footer"></div>-->
     </div>
     <script src="https://cdn.rawgit.com/chrisvfritz/5f0a639590d6e648933416f90ba7ae4e/raw/98739fb8ac6779cb2da11aaa9ab6032e52f3be00/currency-validator.js"></script>

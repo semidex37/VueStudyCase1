@@ -14,7 +14,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject) {
 
-    Vue.component('app-paper', {
+    Vue.component('app-paper-template', {
         template: '#app-paper-template',
         computed: {
             classObject: function() {

@@ -20,7 +20,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, appPanel, appSVG, controls) {
 
-    Vue.component('app-popup', {
+    Vue.component('app-popup-template', {
         props: ['dataObject'],
         template: '#app-popup-template'
     });

@@ -18,7 +18,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
 
-    Vue.component('app-svg', {
+    Vue.component('app-svg-template', {
         template: '#app-svg-template',
         computed: {
             id: function () {

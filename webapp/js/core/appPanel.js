@@ -18,7 +18,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, mixins) {
 
-    Vue.component('app-panel', {
+    Vue.component('app-panel-template', {
         mixins: [mixins.getPanelMixin()],
         data: function() {
             return {

@@ -83,25 +83,25 @@
     AddItem(controlObject.button, {
         name: 'D-Button',
         left: 220,
-        top: 20
+        top: 40
     });
 
     AddItem(controlObject.button, {
         name: 'D-Button 2',
         left: 220,
-        top: 120
+        top: 140
     });
 
     AddItem(controlObject.dummy, {
         name: 'D-Text 1',
-        left: 20,
+        left: 60,
         top: 120
     });
 
     AddItem(controlObject.dummy, {
         name: 'D-Arrow 1',
-        left: 20,
-        top: 220,
+        left: 60,
+        top: 240,
     });
 
     return {

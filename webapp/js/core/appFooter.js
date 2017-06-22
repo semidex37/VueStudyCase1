@@ -10,7 +10,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function() {
 
-    Vue.component('app-footer', {
+    Vue.component('app-footer-template', {
         template: '#app-footer-template'
     });
 
