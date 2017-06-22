@@ -16,6 +16,11 @@
 
 })(typeof window !== 'undefined' ? window : this, function(dummy, button) {
 
+    var controlObject = {
+        dummy: dummy,
+        button: button
+    };
+
     var AutoRefresh =   {   type: 'Event',          name: 'AutoRefresh'     };
     var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
     var doExport =      {   type: 'Event',          name: 'doExport'        };
@@ -53,26 +58,74 @@
     var If =            {   type: 'If',             name: 'If'              };
     var For =           {   type: 'For',            name: 'For'             };
 
-    var setDefaultProperties = function(obj, properties) {
+    var setDefaultProperties = function(target, properties) {
         var obj = {
-            left: null,
-            top: null,
-            type: 'dummy',
-
+            left: 20,
+            top: 20,
+            width: 120,
+            height: 80,
+            fill: 'rgb(198, 217, 241)'
         };
 
-        return obj;
+        if(typeof properties == 'object'
+            && properties.constructor == Object) {
+            Object.assign(obj, properties);
+        }
+
+        Object.assign(target, obj);
+
+        if(typeof target.type != 'string') {
+            target.type = 'dummy';
+        }
     };
 
-    return {
-        dummy: dummy,
+    setDefaultProperties(AutoRefresh);
+    setDefaultProperties(doRefresh);
+    setDefaultProperties(doExport);
 
+    setDefaultProperties(browser);
+    setDefaultProperties(chart);
+    setDefaultProperties(checkbox);
+    setDefaultProperties(combobox);
+    setDefaultProperties(custom);
+    setDefaultProperties(datepicker);
+    setDefaultProperties(groupbox);
+    setDefaultProperties(image);
+    setDefaultProperties(inputbox);
+    setDefaultProperties(listgrid);
+    setDefaultProperties(multicombo);
+    setDefaultProperties(picklist);
+    setDefaultProperties(piechart);
+    setDefaultProperties(pivotgrid);
+    setDefaultProperties(polarchart);
+    setDefaultProperties(polygon);
+    setDefaultProperties(radiobutton);
+    setDefaultProperties(scatterchart);
+    setDefaultProperties(tablelayout);
+    setDefaultProperties(textbox);
+
+    setDefaultProperties(Refresh);
+    setDefaultProperties(SetProperties);
+    setDefaultProperties(ClearData);
+    setDefaultProperties(Export);
+    setDefaultProperties(CreateRow);
+    setDefaultProperties(DeleteRow);
+    setDefaultProperties(Update);
+
+    setDefaultProperties(If);
+    setDefaultProperties(For);
+
+    // Event
+    Object.assign(controlObject, {
         AutoRefresh: AutoRefresh,
         doRefresh: doRefresh,
-        doExport: doExport,
+        doExport: doExport
+    });
 
+    // Control
+    Object.assign(controlObject, {
         browser: browser,
-        button: button,
+        // button: button,
         chart: chart,
         checkbox: checkbox,
         combobox: combobox,
@@ -91,18 +144,26 @@
         radiobutton: radiobutton,
         scatterchart: scatterchart,
         tablelayout: tablelayout,
-        textbox: textbox,
+        textbox: textbox
+    });
 
+    // Event
+    Object.assign(controlObject, {
         Refresh: Refresh,
         SetProperties: SetProperties,
         ClearData: ClearData,
         Export: Export,
         CreateRow: CreateRow,
         DeleteRow: DeleteRow,
-        Update: Update,
+        Update: Update
+    });
 
+    // Condition
+    Object.assign(controlObject, {
         If: If,
         For: For
-    };
+    });
+
+    return controlObject;
 
 });
