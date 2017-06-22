@@ -36,20 +36,17 @@
             },
             onMouseUpLeft: function (){
                 console.log('app-panel', 'onMouseUpLeft');
-                eventObject.disableMouseDrag();
-                eventObject.disableMouseResize();
+                eventObject.disableMouseMode();
             },
 
             onResizeDown: function(e, value) {
                 console.log('app-panel', 'onResizeDown', value);
                 eventObject.setSelection(this, e);
                 eventObject.enableMouseResize(value);
-
             },
             onResizeUp: function(value) {
                 console.log('app-panel', 'onResizeUp', value);
-                eventObject.disableMouseDrag();
-                eventObject.disableMouseResize();
+                eventObject.disableMouseMode();
             },
         }
     });

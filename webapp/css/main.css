@@ -790,6 +790,10 @@
     background-image: url("../image/icon/btn_delete.png"); width:16px; height:16px;
 }
 
+.app-icon-selection-add {
+    background-image: url("../image/icon/btn_add.png"); width:16px; height:16px;
+}
+
 .app-icon-selection-arrow {
     background-image: url("../image/icon/arrow.png"); width:16px; height:16px;
 }

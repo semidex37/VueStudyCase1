@@ -19,6 +19,7 @@
     var width = 120;
     var height = 60;
     var fill = 'rgb(198, 217, 241)';
+    var rotate = 0;
 
     var generator = function() {
         return {
@@ -28,6 +29,7 @@
             name: name,
             width: width,
             height: height,
+            rotate: rotate,
             fill: fill
         }
     };

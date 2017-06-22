@@ -6,17 +6,19 @@
         define([
             'js/data/publicObject',
             'js/data/eventObject',
+            'js/data/itemObject',
             'js/core/mixins'
         ], factory);
     }else {
         global.appSelection = factory(
             global.publicObject,
             global.eventObject,
+            global.itemObject,
             global.mixins
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, mixins) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, itemObject, mixins) {
 
     Vue.component('app-selection', {
         props: ['item'],
@@ -25,8 +27,12 @@
             return {
                 children: [
                     {
-                        direction: 'ne',
+                        direction: 'nw',
                         type: 'close'
+                    },
+                    {
+                        direction: 'ne',
+                        type: 'add'
                     },
                     {
                         direction: 'e',
@@ -36,14 +42,14 @@
                         direction: 'se',
                         type: 'copy'
                     },
-                    {
-                        direction: 'sw',
-                        type: 'rotation'
-                    },
-                    {
-                        direction: 'w',
-                        type: 'cut'
-                    }
+                    // {
+                    //     direction: 'sw',
+                    //     type: 'rotation'
+                    // },
+                    // {
+                    //     direction: 'w',
+                    //     type: 'cut'
+                    // }
                 ]
             };
         },
@@ -58,13 +64,43 @@
                     'app-icon-selection-arrow': item.type == 'arrow',
                     'app-icon-selection-copy': item.type == 'copy',
                     'app-icon-selection-rotation': item.type == 'rotation',
-                    'app-icon-selection-cut': item.type == 'cut',
-
-
+                    'app-icon-selection-add': item.type == 'add',
+                    'app-icon-selection-cut': item.type == 'cut'
                 };
             },
             onClickLeft: function(e, item) {
                 console.log('app-selection', 'onClickLeft', item.type, eventObject.ActiveObject.item.id);
+
+                if(item.type == 'close') {
+                    // itemObject.RemoveItem(eventObject.ActiveObject.item);
+                    itemObject.RemoveItemById(eventObject.ActiveObject.item.id);
+                    eventObject.setActiveObject(null);
+
+                }else if(item.type == 'copy') {
+                    itemObject.CloneItem(eventObject.ActiveObject.item);
+
+                }else if(item.type == 'cut') {
+
+                }else if(item.type == 'rotation') {
+
+                }else if(item.type == 'add') {
+
+                }else if(item.type == 'arrow') {
+
+                }
+
+
+            },
+            onMouseDownLeft: function(e, item) {
+
+                if(item.type == 'rotation') {
+                    console.log('app-selection', 'onMouseDownLeft');
+                    eventObject.enableMouseRotation();
+                }
+
+            },
+            onMouseMove: function(e, item) {
+                eventObject.ControlDrag(e);
             }
         }
     });

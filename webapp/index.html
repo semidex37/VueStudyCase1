@@ -280,11 +280,12 @@
             <div class="selection"
                  v-for="(item, index) in children"
                  :key="index"
-                 v-bind:class="item.direction"
-                 v-on:click.left="onClickLeft($event, item)"
-            >
+                 v-bind:class="item.direction">
                 <div class="app-cursor-pointer"
                      v-bind:class="itemClassObject(item)"
+                     v-on:click.left="onClickLeft($event, item)"
+                     v-on:mousedown.left="onMouseDownLeft($event, item)"
+                     v-on:mousemove="onMouseMove($event, item)"
                 ></div>
             </div>
         </div>
@@ -319,7 +320,7 @@
     <script type="text/x-template" id="app-control-template">
         <g class="app-control">
             <g class="translate" v-bind:transform="transform">
-                <g class="rotatable">
+                <g class="rotatable" v-bind:transform="rotate">
                     <g class="scalable">
                         <app-control-button v-if="item.type == 'button'"
                                             :item="item">

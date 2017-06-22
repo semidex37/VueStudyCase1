@@ -84,6 +84,11 @@
                 //     + ', '
                 //     + this.top*(publicObject.ZoomToFit/100)
                 //     + ')';
+            },
+            rotate: function() {
+                if(this.item.rotate == 0) return '';
+
+                return 'rotate(' + this.item.rotate + ', 85, 60)';
             }
         }
     });

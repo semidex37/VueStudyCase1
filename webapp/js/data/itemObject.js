@@ -52,6 +52,8 @@
         var index = items.indexOf(item);
         var _item = items.splice(index, 1);
 
+        if(index == -1) return false;
+
         delete _item;
         delete itemObject[id];
 
@@ -59,8 +61,7 @@
     };
 
     var RemoveItemById = function(id) {
-        var item = itemObject[id];
-        return RemoveItem(item);
+        return RemoveItem(getItemById(id));
     };
 
     var ClearItem = function() {
@@ -70,6 +71,21 @@
         for(var item in itemObject) {
             delete itemObject[item];
         }
+    };
+
+    var CloneItem = function(item) {
+        return AddItem(item, {
+            left: item.left + 20,
+            top: item.top + 20
+        });
+    };
+
+    var CloneItemById = function(id) {
+        return CloneItem(getItemById(id));
+    };
+
+    var getItemById = function(id) {
+        return itemObject[id];
     };
 
 
@@ -102,7 +118,9 @@
         AddItem: AddItem,
         RemoveItem: RemoveItem,
         RemoveItemById: RemoveItemById,
-        Clear: ClearItem
+        Clear: ClearItem,
+        CloneItem: CloneItem,
+        CloneItemById: CloneItemById
     };
 
 });

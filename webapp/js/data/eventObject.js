@@ -32,7 +32,8 @@
     var setActiveObject = function(vue, /* MouseEvent */ e) {
         this.ActiveObject = vue;
 
-        if(e.constructor == MouseEvent) {
+        if(typeof e != "undefined"
+            && e.constructor == MouseEvent) {
             setSelection.call(this, vue, e);
         }
     };
@@ -69,7 +70,10 @@
             var x, y;
             var zoomToFitRatio = publicObject.ZoomToFit / 100;
 
-            if(this.isResize) {
+            if(this.isRotation){
+                console.log('isRotation');
+
+            }else if(this.isResize) {
                 // console.log('ControlDrag', 'resize', this.ResizeType);
                 x = (this.MouseDownPoint.X - e.clientX) / zoomToFitRatio;
                 y = (this.MouseDownPoint.Y - e.clientY) / zoomToFitRatio;
@@ -219,6 +223,20 @@
         RemoveReferItem();
     };
 
+    var enableMouseRotation = function() {
+        this.isRotation = true;
+    };
+
+    var disableMouseRotation = function() {
+        this.isRotation = false;
+    };
+
+    var disableMouseMode = function() {
+        disableMouseDrag.call(this);
+        disableMouseResize.call(this);
+        disableMouseRotation.call(this);
+    };
+
     var SaveReferItem = function(item) {
         console.log("CloneItem", item);
 
@@ -248,12 +266,16 @@
         ResizeType: null,
         isDrag: false,
         isResize: false,
+        isRotation: false,
         setActiveObject: setActiveObject,
         setSelection: setSelection,
         ControlDrag: ControlDrag,
+        disableMouseMode: disableMouseMode,
         disableMouseDrag: disableMouseDrag,
         disableMouseResize: disableMouseResize,
-        enableMouseResize: enableMouseResize
+        disableMouseRotation: disableMouseRotation,
+        enableMouseResize: enableMouseResize,
+        enableMouseRotation: enableMouseRotation
     };
 
     return eventObject;
