@@ -5,42 +5,33 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/util/generator',
-            'js/data/controlObject'
+            'js/data/controlObject',
+            'js/util/util'
         ], factory);
     }else {
         global.itemObject = factory(
             global.Generator,
-            global.controlObject
+            global.controlObject,
+            global.util
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(generator, controlObject) {
+})(typeof window !== 'undefined' ? window : this, function(generator, controlObject, util) {
 
     var itemObject = {};
     var items = [];
 
     var AddItem = function(item, addArgs) {
+        var _item = util.assign({}, item);
         var id = generator.GeneratorId('item');
-        var _item, idx;
-        if(typeof item.generator == "function") {
-            _item = item.generator();
-        }else {
-            _item = {};
-            for(idx in item) {
-                _item[idx] = item[idx];
-            }
-        }
 
         // New ID
         _item['id'] = id;
 
         if(typeof addArgs == 'object') {
-            for(idx in addArgs) {
-                _item[idx] = addArgs[idx];
-            }
+            util.assign(_item, addArgs);
         }
 
-        // console.log("AddItem", _item);
         itemObject[id] = _item;
         items.push(_item);
 

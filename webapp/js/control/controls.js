@@ -18,7 +18,7 @@
             global.itemObject,
             global.util,
             global.dummy,
-            global.button,
+            global.button
         );
     }
 
@@ -56,34 +56,13 @@
         template: '#app-control-template',
         computed: {
             left: function() {
-                return this.item.left ? this.item.left : 20;
+                return this.item.left;
             },
             top: function() {
-                return this.item.top ? this.item.top : 20;
+                return this.item.top;
             },
-            // left: function() {
-            //     return 20 + (150 * this.index);
-            // },
-            // top: function() {
-            //     return 20;
-            // },
             transform: function() {
                 return 'translate('+this.left+', '+this.top+')';
-                // console.log('translate('
-                //     + this.left*(publicObject.ZoomToFit/100)
-                //     + ', '
-                //     + this.top*(publicObject.ZoomToFit/100)
-                //     + ')',
-                //     this.item.left, this.item.top
-                // );
-                //
-                //
-                //
-                // return 'translate('
-                //     + this.left*(publicObject.ZoomToFit/100)
-                //     + ', '
-                //     + this.top*(publicObject.ZoomToFit/100)
-                //     + ')';
             },
             rotate: function() {
                 if(this.item.rotate == 0) return '';

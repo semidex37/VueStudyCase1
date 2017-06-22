@@ -5,21 +5,20 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/control/dummy',
-            'js/control/button'
+            'js/control/button',
+            'js/util/util'
             ], factory);
     }else {
         global.controlObject = factory(
             global.dummy,
-            global.button
+            global.button,
+            global.util
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dummy, button) {
+})(typeof window !== 'undefined' ? window : this, function(dummy, button, util) {
 
-    var controlObject = {
-        dummy: dummy,
-        button: button
-    };
+    var controlObject = {};
 
     var AutoRefresh =   {   type: 'Event',          name: 'AutoRefresh'     };
     var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
@@ -70,21 +69,30 @@
 
         if(typeof properties == 'object'
             && properties.constructor == Object) {
-            Object.assign(obj, properties);
+            util.assign(obj, properties);
         }
 
-        Object.assign(target, obj);
+        for(var idx in obj) {
+            if(typeof target[idx] == 'undefined') {
+                target[idx] = obj[idx];
+            }
+        }
 
         if(typeof target.type != 'string') {
             target.type = 'dummy';
         }
+
+        return target;
     };
+
+    setDefaultProperties(dummy);
 
     setDefaultProperties(AutoRefresh);
     setDefaultProperties(doRefresh);
     setDefaultProperties(doExport);
 
     setDefaultProperties(browser);
+    setDefaultProperties(button);
     setDefaultProperties(chart);
     setDefaultProperties(checkbox);
     setDefaultProperties(combobox);
@@ -116,17 +124,21 @@
     setDefaultProperties(If);
     setDefaultProperties(For);
 
+    util.assign(controlObject, {
+        dummy: dummy,
+    });
+
     // Event
-    Object.assign(controlObject, {
+    util.assign(controlObject, {
         AutoRefresh: AutoRefresh,
         doRefresh: doRefresh,
         doExport: doExport
     });
 
     // Control
-    Object.assign(controlObject, {
+    util.assign(controlObject, {
         browser: browser,
-        // button: button,
+        button: button,
         chart: chart,
         checkbox: checkbox,
         combobox: combobox,
@@ -149,7 +161,7 @@
     });
 
     // Event
-    Object.assign(controlObject, {
+    util.assign(controlObject, {
         Refresh: Refresh,
         SetProperties: SetProperties,
         ClearData: ClearData,
@@ -160,7 +172,7 @@
     });
 
     // Condition
-    Object.assign(controlObject, {
+    util.assign(controlObject, {
         If: If,
         For: For
     });
