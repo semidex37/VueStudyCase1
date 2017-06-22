@@ -4,15 +4,15 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/control/control'
+            'js/core/mixins'
         ], factory);
     }else {
         global.dummy = factory(
-            global.control
+            global.mixins
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(control) {
+})(typeof window !== 'undefined' ? window : this, function(mixins) {
 
     var type = 'dummy';
     var name = 'Button';
@@ -36,7 +36,7 @@
     button.generator = generator;
 
     Vue.component('app-control-dummy', {
-        mixins: [control.getMixin()],
+        mixins: [mixins.getComponentMixin()],
         template: '#app-control-dummy-template',
         // computed: {
         //     width: function() {

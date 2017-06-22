@@ -5,18 +5,21 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/data/publicObject',
-            'js/data/eventObject'
+            'js/data/eventObject',
+            'js/core/mixins'
         ], factory);
     }else {
         global.appPanel = factory(
             global.publicObject,
-            global.eventObject
+            global.eventObject,
+            global.mixins
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, mixins) {
 
     Vue.component('app-panel', {
+        mixins: [mixins.getPanelMixin()],
         data: function() {
             return {
                 direction: ['nw', 'n', 'ne', 'e', 'se', 's', 'sw', 'w']
@@ -24,40 +27,6 @@
             }
         },
         template: '#app-panel-template',
-        computed: {
-            isActiveObject: function() {
-                return eventObject.ActiveObject != null
-            },
-            styleObject: function() {
-                var rect = this.calculatorRect;
-                return 'left:' + rect.left + 'px;'
-                    + ' top:' + rect.top + 'px;'
-                    + 'width: ' + rect.width + 'px;'
-                    + 'height:' + rect.height + 'px;';
-            },
-            calculatorRect: function() {
-                var left = 0;
-                var top = 0;
-                var width = 0;
-                var height = 0;
-                var zoomToFitRatio;
-
-                if(eventObject.ActiveObject) {
-                    zoomToFitRatio = publicObject.ZoomToFit / 100;
-                    left = eventObject.ActiveObject.item.left * zoomToFitRatio;
-                    top = eventObject.ActiveObject.item.top * zoomToFitRatio;
-                    width = eventObject.ActiveObject.item.width * zoomToFitRatio;
-                    height = eventObject.ActiveObject.item.height * zoomToFitRatio;
-                }
-
-                return {
-                    left: left,
-                    top: top,
-                    width: width,
-                    height: height,
-                }
-            }
-        },
         methods: {
             onMouseDownLeft: function (e){
                 eventObject.setSelection(this, e);

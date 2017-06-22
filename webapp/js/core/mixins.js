@@ -4,17 +4,19 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/publicObject',
             'js/data/eventObject'
         ], factory);
     }else {
-        global.controlInterface = factory(
+        global.mixins = factory(
+            global.publicObject,
             global.eventObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {
 
-    var getMixin = function() {
+    var getComponentMixin = function() {
         return {
             props: {
                 item: {
@@ -62,15 +64,55 @@
                 }
             }
         };
-    }
+    };
 
     var createComponent = function(name, args) {
-        args['mixins'] = getMixin();
+        args['mixins'] = getComponentMixin();
         Vue.component(name, args);
     };
 
+    var getPanelMixin = function() {
+        return {
+            computed: {
+                isActiveObject: function() {
+                    return eventObject.ActiveObject != null
+                },
+                styleObject: function() {
+                    var rect = this.calculatorRect;
+                    return 'left:' + rect.left + 'px;'
+                        + ' top:' + rect.top + 'px;'
+                        + 'width: ' + rect.width + 'px;'
+                        + 'height:' + rect.height + 'px;';
+                },
+                calculatorRect: function() {
+                    var left = 0;
+                    var top = 0;
+                    var width = 0;
+                    var height = 0;
+                    var zoomToFitRatio;
+
+                    if(eventObject.ActiveObject) {
+                        zoomToFitRatio = publicObject.ZoomToFit / 100;
+                        left = eventObject.ActiveObject.item.left * zoomToFitRatio;
+                        top = eventObject.ActiveObject.item.top * zoomToFitRatio;
+                        width = eventObject.ActiveObject.item.width * zoomToFitRatio;
+                        height = eventObject.ActiveObject.item.height * zoomToFitRatio;
+                    }
+
+                    return {
+                        left: left,
+                        top: top,
+                        width: width,
+                        height: height,
+                    }
+                }
+            }
+        };
+    };
+
     return {
-        getMixin: getMixin,
+        getComponentMixin: getComponentMixin,
+        getPanelMixin: getPanelMixin,
         CreateComponent: createComponent
     };
 

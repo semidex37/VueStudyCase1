@@ -4,16 +4,15 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/eventObject',
-            'js/control/control'
+            'js/core/mixins'
         ], factory);
     }else {
         global.button = factory(
-            global.eventObject
+            global.mixins
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(eventObject, control) {
+})(typeof window !== 'undefined' ? window : this, function(mixins) {
 
     var type = 'button';
     var name = 'Button';
@@ -37,7 +36,7 @@
     button.generator = generator;
 
     Vue.component('app-control-button', {
-        mixins: [control.getMixin()],
+        mixins: [mixins.getComponentMixin()],
         template: '#app-control-button-template',
         computed: {
             addButtonTransform: function() {
