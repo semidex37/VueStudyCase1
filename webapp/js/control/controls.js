@@ -68,7 +68,22 @@
             //     return 20;
             // },
             transform: function() {
-                return 'translate('+this.left+', '+this.top+')'
+                return 'translate('+this.left+', '+this.top+')';
+                // console.log('translate('
+                //     + this.left*(publicObject.ZoomToFit/100)
+                //     + ', '
+                //     + this.top*(publicObject.ZoomToFit/100)
+                //     + ')',
+                //     this.item.left, this.item.top
+                // );
+                //
+                //
+                //
+                // return 'translate('
+                //     + this.left*(publicObject.ZoomToFit/100)
+                //     + ', '
+                //     + this.top*(publicObject.ZoomToFit/100)
+                //     + ')';
             }
         }
     });

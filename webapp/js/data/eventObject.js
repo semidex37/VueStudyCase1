@@ -67,11 +67,12 @@
     var ControlDrag = function(e) {
         if(this.ActiveObject) {
             var x, y;
+            var zoomToFitRatio = publicObject.ZoomToFit / 100;
 
             if(this.isResize) {
                 // console.log('ControlDrag', 'resize', this.ResizeType);
-                x = this.MouseDownPoint.X - e.clientX;
-                y = this.MouseDownPoint.Y - e.clientY;
+                x = (this.MouseDownPoint.X - e.clientX) / zoomToFitRatio;
+                y = (this.MouseDownPoint.Y - e.clientY) / zoomToFitRatio;
 
                 var diffLeft = 0,
                     diffTop = 0,
@@ -188,8 +189,8 @@
                 //     '[', this.ActiveObject.item.top, '-->', y, ']'
                 // );
 
-                this.ActiveObject.item.left = x;
-                this.ActiveObject.item.top = y;
+                this.ActiveObject.item.left = x / zoomToFitRatio;
+                this.ActiveObject.item.top = y / zoomToFitRatio;
 
             }
         }

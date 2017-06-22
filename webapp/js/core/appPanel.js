@@ -40,12 +40,14 @@
                 var top = 0;
                 var width = 0;
                 var height = 0;
+                var zoomToFitRatio;
 
                 if(eventObject.ActiveObject) {
-                    left = eventObject.ActiveObject.item.left;
-                    top = eventObject.ActiveObject.item.top;
-                    width = eventObject.ActiveObject.item.width;
-                    height = eventObject.ActiveObject.item.height;
+                    zoomToFitRatio = publicObject.ZoomToFit / 100;
+                    left = eventObject.ActiveObject.item.left * zoomToFitRatio;
+                    top = eventObject.ActiveObject.item.top * zoomToFitRatio;
+                    width = eventObject.ActiveObject.item.width * zoomToFitRatio;
+                    height = eventObject.ActiveObject.item.height * zoomToFitRatio;
                 }
 
                 return {
