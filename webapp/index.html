@@ -277,6 +277,16 @@
         <div class="app-selection"
              v-show="isActiveObject"
              v-bind:style="styleObject">
+            <div class="selection"
+                 v-for="(item, index) in children"
+                 :key="index"
+                 v-bind:class="item.direction"
+                 v-on:click.left="onClickLeft($event, item)"
+            >
+                <div class="app-cursor-pointer"
+                     v-bind:class="itemClassObject(item)"
+                ></div>
+            </div>
         </div>
     </script>
 

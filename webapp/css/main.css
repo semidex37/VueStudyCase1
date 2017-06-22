@@ -495,9 +495,6 @@
 .resize.nw {
     left: -3px;
     top: -3px;
-}
-
-.resize.nw:hover {
     cursor: nw-resize;
 }
 
@@ -506,9 +503,6 @@
     left: 50%;
     top: -3px;
     margin-left: -3px;
-}
-
-.resize.n:hover {
     cursor: n-resize;
 }
 
@@ -516,9 +510,6 @@
 .resize.ne {
     top: -3px;
     right: -3px;
-}
-
-.resize.ne:hover {
     cursor: ne-resize;
 }
 
@@ -527,9 +518,6 @@
     right: -3px;
     top: 50%;
     margin-top: -3px;
-}
-
-.resize.e:hover {
     cursor: e-resize;
 }
 
@@ -564,6 +552,71 @@
     margin-top: -3px;
 }
 /*********** Resize Area - END ************/
+
+
+/*********** Selection Area - START ************/
+.selection {
+    position: absolute;
+    width: 16px;
+    height: 16px;
+    cursor: pointer;
+    user-select: none;
+}
+
+/* 북서 */
+.selection.nw {
+    left: -24px;
+    top: -24px;
+}
+
+/* 북 */
+.selection.n {
+    left: 50%;
+    top: -24px;
+    margin-left: -12px;
+}
+
+/* 북동 */
+.selection.ne {
+    top: -24px;
+    right: -24px;
+}
+
+/* 동 */
+.selection.e {
+    right: -24px;
+    top: 50%;
+    margin-top: -12px;
+}
+
+/* 남동 */
+.selection.se {
+    right: -24px;
+    bottom: -24px;
+}
+
+/* 남 */
+.selection.s {
+    left: 50%;
+    bottom: -24px;
+    margin-left: -12px;
+}
+
+/* 남서 */
+.selection.sw {
+    left: -24px;
+    bottom: 0;
+    margin-bottom: -24px;
+}
+
+/* 서 */
+.selection.w {
+    left: -24px;
+    top: 50%;
+    margin-top: -12px;
+}
+/*********** Selection Area - END ************/
+
 
 /*********** app-store Area - START ************/
 .app-store {
@@ -733,8 +786,25 @@
     background-image: url("../image/control/textbox.png"); width:28px; height:24px;
 }
 
+.app-icon-selection-close {
+    background-image: url("../image/icon/btn_delete.png"); width:16px; height:16px;
+}
 
+.app-icon-selection-arrow {
+    background-image: url("../image/icon/arrow.png"); width:16px; height:16px;
+}
 
+.app-icon-selection-copy {
+    background-image: url("../image/icon/btn_save.png"); width:16px; height:16px;
+}
+
+.app-icon-selection-rotation {
+    background-image: url("../image/icon/refresh.png"); width:16px; height:16px;
+}
+
+.app-icon-selection-cut {
+    background-image: url("../image/icon/cut.png"); width:16px; height:16px;
+}
 
 
     /*********** icon Area - START ************/
