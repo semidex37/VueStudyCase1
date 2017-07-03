@@ -6,6 +6,7 @@
         define([
             'js/control/dummy',
             'js/control/button',
+            'js/control/arrow',
             'js/util/util'
             ], factory);
     }else {
@@ -16,7 +17,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dummy, button, util) {
+})(typeof window !== 'undefined' ? window : this, function(dummy, button, arrow, util) {
 
     var controlObject = {};
 
@@ -86,6 +87,8 @@
     };
 
     setDefaultProperties(dummy);
+
+    setDefaultProperties(arrow);
 
     setDefaultProperties(AutoRefresh);
     setDefaultProperties(doRefresh);

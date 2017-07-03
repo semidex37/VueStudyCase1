@@ -131,6 +131,8 @@
                     top: eventObject.ActiveObject.item.top
                 });
 
+                itemObject.AddArrow(eventObject.ActiveObject.item, item);
+
                 eventObject.disablePopup();
             }
         }

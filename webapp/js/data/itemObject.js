@@ -91,34 +91,56 @@
         return itemObject[id];
     };
 
+    var AddArrow = function(item1, item2) {
+        var _item;
 
-    AddItem(controlObject.button, {
+        _item = {
+            type: 'arrow',
+            source: item1,
+            target: item2,
+            left: 0,
+            top: 0,
+            width: 0,
+            height: 0,
+            rotate: 0
+        };
+
+        return AddItem(_item);
+    };
+
+    var item1 = AddItem(controlObject.button, {
         name: 'D-Button',
         left: 220,
         top: 40
     });
 
-    AddItem(controlObject.button, {
+    var item2 = AddItem(controlObject.button, {
         name: 'D-Button 2',
-        left: 220,
-        top: 140
+        left: 460,
+        top: 40
     });
 
-    AddItem(controlObject.dummy, {
+    var item3 = AddItem(controlObject.dummy, {
         name: 'D-Text 1',
         left: 60,
         top: 120
     });
 
-    AddItem(controlObject.dummy, {
+    var item4 = AddItem(controlObject.dummy, {
         name: 'D-Arrow 1',
         left: 60,
         top: 240,
     });
 
+    var arrow1 = AddArrow(item1, item2);
+    var arrow2 = AddArrow(item3, item4);
+
+    window.itemObject = itemObject;
+
     return {
         children: items,
         AddItem: AddItem,
+        AddArrow: AddArrow,
         RemoveItem: RemoveItem,
         RemoveItemById: RemoveItemById,
         Clear: ClearItem,

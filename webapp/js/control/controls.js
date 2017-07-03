@@ -9,7 +9,8 @@
             'js/data/itemObject',
             'js/util/util',
             'js/control/dummy',
-            'js/control/button'
+            'js/control/button',
+            'js/control/arrow',
         ], factory);
     }else {
         global.controls = factory(
@@ -62,23 +63,29 @@
                 return this.item.top;
             },
             transform: function() {
-                return 'translate('+this.left+', '+this.top+')';
+                // console.log('translate('+this.left+', '+this.top+')');
+                // if(this.item.type == 'arrow') {
+                //     var source = this.item.source;
+                //
+                //     return 'translate('+ (source.left+source.width) + ', ' + (source.top + source.height/2) +')';
+                //
+                // }else {
+                    return 'translate('+this.left+', '+this.top+')';
+                // }
             },
             rotate: function() {
                 if(this.item.rotate == 0) return '';
 
                 return 'rotate(' + this.item.rotate + ', 85, 60)';
+            },
+            fillOpacity: function() {
+                if(typeof this.item.fillOpacity == 'undefined') return 1;
+                return this.item.fillOpacity;
             }
         }
     });
 
     // util.CalculatorMousePoint;
-
-
-    // arrow
-    Vue.component('app-control-arrow-template', {
-        template: '#app-control-arrow-template'
-    });
 
 
     // new Vue('', {

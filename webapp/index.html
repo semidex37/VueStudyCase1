@@ -244,7 +244,41 @@
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                                 <g v-bind:transform="transform">
                                     <app-controls-template v-bind:id="id"></app-controls-template>
+
+
+
+                                    <!--<g class="translate" transform="translate(270, 150)">-->
+                                        <!--<path d="M100,10 L150,10 L150,60 L200,60"-->
+                                              <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                                    <!--</g>-->
+
+                                    <!--<g class="translate" transform="translate(270, 220)">-->
+                                        <!--<path d="M100,10 L150,10"-->
+                                              <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                                    <!--</g>-->
+                                    <!--<g class="translate" transform="translate(270, 290)">-->
+                                        <!--<path d="M100,10 L150,10 L170,10"-->
+                                              <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                                    <!--</g>-->
+                                    <!--<g class="translate" transform="translate(270, 150)">-->
+                                    <!--</g>-->
                                 </g>
+
+
+
+
                             </svg>
                         </div>
                         <app-selection-template></app-selection-template>
@@ -321,6 +355,21 @@
                          :item="item"
                          :index="index"
             ></app-control-template>
+            <g>
+                <defs>
+                    <marker id="markerCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">
+                        <circle cx="5" cy="5" r="3" style="stroke: none; fill:#000000;"/>
+                    </marker>
+
+                    <marker id="markerSquare" markerWidth="7" markerHeight="7" refX="4" refY="4" orient="auto">
+                        <rect x="1" y="1" width="5" height="5" style="stroke: none; fill:#000000;"/>
+                    </marker>
+
+                    <marker id="markerArrow" markerWidth="13" markerHeight="13" refX="2" refY="6" orient="auto">
+                        <path d="M2,2 L2,11 L10,6 L2,2" style="fill: #000000;" />
+                    </marker>
+                </defs>
+            </g>
         </g>
     </script>
 
@@ -331,13 +380,13 @@
                 <g class="rotatable" v-bind:transform="rotate">
                     <g class="scalable">
                         <app-control-button-template v-if="item.type == 'button'"
-                                            :item="item">
+                                                     :item="item">
                         </app-control-button-template>
-                        <!--<app-control-arrow v-else-if="item-type == 'arrow"-->
-                                           <!--:item="item">-->
-                        <!--</app-control-arrow>-->
+                        <app-control-arrow-template v-else-if="item.type == 'arrow'"
+                                                    :item="item">
+                        </app-control-arrow-template>
                         <app-control-dummy-template v-else
-                                           :item="item">
+                                                    :item="item">
                         </app-control-dummy-template>
                     </g>
                 </g>
@@ -401,7 +450,50 @@
 
     <!-- app-control-arrow-template -->
     <script type="text/x-template" id="app-control-arrow-template">
-        <g class="app-control-arrow-template"></g>
+        <g class="translate">
+            <g class="app-control-arrow-template">
+                <!--<rect class="app-cursor-move"-->
+                      <!--v-bind:width="width"-->
+                      <!--v-bind:height="height"-->
+                      <!--v-bind:fill="fill"-->
+                      <!--v-bind:rx="rx"-->
+                      <!--v-bind:ry="ry"-->
+                      <!--v-bind:stroke="stroke"-->
+                      <!--v-bind:fill-opacity="fillOpacity"-->
+                      <!--v-on:mousedown.left.stop="onMouseDownLeft"-->
+                <!--&gt;-->
+                <!--</rect>-->
+                <path v-bind:d="d"
+                      style="stroke: #6666ff; stroke-width: 1px; fill: none;
+                                           marker-start: url(#markerCircle);
+                                           marker-mid: url(#markerSquare);
+                                           marker-end: url(#markerArrow);
+                                         "/>
+                <g class="app-cursor-pointer"
+                   v-bind:transform="eventTransform"
+                   v-on:click.stop="changeEvent">
+                    <rect class=""
+                          v-bind:fill-opacity="fillOpacity"
+                          width="100"
+                          height="20"
+                          v-bind:fill="fill"class="app-cursor-pointer"
+                    >
+                    </rect>
+                    <g v-bind:transform="iconTransform">
+                        <image xlink:href="image/icon/refresh.png" width="16" height="16" />
+                    </g>
+                    <g v-bind:transform="textTransform">
+                        <text font-size="14" y="0.8em" xml:space="preserve" fill="#000" font-family="맑은고딕, 돋움, Arial, sans-serif" style="user-select: none;">
+                            <tspan class="" dy="0em" x="0">Click</tspan>
+                        </text>
+                    </g>
+                    <g v-bind:transform="buttonTransform">
+                        <polygon points="0,0 14,0, 7,7" fill="rgb(0, 0, 0)"></polygon>
+                    </g>
+                </g>
+
+            </g>
+        </g>
     </script>
 
     <!-- app-control-arrow--normal-template -->

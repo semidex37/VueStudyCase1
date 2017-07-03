@@ -22,17 +22,23 @@
                 item: {
                     type: Object,
                     require: true
-                },
-                left: {
-                    type: Number,
-                    default: 20
-                },
-                top: {
-                    type: Number,
-                    default: 20
                 }
+                // left: {
+                //     type: Number,
+                //     default: 20
+                // },
+                // top: {
+                //     type: Number,
+                //     default: 20
+                // }
             },
             computed: {
+                left: function() {
+                    return this.item.left;
+                },
+                top: function() {
+                    return this.item.top;
+                },
                 width: function() {
                     return this.item.width ? this.item.width : 50;
                 },
