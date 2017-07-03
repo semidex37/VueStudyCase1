@@ -27,6 +27,11 @@
             }
         },
         template: '#app-panel-template',
+        computed: {
+            isActiveObject: function() {
+                return eventObject.ActiveObject != null
+            }
+        },
         methods: {
             onMouseDownLeft: function (e){
                 eventObject.setSelection(this, e);

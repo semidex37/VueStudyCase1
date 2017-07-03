@@ -55,7 +55,10 @@
         },
         template: '#app-selection-template',
         computed: {
-
+            isActiveObject: function() {
+                return eventObject.ActiveObject != null
+                        && !eventObject.isDrag
+            }
         },
         methods: {
             itemClassObject: function(item) {

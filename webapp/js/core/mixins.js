@@ -74,9 +74,6 @@
     var getPanelMixin = function() {
         return {
             computed: {
-                isActiveObject: function() {
-                    return eventObject.ActiveObject != null;
-                },
                 styleObject: function() {
                     var rect = this.calculatorRect;
                     return 'left:' + rect.left + 'px;'
