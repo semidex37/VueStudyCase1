@@ -18,6 +18,8 @@
     var name = 'Button';
     var width = 120;
     var height = 60;
+    var minWidth = 80;
+    var minHeight = 40;
     var fill = 'rgb(198, 217, 241)';
 
     Vue.component('app-control-button-template', {
@@ -49,6 +51,8 @@
         name: name,
         width: width,
         height: height,
+        // minWidth: minWidth,
+        // minHeight: minHeight,
         fill: fill
     };
 
