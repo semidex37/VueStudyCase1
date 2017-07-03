@@ -101,13 +101,6 @@
                         diffLeft = this.ReferItem.left - x;
                         diffWidth = this.ReferItem.width + x;
                         diffHeight = this.ReferItem.height + y;
-
-                        if(diffWidth < 0) {
-                            diffLeft = 0;
-                        }
-                        if(diffHeight < 0) {
-                            diffTop = 0;
-                        }
                         break;
 
                     case resizeType.NE: // 북동
@@ -125,10 +118,6 @@
                         diffLeft = this.ReferItem.left - x;
                         diffWidth = this.ReferItem.width + x;
                         diffHeight = this.ReferItem.height - y;
-
-                        if(diffWidth < 0) {
-                            diffLeft = 0;
-                        }
                         break;
 
                     case resizeType.N: // 북
@@ -147,11 +136,39 @@
                     case resizeType.W: // 서
                         diffLeft = this.ReferItem.left - x;
                         diffWidth = this.ReferItem.width + x;
-
-                        if(diffWidth < 0) {
-                            diffLeft = 0;
-                        }
                         break;
+                }
+
+                // 북
+                if(this.ResizeType == resizeType.NW
+                    || this.ResizeType == resizeType.NE
+                    || this.ResizeType == resizeType.N) {
+                    if(diffHeight < 0) {
+                        diffTop = 0;
+                    }
+                }
+
+                // 남
+                if(this.ResizeType == resizeType.SE
+                    || this.ResizeType == resizeType.SW
+                    || this.ResizeType == resizeType.S) {
+
+                }
+
+                // 동
+                if(this.ResizeType == resizeType.NE
+                    || this.ResizeType == resizeType.SE
+                    || this.ResizeType == resizeType.E) {
+
+                }
+
+                // 서
+                if(this.ResizeType == resizeType.NW
+                    || this.ResizeType == resizeType.SW
+                    || this.ResizeType == resizeType.W) {
+                    if(diffWidth < 0) {
+                        diffLeft = 0;
+                    }
                 }
 
                 // console.log('ControlDrag', 'resize', this.ResizeType,
