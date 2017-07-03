@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SVG-1</title>
+    <style>
+        svg {
+            border: solid 1px #ccc;
+        }
+        .templates {
+            border: solid 1px #ccc;
+        }
+        .pointer {
+            fill: #ccc;
+        }
+        .pointer:hover {
+            fill: #888;
+        }
+
+    </style>
+</head>
+<body>
+<script src="../bundle/d3.v4.min.js"></script>
+<script>
+
+    var margin = {
+        top: 30,
+        right: 0,
+        bottom: 0,
+        left: 100
+    };
+    var width = 500 - margin.left - margin.right;
+    var height = 450 - margin.top - margin.bottom;
+
+
+    var body = d3.select("body");
+
+    var svg = body.append("svg")
+        .attr("width", width)
+        .attr("height", height)
+        .append("g")
+        .attr("transform", "translate(" + margin.left + "," + margin.top + ")");
+
+    var rect = {
+        left: 20,
+        top: 40,
+        width: 100,
+        height: 100
+    };
+
+    var pointerR = 3;
+    var container = svg.append("g")
+        .attr("id", "container");
+
+//    container.append("rect")
+//        .attr("x", rect.left)
+//        .attr("y", rect.top)
+//        .attr("width", rect.width)
+//        .attr("height", rect.height);
+
+//    var polygon1 = container.append("polygon")
+//        .attr("points", "20,40 120,40, 120,140, 20,140")
+//        .attr("fill", "none");
+
+    var selections = container.append("div")
+
+
+//    var generatorPointer = function(parent, cx, cy, r) {
+//        return parent.append("circle")
+//            .attr("class", "pointer")
+//            .attr("cx", cx)
+//            .attr("cy", cy)
+//            .attr("r", r);
+//    };
+
+//    var generatorPointer = function(parent, cx, cy, r) {
+//        return parent.append("rect")
+//            .attr("class", "pointer")
+//            .attr("cx", cx)
+//            .attr("cy", cy)
+//            .attr("r", r);
+//    };
+//
+//    var l1 = rect.left,
+//        l2 = rect.left + rect.width/2,
+//        l3 = rect.left + rect.width,
+//        t1 = rect.top,
+//        t2 = rect.top + rect.height/2,
+//        t3 = rect.top + rect.height;
+//
+//
+//    var pointer1 = generatorPointer(container, l1, t1, pointerR);
+//    var pointer2 = generatorPointer(container, l2, t1, pointerR);
+//    var pointer3 = generatorPointer(container, l3, t1, pointerR);
+//    var pointer4 = generatorPointer(container, l1, t2, pointerR);
+//    var pointer5 = generatorPointer(container, l2, t2, pointerR);
+//    var pointer6 = generatorPointer(container, l3, t2, pointerR);
+//    var pointer7 = generatorPointer(container, l1, t3, pointerR);
+//    var pointer8 = generatorPointer(container, l2, t3, pointerR);
+//    var pointer9 = generatorPointer(container, l3, t3, pointerR);
+
+
+
+
+
+</script>
+
+</body>
+</html>

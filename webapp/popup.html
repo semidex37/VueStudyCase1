@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup</title>
+</head>
+<body onload="openResult()">
+    <div style="position: absolute; left: 10%; top: 10%;">
+        <div style="margin-bottom: 5px;">
+            <input type="button" id="btnOpen" name="btnOpen" value="Open" onclick="openWindow();">
+            <input type="button" id="btnResult" name="btnResult" value="Result" onclick="openResult();">
+        </div>
+        <textarea name="txtResult" id="txtResult" cols="110" rows="40"></textarea>
+        <div>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var openWindow = function() {
+
+            var orientation = window.screen.msOrientation || window.screen.orientation.type || null;
+            var popupSize = {};
+            var monitorCheck = false;
+            console.log('orientation', orientation);
+            if(orientation == null) {
+                // ERROR
+                return;
+
+            }else if(orientation == "portrait-primary") { // 메인 모니터 [1]
+                console.log('메인 모니터 [1]');
+                monitorCheck = true;
+                popupSize = {
+                    left: window.screen.width,
+                    top: 0,
+                    width: window.screen.availWidth,
+                    height: window.screen.availHeight
+                };
+
+                popupSize.width = 1920;
+                popupSize.height = 1080;
+
+
+            }else if(orientation == "landscape-primary") { // 서브 모니터 [2]
+                console.log('서브 모니터 [2]');
+                monitorCheck = true;
+                popupSize = {
+                    left: -15,
+                    top: 0,
+                    width: window.screen.availWidth,
+                    height: window.screen.availHeight
+                };
+
+                popupSize.width = 1080;
+                popupSize.height = 1880;
+
+            }
+
+            if(monitorCheck) {
+                console.log(popupSize);
+
+
+                var url = 'newWindow.html';
+                var openOption = "";
+                openOption += "width=" + popupSize.width + ", ";
+                openOption += "height=" + popupSize.height + ", ";
+                openOption += "left=" + popupSize.left + ", ";
+                openOption += "top=" + popupSize.top + ", ";
+                openOption += "location=no, ";
+                openOption += "resizable=no, ";
+                openOption += "scrollbars=no, ";
+                openOption += "toolbar=no, ";
+//                openOption += "fullscreen=no, ";
+                openOption += "menubar=no ";
+
+
+                console.log(openOption);
+
+                var win = window.open(url, 'new1', openOption);
+                win.focus();
+            }
+//            window.open('about:blank', null, 'width=' + windowSize.width + ', height=' + windowSize.height + ', left=' + windowLocation.left + ', top=' + windowLocation.top)
+        };
+
+        var openResult = function() {
+            var txtResult = document.getElementById('txtResult');
+            var arr = [{
+                list: [
+                    'screenX',
+                    'screenY',
+                ],
+                name: 'screen',
+                children: [{
+                    list: [
+                        'availLeft',
+                        'availTop',
+                        'availWidth',
+                        'availHeight',
+                        'width',
+                        'height'
+                    ],
+                    children: [{
+                        name: 'orientation',
+                        list: [
+                            'type'
+                        ]
+                    }]
+                }]
+            }, {
+                name: 'screenX'
+            }, {
+                name: 'screenY'
+            }];
+
+
+            var result = getOutput(window, arr);
+
+//            console.log('window', window);
+            result = 'window: [' + window + ']\n' + result ;
+
+//            console.log('[RESULT]');
+//            console.log(result);
+            txtResult.textContent = result;
+        };
+
+        var getOutput = function(target, arr, depth) {
+            if(typeof depth == 'undefined') {
+                depth = 1;
+            }else if(typeof depth == 'number') {
+                depth++;
+            }
+            var output = depth + ". \n";
+            var obj;
+            var targetObject;
+            var idx, jdx;
+            var propertyName;
+            var childrenStr = "";
+            var listStr = "";
+
+            for(idx in arr) {
+                obj = arr[idx];
+
+                if(obj.name) {
+                    targetObject = target[obj.name];
+
+                    output += '[' + obj.name + ']';
+                    output += '[' + target[obj.name] + ']';
+                    output += '\n';
+//                    console.log('Name:[', obj.name, '], Value: [', targetObject, ']');
+
+                    if(obj.children) {
+                        childrenStr += getOutput(targetObject, obj.children, depth);
+                    }
+                }
+
+                if(obj.list) {
+                    for(jdx in obj.list) {
+                        propertyName = obj.list[jdx];
+
+                        listStr += ' - [' + propertyName + ']';
+                        listStr += ' - [' + target[propertyName] + ']';
+                        listStr += '\n';
+                    }
+                }
+
+                output += listStr + childrenStr;
+
+            }
+
+            return output;
+        };
+    </script>
+</body>
+</html>

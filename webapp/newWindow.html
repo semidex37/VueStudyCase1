@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>newWindow 1</title>
+    <script>
+        var init = function() {
+            setTimeout(function() {
+
+                GoInFullscreen(this);
+
+//                onPopup();
+            }, 1000);
+        };
+
+        var onPopup = function() {
+            console.log("init", window.screen.availWidth, window.screen.availHeight);
+            //window.resizeTo(window.screen.availWidth, window.screen.availHeight);
+            document.getElementById("txtTEMP").focus();
+
+            var popupSize = {};
+
+            var url = 'newWindow2.html';
+            var openOption = "";
+            openOption += "width=" + 500 + ", ";
+            openOption += "height=" + 500 + ", ";
+            openOption += "left=" + window.screenX + ", ";
+            openOption += "top=" + window.screenY + ", ";
+//            openOption += "location=yes, ";
+//            openOption += "resizable=yes, ";
+//            openOption += "scrollbars=yes, ";
+//            openOption += "toolbar=yes, ";
+//            openOption += "fullscreen=yes, ";
+            openOption += "menubar=true ";
+
+
+            var win = window.open(url, 'enw2', openOption);
+
+            window.close();
+            //window.resizeTo(1920, 1080);
+        }
+
+        function GoInFullscreen(element) {
+            if(element.requestFullscreen)
+                element.requestFullscreen();
+            else if(element.mozRequestFullScreen)
+                element.mozRequestFullScreen();
+            else if(element.webkitRequestFullscreen)
+                element.webkitRequestFullscreen();
+            else if(element.msRequestFullscreen)
+                element.msRequestFullscreen();
+        }
+
+        function GoOutFullscreen() {
+            if(document.exitFullscreen)
+                document.exitFullscreen();
+            else if(document.mozCancelFullScreen)
+                document.mozCancelFullScreen();
+            else if(document.webkitExitFullscreen)
+                document.webkitExitFullscreen();
+            else if(document.msExitFullscreen)
+                document.msExitFullscreen();
+        }
+
+    </script>
+
+</head>
+<body onload="init()">
+<h1>newWindow 1</h1>
+<input type="text" id="txtTEMP" />
+<input type="button" onclick="onPopup()">
+</body>
+</html>

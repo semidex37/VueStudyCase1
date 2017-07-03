@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Popup Sample</title>
+</head>
+<body onload="openResult()">
+    <div style="margin-bottom: 5px;">
+        <input type="button" id="btnOpen" name="btnOpen" value="Open" onclick="openWindow();">
+    </div>
+    <script type="text/javascript">
+        var openWindow = function() {
+            var orientation = window.screen.msOrientation || window.screen.orientation.type || null;
+            var url = "";
+            var popupSize = {};
+            var monitorCheck = false;
+
+            // 메인 모니터 너비
+            var mainWidth = 1080;
+
+            // 메인 모니터 높이
+            var mainHeight = 1880;
+
+            // 보조 모니터 너비
+            var subWidth = 1920;
+
+            // 보조 모니터 높이
+            var subHeight = 1080;
+
+
+            if(orientation == null) {
+                // ERROR
+                return;
+            }else if(orientation == "portrait-primary") { // 메인 모니터 [1]
+                monitorCheck = true;
+                popupSize = {
+                    left: window.screen.width,
+                    top: 0,
+                    width: subWidth,
+                    height: subHeight
+                };
+
+            }else if(orientation == "landscape-primary") { // 서브 모니터 [2]
+                monitorCheck = true;
+                popupSize = {
+                    left: 0,
+                    top: 0,
+                    width: mainWidth,
+                    height: mainHeight
+                };
+            }
+
+            if(monitorCheck) {
+                url = 'newWindow.html';
+
+                var wOption = "";
+                wOption += "width=" + popupSize.width + ", ";
+                wOption += "height=" + popupSize.height + ", ";
+                wOption += "left=" + popupSize.left + ", ";
+                wOption += "top=" + popupSize.top + ", ";
+                wOption += "location=no, ";
+                wOption += "resizable=no, ";
+                wOption += "scrollbars=no, ";
+                wOption += "toolbar=no, ";
+                wOption += "fullscreen=no, ";
+                wOption += "menubar=no ";
+
+
+                var win = window.open(url, 'newPopup', wOption);
+                win.focus();
+
+                // 현재 창을 닫는경우.
+                // window.close();
+            }
+        };
+
+    </script>
+</body>
+</html>
