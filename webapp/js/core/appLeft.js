@@ -170,18 +170,17 @@
 
             },
             mouseDown: function() {
-                this.isDrag = true;
-                console.log('mouseDown')
+                // this.isDrag = true;
+                // console.log('mouseDown')
             },
             mouseDrag: function() {
-                if(!this.isDrag) return;
-
-                console.log('drag');
+                // if(!this.isDrag) return;
+                // console.log('drag');
             },
             mouseUp: function() {
-                this.isDrag = false;
+                // this.isDrag = false;
 
-                console.log('up');
+                // console.log('up');
             }
         }
     });

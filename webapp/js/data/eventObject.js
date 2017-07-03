@@ -58,7 +58,7 @@
 
     var setSelection = function(vue, e) {
         console.log('setSelection', this.ActiveObject.item.id);
-        this.isDrag = true;
+        enableMouseDrag.call(this);
         setMousePoint.call(this, vue, e);
     };
 
@@ -276,7 +276,7 @@
     };
 
     var SaveReferItem = function(item) {
-        console.log("CloneItem", item);
+        console.log("SaveReferItem", item);
 
         var _item = {};
         for(var idx in item) {
@@ -316,7 +316,8 @@
         disableMouseRotation: disableMouseRotation,
         enableMouseResize: enableMouseResize,
         enableMouseRotation: enableMouseRotation,
-        enablePopup: enablePopup
+        enablePopup: enablePopup,
+        disablePopup: disablePopup
     };
 
     return eventObject;

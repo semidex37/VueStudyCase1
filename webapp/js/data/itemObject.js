@@ -22,7 +22,19 @@
     var items = [];
 
     var AddItem = function(item, addArgs) {
-        var _item = util.assign({}, item);
+        var _item;
+        if(typeof item == 'object') {
+            _item = util.assign({}, item);
+        }else if(typeof item == 'string') {
+            _item = controlObject[item];
+            if(typeof _item == 'undefined') {
+                // Error
+                // throw Error("");
+                console.log("Error: itemObject.AddItem: item is undefined! :" + item);
+                _item = controlObject['dummy'];
+            }
+            _item = util.assign({}, _item);
+        }
         var id = generator.GeneratorId('item');
 
         // New ID

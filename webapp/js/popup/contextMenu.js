@@ -5,16 +5,18 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/data/publicObject',
+            'js/data/itemObject',
             'js/data/eventObject'
         ], factory);
     }else {
         global.contextMenu = factory(
             global.publicObject,
+            global.itemObject,
             global.eventObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
 
     var contextMarginLeft = 30; // 10
     var contextMarginTop = -30; // -5
@@ -24,9 +26,9 @@
             return {
                 contexts: [
                     {
-                        type: 'refresh',
+                        type: 'doRefresh',
                         icon: 'browser',
-                        name: 'Refresh'
+                        name: 'doRefresh'
                     }, {
                         type: 'setProperties',
                         icon: 'button',
@@ -49,7 +51,7 @@
         template: '#app-contexts-template',
         computed: {
             isContextObject: function() {
-                return eventObject.isPopup;
+                return eventObject.isPopup && !eventObject.isDrag;
             },
             styleObject: function() {
                 var rect = this.calculatorRect;
@@ -121,6 +123,15 @@
         methods: {
             onClickLeft: function(e) {
                 console.log('onClickLeft', this.context.type);
+
+                var item = itemObject.AddItem(this.context.type, {
+                    left: eventObject.ActiveObject.item.left
+                        + eventObject.ActiveObject.item.width
+                        + 100,
+                    top: eventObject.ActiveObject.item.top
+                });
+
+                eventObject.disablePopup();
             }
         }
     });
