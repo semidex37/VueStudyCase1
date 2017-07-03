@@ -4,15 +4,17 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/core/mixins'
+            'js/core/mixins',
+            'js/data/eventObject'
         ], factory);
     }else {
         global.arrow = factory(
-            global.mixins
+            global.mixins,
+            global.eventObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins) {
+})(typeof window !== 'undefined' ? window : this, function(mixins, eventObject) {
 
     // arrow
     Vue.component('app-control-arrow-template', {
@@ -65,13 +67,7 @@
         },
         methods: {
             changeEvent: function() {
-                console.log('arrow', 'changeEvent');
-
-
-
-
-
-
+                eventObject.bus.$emit(eventObject.busEvent.clickEventContextMenu, this);
             }
         }
 

@@ -36,6 +36,7 @@
         }
     ];
 
+    // Contexts
     var contexts = [
         {
             type: 'doRefresh',
@@ -56,6 +57,19 @@
         //     type: 'createRow',
         //     icon: 'chart',
         //     name: 'CreateRow'
+        }
+    ];
+
+    // Events
+    var events = [
+        {
+            type: 'click',
+            icon: 'browser',
+            name: 'Click'
+        }, {
+            type: 'dblClick',
+            icon: 'chart',
+            name: 'DoubleClick'
         }
     ];
 
@@ -92,7 +106,8 @@
         // minHeight: minHeight,
         fill: fill,
         selections: selections,
-        contexts: contexts
+        contexts: contexts,
+        events: events
     };
 
 });

@@ -359,6 +359,12 @@
     margin-right: 5px;
 }
 
+.app-event-contexts {
+    position: absolute;
+    border: solid 1px #99BCE1;
+    background-color: #99BCE1;
+}
+
 /* Paper Area */
 .app-paper-grid {
     position: absolute;

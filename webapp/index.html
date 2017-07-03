@@ -285,6 +285,7 @@
                         <app-panel-template></app-panel-template>
                         <app-popup-template></app-popup-template>
                         <app-contexts-template></app-contexts-template>
+                        <app-menus-template></app-menus-template>
                     </div>
                 </div>
             </div>
@@ -523,6 +524,30 @@
 
     <!-- app-contexts-template -->
     <script type="text/x-template" id="app-context-template">
+        <div class="app-context"
+             v-on:click.left="onClickLeft">
+            <div class="app-context-icon" v-bind:class="classObjectIcon"></div>
+            <div class="app-context-text">{{context.name}}</div>
+        </div>
+    </script>
+
+    <!-- app-menus-template -->
+    <script type="text/x-template" id="app-menus-template">
+        <div v-if="isContextObject"
+             class="app-event-contexts"
+             v-bind:style="styleObject"
+        >
+            <app-menu-template
+                    v-for="(context, index) in contexts"
+                    :key="index"
+                    :context="context"
+                    :index="index"
+            ></app-menu-template>
+        </div>
+    </script>
+
+    <!-- app-event-context-template -->
+    <script type="text/x-template" id="app-menu-template">
         <div class="app-context"
              v-on:click.left="onClickLeft">
             <div class="app-context-icon" v-bind:class="classObjectIcon"></div>

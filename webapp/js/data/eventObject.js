@@ -260,11 +260,20 @@
         this.isRotation = false;
     };
 
+    var disableBusObject = function() {
+        for(var idx in this.busObject) {
+            if(this.busObject[idx] != null) {
+                this.busObject[idx] = null;
+            }
+        }// ~for - idx
+    };
+
     var disableMouseMode = function() {
         disableMouseDrag.call(this);
         disableMouseResize.call(this);
         disableMouseRotation.call(this);
         disablePopup.call(this);
+        disableBusObject.call(this);
     };
 
     var enablePopup = function() {
@@ -289,7 +298,28 @@
         delete eventObject.ReferItem;
     };
 
+    // Event Bus
+    var bus = new Vue();
+
+    var busEvent = {
+        clickEventContextMenu: 'click-event-context-menu'
+    };
+
+    var busObject = {};
+
+    var id;
+    for(var idx in busEvent) {
+        id = busEvent[idx];
+        busObject[id] = null;
+        bus.$on(id, function(args) {
+            busObject[id] = args;
+        });
+    }// ~for - idx
+
     eventObject = {
+        bus: bus,
+        busEvent: busEvent,
+        busObject: busObject,
         ActiveObjectType: activeObjectType,
         ActiveObject: activeObject,
         ReferItem: null,
