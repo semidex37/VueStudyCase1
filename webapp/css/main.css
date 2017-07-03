@@ -277,6 +277,25 @@
 /*********** app-left Area - END ************/
 
 /*********** app-center Area - START ************/
+.app-paper-container {
+
+}
+
+.app-paper-scroll {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    overflow-x: auto;
+    overflow-y: auto;
+}
+
+.app-paper-content {
+    position: relative;
+}
+
+
 .app-paper {
     position: relative;
     display: block;
@@ -419,7 +438,7 @@
 .app-mini-map {
     position: absolute;
     left: 1px;
-    bottom: 1px;
+    bottom: 18px;
     width: 150px;
     height: 100px;
     border: solid 1px black;

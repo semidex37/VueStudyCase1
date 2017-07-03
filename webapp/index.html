@@ -76,13 +76,7 @@
     <script type="text/x-template" id="app-center-template">
         <div class="app-center">
             <app-paper-template></app-paper-template>
-            <app-svg-template></app-svg-template>
-            <app-selection-template></app-selection-template>
-            <app-panel-template></app-panel-template>
-            <app-popup-template></app-popup-template>
-            <app-contexts-template></app-contexts-template>
-            <!--<app-action-template :data-object="dataObject"></app-action-template>-->
-            <app-mini-map-template :data-object="dataObject"></app-mini-map-template>
+            <app-svg-template :data-object="dataObject"></app-svg-template>
         </div>
     </script>
     <script type="text/x-template" id="app-right-template">
@@ -237,19 +231,32 @@
 
     <!-- app-svg -->
     <script type="text/x-template" id="app-svg-template">
-        <div id="app-svg" class="app-svg"
-             v-on:mousedown.left="onMouseDownLeft"
-             v-on:mousemove="onMouseMove"
-             v-on:mouseup.left="onMouseUpLeft"
-             v-on:click.left="onClickLeft"
-        >
-            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
-                <g v-bind:transform="transform"
-                >
-                    <app-controls-template v-bind:id="id"></app-controls-template>
-                </g>
-            </svg>
+        <div class="app-paper-container">
+            <div class="app-paper-scroll">
+                <div class="app-paper-content" style="width: 2000px; height:3000px;">
+                    <div style="width: 1000px; height:2000px">
+                        <div id="app-svg" class="app-svg"
+                             v-on:mousedown.left="onMouseDownLeft"
+                             v-on:mousemove="onMouseMove"
+                             v-on:mouseup.left="onMouseUpLeft"
+                             v-on:click.left="onClickLeft"
+                        >
+                            <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
+                                <g v-bind:transform="transform">
+                                    <app-controls-template v-bind:id="id"></app-controls-template>
+                                </g>
+                            </svg>
+                        </div>
+                        <app-selection-template></app-selection-template>
+                        <app-panel-template></app-panel-template>
+                        <app-popup-template></app-popup-template>
+                        <app-contexts-template></app-contexts-template>
+                    </div>
+                </div>
+            </div>
+            <app-mini-map-template :data-object="dataObject"></app-mini-map-template>
         </div>
+
     </script>
 
     <!-- app-panel -->
@@ -446,456 +453,456 @@
         <app-header-template id="app-header" :groups="groups"></app-header-template>
         <app-body-template id="app-body" :data-object="dataObject"></app-body-template>
 
-        <div id="app-body1" class="app-body">
-            <div id="app-left" class="app-left">
-                <div id="app-left-menu" class="app-menu app-left-menu">
-                    <div id="app-left-menu-group" class="app-left-menu-group">
-                        <div id="app-left-menu-item1" class="app-left-menu-item app-left-menu-icon" title="Expand All">[+]</div>
-                        <div id="app-left-menu-item2" class="app-left-menu-item app-left-menu-icon" title="Collapse All">[-]</div>
-                    </div>
-                </div>
-                <div id="app-left-search" class="app-search app-left-search">
-                    <div class="app-search-box">
-                        <input type="search" class="app-search-text" placeholder="Search TextBox">
-                    </div>
-                </div>
-                <div id="app-left-tree" class="app-tree app-left-tree">
-                    <div class="app-tree-root">
-                        <div class="app-tree-node">
-                            <div class="app-tree-header">
-                                <div class="app-tree-icon app-icon-plus"></div>
-                                <div class="app-tree-icon app-icon-folder-open"></div>
-                                <div class="app-tree-title">i-CANVAS</div>
-                            </div>
-                            <div class="app-tree-contents">
-                                <div class="app-tree-content">
-                                    <div class="app-tree-content-icon app-icon-event"></div>
-                                    <div class="app-tree-content-text">AutoRefresh</div>
-                                </div>
-                                <div class="app-tree-content">
-                                    <div class="app-tree-content-icon app-icon-event"></div>
-                                    <div class="app-tree-content-text">doRefresh</div>
-                                </div>
-                                <div class="app-tree-content">
-                                    <div class="app-tree-content-icon app-icon-event"></div>
-                                    <div class="app-tree-content-text">doExport</div>
-                                </div>
+        <!--<div id="app-body1" class="app-body">-->
+            <!--<div id="app-left" class="app-left">-->
+                <!--<div id="app-left-menu" class="app-menu app-left-menu">-->
+                    <!--<div id="app-left-menu-group" class="app-left-menu-group">-->
+                        <!--<div id="app-left-menu-item1" class="app-left-menu-item app-left-menu-icon" title="Expand All">[+]</div>-->
+                        <!--<div id="app-left-menu-item2" class="app-left-menu-item app-left-menu-icon" title="Collapse All">[-]</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="app-left-search" class="app-search app-left-search">-->
+                    <!--<div class="app-search-box">-->
+                        <!--<input type="search" class="app-search-text" placeholder="Search TextBox">-->
+                    <!--</div>-->
+                <!--</div>-->
+                <!--<div id="app-left-tree" class="app-tree app-left-tree">-->
+                    <!--<div class="app-tree-root">-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-plus"></div>-->
+                                <!--<div class="app-tree-icon app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">i-CANVAS</div>-->
+                            <!--</div>-->
+                            <!--<div class="app-tree-contents">-->
                                 <!--<div class="app-tree-content">-->
                                     <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnActiveSheetChange</div>-->
+                                    <!--<div class="app-tree-content-text">AutoRefresh</div>-->
                                 <!--</div>-->
                                 <!--<div class="app-tree-content">-->
                                     <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnDataBindEnd</div>-->
+                                    <!--<div class="app-tree-content-text">doRefresh</div>-->
                                 <!--</div>-->
                                 <!--<div class="app-tree-content">-->
                                     <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnExecuteStart</div>-->
+                                    <!--<div class="app-tree-content-text">doExport</div>-->
                                 <!--</div>-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnActiveSheetChange</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnDataBindEnd</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnExecuteStart</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnLoadComplete</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnRefreshComplete</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;<div class="app-tree-content">&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-icon app-icon-event"></div>&ndash;&gt;-->
+                                    <!--&lt;!&ndash;<div class="app-tree-content-text">OnServiceCallBack</div>&ndash;&gt;-->
+                                <!--&lt;!&ndash;</div>&ndash;&gt;-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-icon app-icon-folder-close"></div>-->
+                                <!--<div class="app-tree-title">Form1</div>-->
+                            <!--</div>-->
+                            <!--<div class="app-tree-contents">-->
+                                <!--<div class="app-tree-content" title="Browser">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-browser"></div>-->
+                                    <!--<div class="app-tree-content-text">Browser</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Button">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-button"></div>-->
+                                    <!--<div class="app-tree-content-text">Button</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Chart">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-chart"></div>-->
+                                    <!--<div class="app-tree-content-text">Chart</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="CheckBox">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-checkbox"></div>-->
+                                    <!--<div class="app-tree-content-text">CheckBox</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="ComboBox">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-combobox"></div>-->
+                                    <!--<div class="app-tree-content-text">ComboBox</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Custom">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-custom"></div>-->
+                                    <!--<div class="app-tree-content-text">Custom</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="DatePicker">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-datepicker"></div>-->
+                                    <!--<div class="app-tree-content-text">DatePicker</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="GrouBox">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-groupbox"></div>-->
+                                    <!--<div class="app-tree-content-text">GrouBox</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Image">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-image"></div>-->
+                                    <!--<div class="app-tree-content-text">Image</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="InputBox">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-inputbox"></div>-->
+                                    <!--<div class="app-tree-content-text">InputBox</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="ListGrid">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-listgrid"></div>-->
+                                    <!--<div class="app-tree-content-text">ListGrid</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="MultiCombo">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-multicombo"></div>-->
+                                    <!--<div class="app-tree-content-text">MultiCombo</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="PickList">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-picklist"></div>-->
+                                    <!--<div class="app-tree-content-text">PickList</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="PieChart">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-piechart"></div>-->
+                                    <!--<div class="app-tree-content-text">PieChart</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="PivotGrid">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-pivotgrid"></div>-->
+                                    <!--<div class="app-tree-content-text">PivotGrid</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="PolarChart">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-polarchart"></div>-->
+                                    <!--<div class="app-tree-content-text">PolarChart</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Polygon">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-polygon"></div>-->
+                                    <!--<div class="app-tree-content-text">Polygon</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="RadioButton">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-radiobutton"></div>-->
+                                    <!--<div class="app-tree-content-text">RadioButton</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="ScatterChart">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-scatterchart"></div>-->
+                                    <!--<div class="app-tree-content-text">ScatterChart</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="TableLayout">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-tablelayout"></div>-->
+                                    <!--<div class="app-tree-content-text">TableLayout</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="TextBox">-->
+                                    <!--<div class="app-tree-content-icon app-icon-control-textbox"></div>-->
+                                    <!--<div class="app-tree-content-text">TextBox</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-plus"></div>-->
+                                <!--<div class="app-tree-icon app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Actions</div>-->
+                            <!--</div>-->
+                            <!--<div class="app-tree-contents">-->
+                                <!--<div class="app-tree-content" title="Refresh">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">Refresh</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="SetProperties">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">SetProperties</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="ClearData">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">ClearData</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Export">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">Export</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="CreateRow">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">CreateRow</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="DeleteRow">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">DeleteRow</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="Update">-->
+                                    <!--<div class="app-tree-content-icon app-icon-actions-refresh"></div>-->
+                                    <!--<div class="app-tree-content-text">Update</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-icon app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Condition</div>-->
+                            <!--</div>-->
+                            <!--<div class="app-tree-contents">-->
+                                <!--<div class="app-tree-content" title="If">-->
+                                    <!--<div class="app-tree-content-icon app-icon-condition-if"></div>-->
+                                    <!--<div class="app-tree-content-text">If</div>-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-content" title="For">-->
+                                    <!--<div class="app-tree-content-icon app-icon-condition-for"></div>-->
+                                    <!--<div class="app-tree-content-text">For</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-icon app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Diagram</div>-->
+                            <!--</div>-->
+                            <!--<div class="app-tree-contents">-->
                                 <!--<div class="app-tree-content">-->
-                                    <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnLoadComplete</div>-->
+                                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">-->
+                                        <!--<g class="app-store">-->
+                                            <!--<g class="app-store-item">-->
+                                                <!--<g class="translate" transform="translate(10, 10)">-->
+                                                    <!--<g class="rotatable">-->
+                                                        <!--<g class="scalable" transform="scale(0.6, 0.6)">-->
+                                                            <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>-->
+                                                            <!--<g transform="translate(5, 5)">-->
+                                                                <!--<text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은 고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">-->
+                                                <!--<tspan class="" dy="0em" x="0">1-A</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">123456789</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">ABCDEF</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>-->
+                                            <!--</text>-->
+                                                            <!--</g>-->
+                                                        <!--</g>-->
+                                                    <!--</g>-->
+                                                <!--</g>-->
+                                            <!--</g>-->
+                                            <!--<g class="app-store-item">-->
+                                                <!--<g class="translate" transform="translate(80, 10)">-->
+                                                    <!--<g class="rotatable">-->
+                                                        <!--<g class="scalable" transform="scale(0.6, 0.6)">-->
+                                                            <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>-->
+                                                        <!--</g>-->
+                                                    <!--</g>-->
+                                                <!--</g>-->
+                                            <!--</g>-->
+                                            <!--<g class="app-store-item">-->
+                                                <!--<g class="translate" transform="translate(10, 80)">-->
+                                                    <!--<g class="rotatable">-->
+                                                        <!--<g class="scalable" transform="scale(0.6, 0.6)">-->
+                                                            <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>-->
+                                                        <!--</g>-->
+                                                    <!--</g>-->
+                                                <!--</g>-->
+                                            <!--</g>-->
+
+                                            <!--<g class="app-store-item">-->
+                                                <!--<g class="translate" transform="translate(80, 80)">-->
+                                                    <!--<g class="rotatable">-->
+                                                        <!--<g class="scalable" transform="scale(0.6, 0.6)">-->
+                                                            <!--<polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>-->
+                                                        <!--</g>-->
+                                                    <!--</g>-->
+                                                <!--</g>-->
+                                            <!--</g>-->
+                                        <!--</g>-->
+                                    <!--</svg>-->
                                 <!--</div>-->
-                                <!--<div class="app-tree-content">-->
-                                    <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnRefreshComplete</div>-->
-                                <!--</div>-->
-                                <!--<div class="app-tree-content">-->
-                                    <!--<div class="app-tree-content-icon app-icon-event"></div>-->
-                                    <!--<div class="app-tree-content-text">OnServiceCallBack</div>-->
-                                <!--</div>-->
-                            </div>
-                        </div>
-                        <div class="app-tree-node">
-                            <div class="app-tree-header">
-                                <div class="app-tree-icon app-icon-minus"></div>
-                                <div class="app-tree-icon app-icon-folder-close"></div>
-                                <div class="app-tree-title">Form1</div>
-                            </div>
-                            <div class="app-tree-contents">
-                                <div class="app-tree-content" title="Browser">
-                                    <div class="app-tree-content-icon app-icon-control-browser"></div>
-                                    <div class="app-tree-content-text">Browser</div>
-                                </div>
-                                <div class="app-tree-content" title="Button">
-                                    <div class="app-tree-content-icon app-icon-control-button"></div>
-                                    <div class="app-tree-content-text">Button</div>
-                                </div>
-                                <div class="app-tree-content" title="Chart">
-                                    <div class="app-tree-content-icon app-icon-control-chart"></div>
-                                    <div class="app-tree-content-text">Chart</div>
-                                </div>
-                                <div class="app-tree-content" title="CheckBox">
-                                    <div class="app-tree-content-icon app-icon-control-checkbox"></div>
-                                    <div class="app-tree-content-text">CheckBox</div>
-                                </div>
-                                <div class="app-tree-content" title="ComboBox">
-                                    <div class="app-tree-content-icon app-icon-control-combobox"></div>
-                                    <div class="app-tree-content-text">ComboBox</div>
-                                </div>
-                                <div class="app-tree-content" title="Custom">
-                                    <div class="app-tree-content-icon app-icon-control-custom"></div>
-                                    <div class="app-tree-content-text">Custom</div>
-                                </div>
-                                <div class="app-tree-content" title="DatePicker">
-                                    <div class="app-tree-content-icon app-icon-control-datepicker"></div>
-                                    <div class="app-tree-content-text">DatePicker</div>
-                                </div>
-                                <div class="app-tree-content" title="GrouBox">
-                                    <div class="app-tree-content-icon app-icon-control-groupbox"></div>
-                                    <div class="app-tree-content-text">GrouBox</div>
-                                </div>
-                                <div class="app-tree-content" title="Image">
-                                    <div class="app-tree-content-icon app-icon-control-image"></div>
-                                    <div class="app-tree-content-text">Image</div>
-                                </div>
-                                <div class="app-tree-content" title="InputBox">
-                                    <div class="app-tree-content-icon app-icon-control-inputbox"></div>
-                                    <div class="app-tree-content-text">InputBox</div>
-                                </div>
-                                <div class="app-tree-content" title="ListGrid">
-                                    <div class="app-tree-content-icon app-icon-control-listgrid"></div>
-                                    <div class="app-tree-content-text">ListGrid</div>
-                                </div>
-                                <div class="app-tree-content" title="MultiCombo">
-                                    <div class="app-tree-content-icon app-icon-control-multicombo"></div>
-                                    <div class="app-tree-content-text">MultiCombo</div>
-                                </div>
-                                <div class="app-tree-content" title="PickList">
-                                    <div class="app-tree-content-icon app-icon-control-picklist"></div>
-                                    <div class="app-tree-content-text">PickList</div>
-                                </div>
-                                <div class="app-tree-content" title="PieChart">
-                                    <div class="app-tree-content-icon app-icon-control-piechart"></div>
-                                    <div class="app-tree-content-text">PieChart</div>
-                                </div>
-                                <div class="app-tree-content" title="PivotGrid">
-                                    <div class="app-tree-content-icon app-icon-control-pivotgrid"></div>
-                                    <div class="app-tree-content-text">PivotGrid</div>
-                                </div>
-                                <div class="app-tree-content" title="PolarChart">
-                                    <div class="app-tree-content-icon app-icon-control-polarchart"></div>
-                                    <div class="app-tree-content-text">PolarChart</div>
-                                </div>
-                                <div class="app-tree-content" title="Polygon">
-                                    <div class="app-tree-content-icon app-icon-control-polygon"></div>
-                                    <div class="app-tree-content-text">Polygon</div>
-                                </div>
-                                <div class="app-tree-content" title="RadioButton">
-                                    <div class="app-tree-content-icon app-icon-control-radiobutton"></div>
-                                    <div class="app-tree-content-text">RadioButton</div>
-                                </div>
-                                <div class="app-tree-content" title="ScatterChart">
-                                    <div class="app-tree-content-icon app-icon-control-scatterchart"></div>
-                                    <div class="app-tree-content-text">ScatterChart</div>
-                                </div>
-                                <div class="app-tree-content" title="TableLayout">
-                                    <div class="app-tree-content-icon app-icon-control-tablelayout"></div>
-                                    <div class="app-tree-content-text">TableLayout</div>
-                                </div>
-                                <div class="app-tree-content" title="TextBox">
-                                    <div class="app-tree-content-icon app-icon-control-textbox"></div>
-                                    <div class="app-tree-content-text">TextBox</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="app-tree-node">
-                            <div class="app-tree-header">
-                                <div class="app-tree-icon app-icon-plus"></div>
-                                <div class="app-tree-icon app-icon-folder-open"></div>
-                                <div class="app-tree-title">Actions</div>
-                            </div>
-                            <div class="app-tree-contents">
-                                <div class="app-tree-content" title="Refresh">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">Refresh</div>
-                                </div>
-                                <div class="app-tree-content" title="SetProperties">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">SetProperties</div>
-                                </div>
-                                <div class="app-tree-content" title="ClearData">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">ClearData</div>
-                                </div>
-                                <div class="app-tree-content" title="Export">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">Export</div>
-                                </div>
-                                <div class="app-tree-content" title="CreateRow">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">CreateRow</div>
-                                </div>
-                                <div class="app-tree-content" title="DeleteRow">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">DeleteRow</div>
-                                </div>
-                                <div class="app-tree-content" title="Update">
-                                    <div class="app-tree-content-icon app-icon-actions-refresh"></div>
-                                    <div class="app-tree-content-text">Update</div>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="app-tree-node">
-                            <div class="app-tree-header">
-                                <div class="app-tree-icon app-icon-minus"></div>
-                                <div class="app-tree-icon app-icon-folder-open"></div>
-                                <div class="app-tree-title">Condition</div>
-                            </div>
-                            <div class="app-tree-contents">
-                                <div class="app-tree-content" title="If">
-                                    <div class="app-tree-content-icon app-icon-condition-if"></div>
-                                    <div class="app-tree-content-text">If</div>
-                                </div>
-                                <div class="app-tree-content" title="For">
-                                    <div class="app-tree-content-icon app-icon-condition-for"></div>
-                                    <div class="app-tree-content-text">For</div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="app-tree-node">
-                            <div class="app-tree-header">
-                                <div class="app-tree-icon app-icon-minus"></div>
-                                <div class="app-tree-icon app-icon-folder-open"></div>
-                                <div class="app-tree-title">Diagram</div>
-                            </div>
-                            <div class="app-tree-contents">
-                                <div class="app-tree-content">
-                                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
-                                        <g class="app-store">
-                                            <g class="app-store-item">
-                                                <g class="translate" transform="translate(10, 10)">
-                                                    <g class="rotatable">
-                                                        <g class="scalable" transform="scale(0.6, 0.6)">
-                                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
-                                                            <g transform="translate(5, 5)">
-                                                                <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은 고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
-                                                <tspan class="" dy="0em" x="0">1-A</tspan>
-                                                <tspan class="" dy="1em" x="0">123456789</tspan>
-                                                <tspan class="" dy="1em" x="0">ABCDEF</tspan>
-                                                <tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>
-                                            </text>
-                                                            </g>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                            <g class="app-store-item">
-                                                <g class="translate" transform="translate(80, 10)">
-                                                    <g class="rotatable">
-                                                        <g class="scalable" transform="scale(0.6, 0.6)">
-                                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                            <g class="app-store-item">
-                                                <g class="translate" transform="translate(10, 80)">
-                                                    <g class="rotatable">
-                                                        <g class="scalable" transform="scale(0.6, 0.6)">
-                                                            <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-
-                                            <g class="app-store-item">
-                                                <g class="translate" transform="translate(80, 80)">
-                                                    <g class="rotatable">
-                                                        <g class="scalable" transform="scale(0.6, 0.6)">
-                                                            <polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>
-                                                        </g>
-                                                    </g>
-                                                </g>
-                                            </g>
-                                        </g>
-                                    </svg>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
 
 
 
 
-                </div>
-            </div>
-            <div id="app-center" class="app-center">
-                <div id="app-paper" class="app-paper">
-                    <div id="app-paper-grid" class="app-paper-grid"></div>
-                </div>
-                <div id="app-svg2" class="app-svg">
-                    <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
-                        <g style="">
-                            <g class="translate" transform="translate(20, 20)">
-                                <g class="rotatable">
-                                    <g class="scalable">
-                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>
-                                        <g transform="translate(5, 5)">
-                                            <text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">
-                                                <tspan class="" dy="0em" x="0">1-A</tspan>
-                                                <tspan class="" dy="1em" x="0">123456789</tspan>
-                                                <tspan class="" dy="1em" x="0">ABCDEF</tspan>
-                                                <tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>
-                                            </text>
-                                        </g>
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="app-center" class="app-center">-->
+                <!--<div id="app-paper" class="app-paper">-->
+                    <!--<div id="app-paper-grid" class="app-paper-grid"></div>-->
+                <!--</div>-->
+                <!--<div id="app-svg2" class="app-svg">-->
+                    <!--<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">-->
+                        <!--<g style="">-->
+                            <!--<g class="translate" transform="translate(20, 20)">-->
+                                <!--<g class="rotatable">-->
+                                    <!--<g class="scalable">-->
+                                        <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="3" stroke-dasharray="0"></rect>-->
+                                        <!--<g transform="translate(5, 5)">-->
+                                            <!--<text font-size="14" y="0.8em" xml:space="preserve" fill="#f6f6f6" font-family="맑은고딕, 돋움, Arial, sans-serif" cursor="text" style="user-select: none;">-->
+                                                <!--<tspan class="" dy="0em" x="0">1-A</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">123456789</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">ABCDEF</tspan>-->
+                                                <!--<tspan class="" dy="1em" x="0">GHIJKLMNOP</tspan>-->
+                                            <!--</text>-->
+                                        <!--</g>-->
 
-                                    </g>
-                                </g>
-                            </g>
-                            <g class="translate" transform="translate(150, 20)">
-                                <g class="rotatable">
-                                    <g class="scalable">
-                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>
-                                    </g>
-                                </g>
-                            </g>
-                            <g class="translate" transform="translate(270, 20)">
-                                <g class="rotatable">
-                                    <g class="scalable">
-                                        <rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>
-                                    </g>
-                                </g>
-                            </g>
-
-                            <g class="translate" transform="translate(20, 150)">
-                                <g class="rotatable">
-                                    <g class="scalable">
-                                        <polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>
-                                    </g>
-                                </g>
-                            </g>
-
-                            <g class="translate" transform="translate(170, 150)">
-                                <g class="rotatable">
-                                    <g class="scalable">
-                                        <path d="M40,20  A30,30 0 0,0 70,70" style="stroke: #cccc00; stroke-width:2; fill:none;"/>
-                                        <path d="M40,20  A30,30 0 1,0 70,70" style="stroke: #ff0000; stroke-width:2; fill:none;"/>
-                                        <path d="M40,20  A30,30 0 1,1 70,70" style="stroke: #00ff00; stroke-width:2; fill:none;"/>
-                                        <path d="M40,20  A30,30 0 0,1 70,70" style="stroke: #0000ff; stroke-width:2; fill:none;"/>
-                                    </g>
-                                </g>
-                            </g>
-
-                            <g class="translate" transform="translate(270, 150)">
-                                <path d="M100,10 L150,10 L150,60 L200,60"
-                                      style="stroke: #6666ff; stroke-width: 1px; fill: none;
-                                       marker-start: url(#markerCircle);
-                                       marker-mid: url(#markerSquare);
-                                       marker-end: url(#markerArrow);
-                                     "/>
-                            </g>
-
-                            <g class="translate" transform="translate(270, 220)">
-                                <path d="M100,10 L150,10"
-                                      style="stroke: #6666ff; stroke-width: 1px; fill: none;
-                                       marker-start: url(#markerCircle);
-                                       marker-mid: url(#markerSquare);
-                                       marker-end: url(#markerArrow);
-                                     "/>
-                            </g>
-                            <g class="translate" transform="translate(270, 290)">
-                                <path d="M100,10 L150,10 L170,10"
-                                      style="stroke: #6666ff; stroke-width: 1px; fill: none;
-                                       marker-start: url(#markerCircle);
-                                       marker-mid: url(#markerSquare);
-                                       marker-end: url(#markerArrow);
-                                     "/>
-                            </g>
-                            <!--<g class="translate" transform="translate(270, 150)">-->
+                                    <!--</g>-->
+                                <!--</g>-->
+                            <!--</g>-->
+                            <!--<g class="translate" transform="translate(150, 20)">-->
+                                <!--<g class="rotatable">-->
+                                    <!--<g class="scalable">-->
+                                        <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="2" stroke-dasharray="10 5"></rect>-->
+                                    <!--</g>-->
+                                <!--</g>-->
+                            <!--</g>-->
+                            <!--<g class="translate" transform="translate(270, 20)">-->
+                                <!--<g class="rotatable">-->
+                                    <!--<g class="scalable">-->
+                                        <!--<rect width="100" height="100" fill="rgb(220, 215, 215)" rx="2" ry="2" stroke="rgb(60, 66, 96)" stroke-width="10" stroke-dasharray="10 5"></rect>-->
+                                    <!--</g>-->
+                                <!--</g>-->
                             <!--</g>-->
 
-                            <g>
-                                <defs>
-                                    <marker id="markerCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">
-                                        <circle cx="5" cy="5" r="3" style="stroke: none; fill:#000000;"/>
-                                    </marker>
+                            <!--<g class="translate" transform="translate(20, 150)">-->
+                                <!--<g class="rotatable">-->
+                                    <!--<g class="scalable">-->
+                                        <!--<polygon points="50,0 100,50, 50,100 0,50" fill="rgb(220, 215, 215)"></polygon>-->
+                                    <!--</g>-->
+                                <!--</g>-->
+                            <!--</g>-->
 
-                                    <marker id="markerSquare" markerWidth="7" markerHeight="7" refX="4" refY="4" orient="auto">
-                                        <rect x="1" y="1" width="5" height="5" style="stroke: none; fill:#000000;"/>
-                                    </marker>
+                            <!--<g class="translate" transform="translate(170, 150)">-->
+                                <!--<g class="rotatable">-->
+                                    <!--<g class="scalable">-->
+                                        <!--<path d="M40,20  A30,30 0 0,0 70,70" style="stroke: #cccc00; stroke-width:2; fill:none;"/>-->
+                                        <!--<path d="M40,20  A30,30 0 1,0 70,70" style="stroke: #ff0000; stroke-width:2; fill:none;"/>-->
+                                        <!--<path d="M40,20  A30,30 0 1,1 70,70" style="stroke: #00ff00; stroke-width:2; fill:none;"/>-->
+                                        <!--<path d="M40,20  A30,30 0 0,1 70,70" style="stroke: #0000ff; stroke-width:2; fill:none;"/>-->
+                                    <!--</g>-->
+                                <!--</g>-->
+                            <!--</g>-->
 
-                                    <marker id="markerArrow" markerWidth="13" markerHeight="13" refX="2" refY="6" orient="auto">
-                                        <path d="M2,2 L2,11 L10,6 L2,2" style="fill: #000000;" />
-                                    </marker>
-                                </defs>
-                            </g>
-                        </g>
-                    </svg>
-                </div>
-                <div id="app-panel" class="app-panel">
-                    <div class="app-selection" style="left:18px; top:18px; width: 104px; height:104px;">
-                        <div class="resize nw"></div>
-                        <div class="resize n"></div>
-                        <div class="resize ne"></div>
-                        <div class="resize e"></div>
-                        <div class="resize se"></div>
-                        <div class="resize s"></div>
-                        <div class="resize sw"></div>
-                        <div class="resize w"></div>
-                    </div>
+                            <!--<g class="translate" transform="translate(270, 150)">-->
+                                <!--<path d="M100,10 L150,10 L150,60 L200,60"-->
+                                      <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                            <!--</g>-->
 
-                    <div class="app-selection" style="left:149px; top:19px; width: 102px; height:102px;">
-                        <div class="resize nw"></div>
-                        <div class="resize n"></div>
-                        <div class="resize ne"></div>
-                        <div class="resize e"></div>
-                        <div class="resize se"></div>
-                        <div class="resize s"></div>
-                        <div class="resize sw"></div>
-                        <div class="resize w"></div>
-                    </div>
+                            <!--<g class="translate" transform="translate(270, 220)">-->
+                                <!--<path d="M100,10 L150,10"-->
+                                      <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                            <!--</g>-->
+                            <!--<g class="translate" transform="translate(270, 290)">-->
+                                <!--<path d="M100,10 L150,10 L170,10"-->
+                                      <!--style="stroke: #6666ff; stroke-width: 1px; fill: none;-->
+                                       <!--marker-start: url(#markerCircle);-->
+                                       <!--marker-mid: url(#markerSquare);-->
+                                       <!--marker-end: url(#markerArrow);-->
+                                     <!--"/>-->
+                            <!--</g>-->
+                            <!--&lt;!&ndash;<g class="translate" transform="translate(270, 150)">&ndash;&gt;-->
+                            <!--&lt;!&ndash;</g>&ndash;&gt;-->
 
-                    <div class="app-selection" style="left:265px; top:15px; width: 110px; height:110px;">
-                        <div class="resize nw"></div>
-                        <div class="resize n"></div>
-                        <div class="resize ne"></div>
-                        <div class="resize e"></div>
-                        <div class="resize se"></div>
-                        <div class="resize s"></div>
-                        <div class="resize sw"></div>
-                        <div class="resize w"></div>
-                    </div>
+                            <!--<g>-->
+                                <!--<defs>-->
+                                    <!--<marker id="markerCircle" markerWidth="8" markerHeight="8" refX="5" refY="5">-->
+                                        <!--<circle cx="5" cy="5" r="3" style="stroke: none; fill:#000000;"/>-->
+                                    <!--</marker>-->
 
-                    <div class="app-selection" style="left:19px; top:149px; width: 102px; height:102px;">
-                        <div class="resize nw"></div>
-                        <div class="resize n"></div>
-                        <div class="resize ne"></div>
-                        <div class="resize e"></div>
-                        <div class="resize se"></div>
-                        <div class="resize s"></div>
-                        <div class="resize sw"></div>
-                        <div class="resize w"></div>
-                    </div>
+                                    <!--<marker id="markerSquare" markerWidth="7" markerHeight="7" refX="4" refY="4" orient="auto">-->
+                                        <!--<rect x="1" y="1" width="5" height="5" style="stroke: none; fill:#000000;"/>-->
+                                    <!--</marker>-->
 
-                    <div class="app-arrow-selection" style="left:270px; top:150px;">
-                        <!--<rect x="96" y="6" width="8" height="8" class="marker-point-start"></rect>-->
-                        <!--<rect x="146" y="6" width="8" height="8" class="marker-point-mid"></rect>-->
-                        <!--<rect x="146" y="56" width="8" height="8" class="marker-point-mid"></rect>-->
-                        <!--<rect x="198" y="54" width="12" height="12" class="marker-point-end"></rect>-->
+                                    <!--<marker id="markerArrow" markerWidth="13" markerHeight="13" refX="2" refY="6" orient="auto">-->
+                                        <!--<path d="M2,2 L2,11 L10,6 L2,2" style="fill: #000000;" />-->
+                                    <!--</marker>-->
+                                <!--</defs>-->
+                            <!--</g>-->
+                        <!--</g>-->
+                    <!--</svg>-->
+                <!--</div>-->
+                <!--<div id="app-panel" class="app-panel">-->
+                    <!--<div class="app-selection" style="left:18px; top:18px; width: 104px; height:104px;">-->
+                        <!--<div class="resize nw"></div>-->
+                        <!--<div class="resize n"></div>-->
+                        <!--<div class="resize ne"></div>-->
+                        <!--<div class="resize e"></div>-->
+                        <!--<div class="resize se"></div>-->
+                        <!--<div class="resize s"></div>-->
+                        <!--<div class="resize sw"></div>-->
+                        <!--<div class="resize w"></div>-->
+                    <!--</div>-->
 
-                        <div class="marker-point marker-point-start" style="left:96px; top:6px"></div>
-                        <div class="marker-point marker-point-mid" style="left:146px; top:6px"></div>
-                        <div class="marker-point marker-point-mid" style="left:146px; top:56px"></div>
-                        <div class="marker-point marker-point-end" style="left:198px; top:54px"></div>
-                    </div>
+                    <!--<div class="app-selection" style="left:149px; top:19px; width: 102px; height:102px;">-->
+                        <!--<div class="resize nw"></div>-->
+                        <!--<div class="resize n"></div>-->
+                        <!--<div class="resize ne"></div>-->
+                        <!--<div class="resize e"></div>-->
+                        <!--<div class="resize se"></div>-->
+                        <!--<div class="resize s"></div>-->
+                        <!--<div class="resize sw"></div>-->
+                        <!--<div class="resize w"></div>-->
+                    <!--</div>-->
 
-                </div>
-                <div id="app-popup" class="app-popup" style="display: none;"></div>
-                <div id="app-mini-map" class="app-mini-map">
-                    <div id="app-mini-map-background" class="app-mini-map-background"></div>
-                    <div id="app-mini-map-svg" class="app-mini-map-svg">
+                    <!--<div class="app-selection" style="left:265px; top:15px; width: 110px; height:110px;">-->
+                        <!--<div class="resize nw"></div>-->
+                        <!--<div class="resize n"></div>-->
+                        <!--<div class="resize ne"></div>-->
+                        <!--<div class="resize e"></div>-->
+                        <!--<div class="resize se"></div>-->
+                        <!--<div class="resize s"></div>-->
+                        <!--<div class="resize sw"></div>-->
+                        <!--<div class="resize w"></div>-->
+                    <!--</div>-->
 
-                    </div>
-                </div>
-            </div>
-            <div id="app-right" class="app-right">
-                <div id="app-right-menu" class="app-menu app-left-menu"></div>
-                <div id="app-right-search" class="app-search app-left-search"></div>
-                <div id="app-right-tree" class="app-tree app-left-tree"></div>
-            </div>
-        </div>
+                    <!--<div class="app-selection" style="left:19px; top:149px; width: 102px; height:102px;">-->
+                        <!--<div class="resize nw"></div>-->
+                        <!--<div class="resize n"></div>-->
+                        <!--<div class="resize ne"></div>-->
+                        <!--<div class="resize e"></div>-->
+                        <!--<div class="resize se"></div>-->
+                        <!--<div class="resize s"></div>-->
+                        <!--<div class="resize sw"></div>-->
+                        <!--<div class="resize w"></div>-->
+                    <!--</div>-->
+
+                    <!--<div class="app-arrow-selection" style="left:270px; top:150px;">-->
+                        <!--&lt;!&ndash;<rect x="96" y="6" width="8" height="8" class="marker-point-start"></rect>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect x="146" y="6" width="8" height="8" class="marker-point-mid"></rect>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect x="146" y="56" width="8" height="8" class="marker-point-mid"></rect>&ndash;&gt;-->
+                        <!--&lt;!&ndash;<rect x="198" y="54" width="12" height="12" class="marker-point-end"></rect>&ndash;&gt;-->
+
+                        <!--<div class="marker-point marker-point-start" style="left:96px; top:6px"></div>-->
+                        <!--<div class="marker-point marker-point-mid" style="left:146px; top:6px"></div>-->
+                        <!--<div class="marker-point marker-point-mid" style="left:146px; top:56px"></div>-->
+                        <!--<div class="marker-point marker-point-end" style="left:198px; top:54px"></div>-->
+                    <!--</div>-->
+
+                <!--</div>-->
+                <!--<div id="app-popup" class="app-popup" style="display: none;"></div>-->
+                <!--<div id="app-mini-map" class="app-mini-map">-->
+                    <!--<div id="app-mini-map-background" class="app-mini-map-background"></div>-->
+                    <!--<div id="app-mini-map-svg" class="app-mini-map-svg">-->
+
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div id="app-right" class="app-right">-->
+                <!--<div id="app-right-menu" class="app-menu app-left-menu"></div>-->
+                <!--<div id="app-right-search" class="app-search app-left-search"></div>-->
+                <!--<div id="app-right-tree" class="app-tree app-left-tree"></div>-->
+            <!--</div>-->
+        <!--</div>-->
 
         <app-footer-template id="app-footer"></app-footer-template>
         <!--<div id="app-footer" class="app-footer"></div>-->

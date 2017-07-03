@@ -19,6 +19,7 @@
 })(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
 
     Vue.component('app-svg-template', {
+        props: ['dataObject'],
         template: '#app-svg-template',
         computed: {
             id: function () {
