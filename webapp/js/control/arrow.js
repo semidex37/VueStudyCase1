@@ -18,28 +18,10 @@
     Vue.component('app-control-arrow-template', {
         mixins: [mixins.getComponentMixin()],
         template: '#app-control-arrow-template',
-        props: {
-
-        },
         computed: {
-            // left: function() {
-            //     return this.item.source.left;
-            // },
-            // top: function() {
-            //     return this.item.source.top;
-            // },
             d: function () {
-                // var source = this.item.source;
-                // var target = this.item.target;
-                //
-                // var startPointX = source.left + source.width;
-                // var startPointY = source.top + (source.height / 2);
-                //
-                // var endPointX = target.left - 5;
-                // var endPointY = target.top + (target.height / 2);
-
-                var d = "M" + this.startPoint.x + "," + this.startPoint.y;
-                d += " L" + this.endPoint.x + "," + this.endPoint.y;
+                var d = "M" + this.startPoint.x + "," + this.startPoint.y +
+                        " L" + this.endPoint.x + "," + this.endPoint.y;
 
                 // return "M10,10 L150,10 L150,60 L200,60";
                 return d;
@@ -48,24 +30,16 @@
                 return 0;
             },
             startPoint: function() {
-                var source = this.item.source;
-                var startPointX = source.left + source.width;
-                var startPointY = source.top + (source.height / 2);
-
                 return {
-                    x: startPointX,
-                    y: startPointY
-                }
+                    x: this.item.source.left + this.item.source.width,
+                    y: this.item.source.top + (this.item.source.height / 2)
+                };
             },
             endPoint: function() {
-                var target = this.item.target;
-                var endPointX = target.left - 5;
-                var endPointY = target.top + (target.height / 2);
-
                 return {
-                    x: endPointX,
-                    y: endPointY
-                }
+                    x: this.item.target.left - 5,
+                    y: this.item.target.top + (this.item.target.height / 2)
+                };
             },
             eventTransform: function() {
                 var x = this.startPoint.x < this.endPoint.x ? this.startPoint.x : this.endPoint.x;
@@ -92,6 +66,12 @@
         methods: {
             changeEvent: function() {
                 console.log('arrow', 'changeEvent');
+
+
+
+
+
+
             }
         }
 

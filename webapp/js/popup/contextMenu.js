@@ -24,7 +24,7 @@
     Vue.component('app-contexts-template', {
         data: function() {
             return {
-                contexts: [
+                defaultContexts: [
                     {
                         type: 'doRefresh',
                         icon: 'browser',
@@ -75,6 +75,15 @@
                     left: left + width + contextMarginLeft,
                     top: top + contextMarginTop
                 };
+            },
+            contexts: function() {
+                if(eventObject.ActiveObject != null) {
+                    if(typeof eventObject.ActiveObject.item.contexts == 'object') {
+                        return eventObject.ActiveObject.item.contexts;
+                    }
+                }
+
+                return this.defaultContexts;
             }
         }
     });

@@ -5,6 +5,7 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/data/publicObject',
+            'js/data/constObject',
             'js/data/eventObject',
             'js/data/headerObject',
             'js/data/leftMenuObject',
@@ -15,6 +16,7 @@
     }else {
         global.dataObject = factory(
             global.publicObject,
+            global.constObject,
             global.eventObject,
             global.headerObject,
             global.leftMenuObject,
@@ -24,12 +26,13 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject) {
     console.log("Loaded: dataObject!");
     // console.log("dataObject-publicObject", publicObject);
 
     return {
         publicObject: publicObject,
+        constObject: constObject,
         eventObject: eventObject,
         headerObject: headerObject,
         leftMenuObject: leftMenuObject,

@@ -5,6 +5,7 @@
     if(typeof define !== 'undefined' && define.amd) {
         define([
             'js/data/publicObject',
+            'js/data/constObject',
             'js/data/eventObject',
             'js/data/itemObject',
             'js/core/mixins'
@@ -12,44 +13,45 @@
     }else {
         global.appSelection = factory(
             global.publicObject,
+            global.constObject,
             global.eventObject,
             global.itemObject,
             global.mixins
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, itemObject, mixins) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, itemObject, mixins) {
 
     Vue.component('app-selection-template', {
         props: ['item'],
         mixins: [mixins.getPanelMixin()],
         data: function() {
             return {
-                children: [
+                defaultSelections: [
                     {
-                        direction: 'nw',
+                        direction: constObject.direction.NorthWest,
                         type: 'close'
                     },
                     {
-                        direction: 'ne',
+                        direction: constObject.direction.NorthEast,
                         type: 'add'
                     },
                     {
-                        direction: 'e',
+                        direction: constObject.direction.East,
                         type: 'arrow'
                     },
                     {
-                        direction: 'se',
+                        direction: constObject.direction.SouthEast,
                         type: 'copy'
                     },
-                    // {
-                    //     direction: 'sw',
-                    //     type: 'rotation'
-                    // },
-                    // {
-                    //     direction: 'w',
-                    //     type: 'cut'
-                    // }
+                    {
+                        direction: constObject.direction.SouthWest,
+                        type: 'rotation'
+                    },
+                    {
+                        direction: constObject.direction.West,
+                        type: 'cut'
+                    }
                 ]
             };
         },
@@ -58,6 +60,15 @@
             isActiveObject: function() {
                 return eventObject.ActiveObject != null
                         && !eventObject.isDrag
+            },
+            children: function() {
+                if(eventObject.ActiveObject != null) {
+                    if(typeof eventObject.ActiveObject.item.selections == 'object') {
+                        return eventObject.ActiveObject.item.selections;
+                    }
+                }
+
+                return this.defaultSelections;
             }
         },
         methods: {

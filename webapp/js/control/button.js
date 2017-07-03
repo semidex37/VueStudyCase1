@@ -4,15 +4,17 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/core/mixins'
+            'js/core/mixins',
+            'js/data/constObject',
         ], factory);
     }else {
         global.button = factory(
-            global.mixins
+            global.mixins,
+            global.constObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins) {
+})(typeof window !== 'undefined' ? window : this, function(mixins, constObject) {
 
     var type = 'button';
     var name = 'Button';
@@ -21,6 +23,41 @@
     var minWidth = 80;
     var minHeight = 40;
     var fill = 'rgb(198, 217, 241)';
+
+    // Selection Icon
+    var selections = [
+        {
+            direction: constObject.direction.NorthWest,
+            type: 'close'
+        },
+        {
+            direction: constObject.direction.NorthEast,
+            type: 'add'
+        }
+    ];
+
+    var contexts = [
+        {
+            type: 'doRefresh',
+            icon: 'browser',
+            name: 'doRefresh'
+        // }, {
+        //     type: 'setProperties',
+        //     icon: 'button',
+        //     name: 'SetProperties'
+        // }, {
+        //     type: 'clearData',
+        //     name: 'ClearData'
+        // }, {
+        //     type: 'export',
+        //     icon: 'polygon',
+        //     name: 'Export'
+        // }, {
+        //     type: 'createRow',
+        //     icon: 'chart',
+        //     name: 'CreateRow'
+        }
+    ];
 
     Vue.component('app-control-button-template', {
         mixins: [mixins.getComponentMixin()],
@@ -53,7 +90,9 @@
         height: height,
         // minWidth: minWidth,
         // minHeight: minHeight,
-        fill: fill
+        fill: fill,
+        selections: selections,
+        contexts: contexts
     };
 
 });
