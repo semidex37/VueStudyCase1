@@ -12,7 +12,7 @@
             'js/core/appMiniMap',
             'js/core/appSVG',
             'js/core/appPopup',
-            'js/control/controls'
+            'js/controls/controls'
         ], factory);
     }else {
         global.appCenter = factory(

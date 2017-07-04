@@ -8,7 +8,7 @@
             'js/data/eventObject',
             'js/core/appPanel',
             'js/core/appSVG',
-            'js/control/controls'
+            'js/controls/controls'
         ], factory);
     }else {
         global.appMiniMap = factory(

@@ -8,9 +8,9 @@
             'js/data/eventObject',
             'js/data/itemObject',
             'js/util/util',
-            'js/control/dummy',
-            'js/control/button',
-            'js/control/arrow',
+            'js/controls/dummy',
+            'js/controls/control/button',
+            'js/controls/arrow/arrow',
         ], factory);
     }else {
         global.controls = factory(

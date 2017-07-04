@@ -4,9 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/control/dummy',
-            'js/control/button',
-            'js/control/arrow',
+            'js/controls/dummy',
+            'js/controls/control/button',
+            'js/controls/arrow/arrow',
             'js/util/util'
             ], factory);
     }else {
