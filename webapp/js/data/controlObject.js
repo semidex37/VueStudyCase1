@@ -66,7 +66,8 @@
             height: 80,
             rotate: 0,
             fill: 'rgb(198, 217, 241)',
-            selectedEvent: null
+            selectedEvent: null,
+            link: null
         };
 
         if(typeof properties == 'object'

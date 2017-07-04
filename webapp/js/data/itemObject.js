@@ -53,18 +53,30 @@
     var RemoveItem = function(item) {
         var id = item.id;
         var index = items.indexOf(item);
-        var _item = items.splice(index, 1);
+        var _item = items.splice(index, 1)[0];
 
         if(index == -1) return false;
 
-        delete _item;
+        // link
+        if(_item.link != null) {
+            var linkItem;
+            for(var idx in _item.link) {
+                linkItem = _item.link[idx];
+                RemoveItemById(linkItem.id);
+            }
+        }
+
+        delete _item[0];
         delete itemObject[id];
 
         return true;
     };
 
     var RemoveItemById = function(id) {
-        return RemoveItem(getItemById(id));
+        var item = getItemById(id);
+        if(item) {
+            return RemoveItem(item);
+        }
     };
 
     var ClearItem = function() {
@@ -111,7 +123,21 @@
             }
         };
 
-        return AddItem(_item);
+        if(item1.link == null) {
+            item1.link = [];
+        }
+        if(item2.link == null) {
+            item2.link = [];
+        }
+
+        // Add Item
+        var item = AddItem(_item);
+
+        // Add Linked
+        item1.link.push(item);
+        item2.link.push(item);
+
+        return item;
     };
 
     // temp - dummy
@@ -135,8 +161,8 @@
 
     var item4 = AddItem(controlObject.dummy, {
         name: 'D-Arrow 1',
-        left: 60,
-        top: 240,
+        left: 300,
+        top: 120,
     });
 
     var arrow1 = AddArrow(item1, item2, {
