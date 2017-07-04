@@ -1,0 +1,17 @@
+<g class="app-control">
+    <g class="translate" v-bind:transform="transform">
+        <g class="rotatable" v-bind:transform="rotate">
+            <g class="scalable">
+                <app-control-button-template v-if="item.type == 'button'"
+                                             :item="item">
+                </app-control-button-template>
+                <app-control-arrow-template v-else-if="item.type == 'arrow'"
+                                            :item="item">
+                </app-control-arrow-template>
+                <app-control-dummy-template v-else
+                                            :item="item">
+                </app-control-dummy-template>
+            </g>
+        </g>
+    </g>
+</g>

@@ -1,0 +1,21 @@
+<div v-bind:id="getId()" v-bind:class="classObject" v-if="item.type == 'Text'">
+    <span v-if="item.text">{{item.text}}</span>
+</div>
+<div v-bind:id="getId()" v-bind:class="classObject" v-else-if="item.type == 'Range'">
+    <span v-if="item.text">{{item.text}}</span>
+    <input type="range"
+           v-model="item.value"
+           v-bind:id="item.id"
+           v-bind:min="item.min"
+           v-bind:max="item.max"
+           v-bind:step="item.step"
+           v-on:input="updateSize($event.target.value)"
+           style="width:100px;">
+    <span>{{result()}}</span>
+</div>
+<div v-bind:id="getId()" v-bind:class="classObject" v-else>
+            <span v-if="item.text"
+                  v-on:click="showMessage(item.text)">
+                {{item.text}}
+            </span>
+</div>

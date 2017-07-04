@@ -4,14 +4,16 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject',
-            'constObject',
-            'eventObject',
-            'itemObject',
-            'mixins'
+            'js/data/templateObject',
+            'js/data/publicObject',
+            'js/data/constObject',
+            'js/data/eventObject',
+            'js/data/itemObject',
+            'js/core/mixins'
         ], factory);
     }else {
         global.appSelection = factory(
+            global.templateObject,
             global.publicObject,
             global.constObject,
             global.eventObject,
@@ -20,7 +22,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, itemObject, mixins) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, itemObject, mixins) {
 
     Vue.component('app-selection-template', {
         props: ['item'],
@@ -55,7 +57,7 @@
                 ]
             };
         },
-        template: '#app-selection-template',
+        template: templateObject['app-selection-template'],
         computed: {
             isActiveObject: function() {
                 return eventObject.ActiveObject != null

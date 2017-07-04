@@ -3,16 +3,18 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(factory);
+        define([
+            'js/data/templateObject'
+        ], factory);
     }else {
         global.appRight = factory();
     }
 
-})(typeof window !== 'undefined' ? window : this, function(/* RGBColor, stackBlur */) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject) {
 
     Vue.component('app-right-template', {
         props: ['items'],
-        template: '#app-right-template'
+        template: templateObject['app-right-template']
     });
 
 

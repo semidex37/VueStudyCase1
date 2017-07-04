@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/util/generator',
             'js/data/publicObject',
             'js/data/itemObject',
@@ -18,13 +19,13 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(generator, publicObject, itemObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, generator, publicObject, itemObject, eventObject) {
 
     var controlsId = generator.GeneratorId('app-controls');
 
     Vue.component('app-svg-template', {
         props: ['dataObject'],
-        template: '#app-svg-template',
+        template: templateObject['app-svg-template'],
         computed: {
             controlsId: function () {
                 return controlsId;

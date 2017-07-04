@@ -1,0 +1,11 @@
+<div v-bind:id="getId()" class="app-header-group">
+    <app-header-item-template
+            v-for="(item, index) in group.children"
+            v-model="item.value"
+            :key="item.index"
+            :item="item"
+            :index="index"
+            :pIndex="pIndex(index)"
+    >
+    </app-header-item-template>
+</div>

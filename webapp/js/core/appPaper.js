@@ -4,7 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject'
+            'js/data/publicObject',
+            'js/data/templateObject'
         ], factory);
     }else {
         global.appPaper = factory(
@@ -12,10 +13,10 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, templateObject) {
 
     Vue.component('app-paper-template', {
-        template: '#app-paper-template',
+        template: templateObject['app-paper-template'],
         computed: {
             classObject: function() {
                 var paperSize = 'app-paper-grid-'+publicObject.PaperSize;

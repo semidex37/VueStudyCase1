@@ -1,0 +1,8 @@
+<div class="app-tree-root">
+    <app-tree-node-template
+            v-for="(item, index) in items.children"
+            :key="item.index"
+            :item="item"
+            :index="index">
+    </app-tree-node-template>
+</div>

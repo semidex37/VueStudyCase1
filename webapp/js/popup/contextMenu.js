@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/data/publicObject',
             'js/data/itemObject',
             'js/data/eventObject'
@@ -16,7 +17,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, itemObject, eventObject) {
 
     var contextMarginLeft = 30; // 10
     var contextMarginTop = -30; // -5
@@ -48,7 +49,7 @@
                 ]
             }
         },
-        template: '#app-contexts-template',
+        template: templateObject['app-contexts-template'],
         computed: {
             isContextObject: function() {
                 return eventObject.isPopup && !eventObject.isDrag;
@@ -92,7 +93,7 @@
         props: {
             context: Object
         },
-        template: '#app-context-template',
+        template: templateObject['app-context-template'],
         computed: {
             classObjectIcon: function() {
                 var classObject = {};

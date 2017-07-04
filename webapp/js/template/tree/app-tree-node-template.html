@@ -1,0 +1,8 @@
+<div class="app-tree-node">
+    <div class="app-tree-header">
+        <div class="app-tree-icon" v-bind:class="classObjectSign" v-on:click="expand"></div>
+        <div class="app-tree-icon" v-bind:class="classObjectFolder" v-on:click="expand"></div>
+        <div class="app-tree-title">{{item.name}}</div>
+    </div>
+    <app-tree-contents-template :item="item" v-if="isExpand"></app-tree-contents-template>
+</div>

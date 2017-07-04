@@ -1,0 +1,17 @@
+<div class="app-panel app-panel-selection"
+     v-show="isActiveObject"
+     v-on:mousedown.left="onMouseDownLeft"
+     v-on:mousemove="onMouseMove"
+     v-on:mouseup.left="onMouseUpLeft"
+     v-bind:style="styleObject"
+>
+    <div class="resize"
+         v-for="(value, key) in direction"
+         v-bind:class="value"
+         v-on:mousedown.left.stop="onResizeDown($event, value)"
+         v-on:mouseup.left.stop="onResizeUp(value)"
+    >
+    </div>
+</div>
+
+</div>

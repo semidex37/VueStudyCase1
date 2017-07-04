@@ -4,10 +4,11 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'mixins',
-            'constObject',
-            'eventMenuObject',
-            'contextMenuObject'
+            'js/data/templateObject',
+            'js/core/mixins',
+            'js/data/constObject',
+            'js/data/eventMenuObject',
+            'js/data/contextMenuObject'
         ], factory);
     }else {
         global.doRefresh = factory(
@@ -18,7 +19,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins, constObject, eventMenuObject, contextMenuObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, constObject, eventMenuObject, contextMenuObject) {
 
     var type = 'Event';
     var name = 'doRefresh';
@@ -53,7 +54,7 @@
 
     Vue.component('app-control-do-refresh-template', {
         mixins: [mixins.getComponentMixin()],
-        template: '#app-control-do-refresh-template',
+        template: templateObject['app-control-do-refresh-template'],
         computed: {
             addButtonTransform: function() {
                 return 'translate(' + (this.width - 20) + ', 5)';

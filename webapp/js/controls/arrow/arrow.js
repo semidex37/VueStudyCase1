@@ -4,8 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'mixins',
-            'eventObject'
+            'js/data/templateObject',
+            'js/core/mixins',
+            'js/data/eventObject'
         ], factory);
     }else {
         global.arrow = factory(
@@ -14,12 +15,12 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, eventObject) {
 
     // arrow
     Vue.component('app-control-arrow-template', {
         mixins: [mixins.getComponentMixin()],
-        template: '#app-control-arrow-template',
+        template: templateObject['app-control-arrow-template'],
         computed: {
             d: function () {
                 var d = "M" + this.startPoint.x + "," + this.startPoint.y +

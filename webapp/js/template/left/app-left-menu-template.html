@@ -1,0 +1,10 @@
+<div class="app-menu app-left-menu">
+    <div class="app-left-menu-group">
+        <app-left-menu-item-template
+                v-for="(item, index) in items.children"
+                :key="item.index"
+                :item="item"
+                :index="index">
+        </app-left-menu-item-template>
+    </div>
+</div>

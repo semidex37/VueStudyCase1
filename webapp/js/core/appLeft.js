@@ -4,9 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'leftMenuObject',
-            'leftMenuTree',
-            'itemObject'
+            'js/data/templateObject',
+            'js/data/leftMenuObject',
+            'js/data/leftMenuTree',
+            'js/data/itemObject'
         ], factory);
     }else {
         global.appLeft = factory(
@@ -16,10 +17,10 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(leftMenuObject, leftMenuTree, itemObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, leftMenuObject, leftMenuTree, itemObject) {
 
     Vue.component('app-left-template', {
-        template: '#app-left-template',
+        template: templateObject['app-left-template'],
         computed: {
             menuItems: function() {
                 return leftMenuObject;
@@ -37,18 +38,18 @@
         props: {
             items: Object
         },
-        template: '#app-left-menu-template'
+        template: templateObject['app-left-menu-template']
     });
 
     Vue.component('app-left-search-template', {
-        template: '#app-left-search-template'
+        template: templateObject['app-left-search-template']
     });
 
     Vue.component('app-left-tree-template', {
         props: {
             items: Object
         },
-        template: '#app-left-tree-template'
+        template: templateObject['app-left-tree-template']
     });
 
     Vue.component('app-left-menu-item-template', {
@@ -56,7 +57,7 @@
             item: Object,
             index: Number
         },
-        template: '#app-left-menu-item-template',
+        template: templateObject['app-left-menu-item-template'],
         methods: {
             getId: function() {
                 return 'app-left-menu-item-' + this.index;
@@ -68,14 +69,14 @@
         props: {
             name: String
         },
-        template: '#app-tree-header-template'
+        template: templateObject['app-tree-header-template']
     });
 
     Vue.component('app-tree-root-template', {
         props: {
             items: Object
         },
-        template: '#app-tree-root-template'
+        template: templateObject['app-tree-root-template']
     });
 
     Vue.component('app-tree-node-template', {
@@ -83,7 +84,7 @@
             item: Object,
             index: Number
         },
-        template: '#app-tree-node-template',
+        template: templateObject['app-tree-node-template'],
         data: function() {
             return {
                 isExpand: true
@@ -115,7 +116,7 @@
         props: {
             item: Object
         },
-        template: '#app-tree-contents-template'
+        template: templateObject['app-tree-contents-template']
     });
 
     Vue.component('app-tree-content-template', {
@@ -123,7 +124,7 @@
             item: Object,
             index: Number
         },
-        template: '#app-tree-content-template',
+        template: templateObject['app-tree-content-template'],
         computed: {
             classObjectIcon: function() {
                 var classObject = {

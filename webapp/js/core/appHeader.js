@@ -4,17 +4,19 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject',
-            'dataObject'
+            'js/data/publicObject',
+            'js/data/dataObject',
+            'js/data/templateObject'
         ], factory);
     }else {
         global.appHeader = factory(
             global.publicObject,
-            global.dataObject
+            global.dataObject,
+            global.templateObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, dataObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, dataObject, templateObject) {
 
     // console.log("appHeader-publicObject", publicObject);
 
@@ -23,7 +25,7 @@
         props: {
             groups: Object
         },
-        template: '#app-header-template'
+        template: templateObject['app-header-template']
     });
 
     Vue.component('app-header-group-template', {
@@ -36,7 +38,7 @@
                 default: 37
             }
         },
-        template: '#app-header-group-template',
+        template: templateObject['app-header-group-template'],
         computed: {
         },
         methods: {
@@ -56,7 +58,7 @@
             index: Number,
             pIndex: String
         },
-        template: '#app-header-item-template',
+        template: templateObject['app-header-item-template'],
         computed: {
             classObject: function() {
                 return {

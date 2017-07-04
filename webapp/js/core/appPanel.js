@@ -4,9 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject',
-            'eventObject',
-            'mixins'
+            'js/data/publicObject',
+            'js/data/eventObject',
+            'js/data/templateObject',
+            'js/core/mixins'
         ], factory);
     }else {
         global.appPanel = factory(
@@ -16,7 +17,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, mixins) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, templateObject, mixins) {
 
     Vue.component('app-panel-template', {
         mixins: [mixins.getPanelMixin()],
@@ -26,7 +27,7 @@
                 // direction: ['nw', 'ne', 'se', 'sw']
             }
         },
-        template: '#app-panel-template',
+        template: templateObject['app-panel-template'],
         computed: {
             isActiveObject: function() {
                 return eventObject.ActiveObject != null

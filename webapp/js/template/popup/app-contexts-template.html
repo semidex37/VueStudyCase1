@@ -1,0 +1,11 @@
+<div v-if="isContextObject"
+     class="app-contexts"
+     v-bind:style="styleObject"
+>
+    <app-context-template
+            v-for="(context, index) in contexts"
+            :key="index"
+            :context="context"
+            :index="index"
+    ></app-context-template>
+</div>

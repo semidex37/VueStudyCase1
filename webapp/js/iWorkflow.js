@@ -5,6 +5,7 @@
     if(typeof define !== 'undefined' && define.amd) {
         console.log('export as AMD!');
         define([
+            'js/data/dataObject',
             'js/core/appHeader',
             'js/core/appBody',
             'js/core/appFooter'
@@ -12,13 +13,14 @@
     }else {
         console.log('export Global!');
         global.iWorkFlow = factory(
+            global.dataObject,
             global.appHeader,
             global.appBody,
             global.appFooter
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(appHeader, appBody, appFooter) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject, appHeader, appBody, appFooter) {
     console.log("Loaded: iWorkflow.js");
 
     appHeader.init();

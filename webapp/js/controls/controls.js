@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/data/publicObject',
             'js/data/eventObject',
             'js/data/itemObject',
@@ -24,7 +25,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, itemObject, util, dummy, button) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, eventObject, itemObject, util, dummy, button) {
     // console.log("Loaded: controls");
 
     var controls = {};
@@ -36,7 +37,7 @@
                 type: Object
             }
         },
-        template: '#app-controls-template',
+        template: templateObject['app-controls-template'],
         computed: {
             itemObject: function() {
                 return itemObject;
@@ -55,7 +56,7 @@
                 required: true
             },
         },
-        template: '#app-control-template',
+        template: templateObject['app-control-template'],
         computed: {
             left: function() {
                 return this.item.left;

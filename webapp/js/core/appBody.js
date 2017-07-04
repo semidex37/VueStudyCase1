@@ -4,7 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'dataObject',
+            'js/data/dataObject',
+            'js/data/templateObject',
             'js/core/appLeft',
             'js/core/appCenter',
             'js/core/appRight'
@@ -13,7 +14,7 @@
         global.appHeader = factory( global.dataObject, global.appLeft );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dataObject, appLeft, appCenter, appRight) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject, templateObject, appLeft, appCenter, appRight) {
 
     // console.log("appBody-dataObject", dataObject);
 
@@ -25,7 +26,7 @@
             // centerObject: Object,
             // rightObject: Object
         },
-        template: '#app-body-template'
+        template: templateObject['app-body-template']
     });
 
     return {

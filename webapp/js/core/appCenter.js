@@ -4,8 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject',
-            'eventObject',
+            'js/data/publicObject',
+            'js/data/eventObject',
+            'js/data/templateObject',
             'js/core/appPanel',
             'js/core/appSelection',
             'js/core/appPaper',
@@ -31,6 +32,7 @@
 })(typeof window !== 'undefined' ? window : this, function(
     publicObject,
     eventObject,
+    templateObject,
     appPanel,
     appPaper,
     appMiniMap,
@@ -40,7 +42,7 @@
 
     Vue.component('app-center-template', {
         props: ['dataObject', 'items'],
-        template: '#app-center-template'
+        template: templateObject['app-center-template']
     });
 
     return {};

@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/data/publicObject',
             'js/data/itemObject',
             'js/data/eventObject'
@@ -16,7 +17,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, itemObject, eventObject) {
 
     var contextMarginLeft = 30; // 10
     var contextMarginTop = -30; // -5
@@ -37,13 +38,10 @@
                 ]
             }
         },
-        template: '#app-menus-template',
+        template: templateObject['app-menus-template'],
         computed: {
             isContextObject: function() {
                 return eventObject.busObject[eventObject.busEvent.clickEventContextMenu] != null;
-                // return true;
-                // return _vue != null;
-                // return eventObject.isPopup && !eventObject.isDrag;
             },
             styleObject: function() {
                 var rect = this.calculatorRect;
@@ -61,7 +59,6 @@
                     var vue = eventObject.busObject[eventObject.busEvent.clickEventContextMenu];
                     left = vue.eventPoint.x * zoomToFitRatio;
                     top = (vue.eventPoint.y + 20) * zoomToFitRatio;
-
                 }
 
                 return {
@@ -83,20 +80,11 @@
         }
     });
 
-    // var _vue = null;
-    // var _item = null;
-    //
-    // eventObject.bus.$on(eventObject.busEvent.clickEventContextMenu, function(vue) {
-    //     console.log('click-event-context-menu', 'args', vue);
-    //     _vue = vue;
-    //     _item = vue.item;
-    // });
-
     Vue.component('app-menu-template', {
         props: {
             context: Object
         },
-        template: '#app-menu-template',
+        template: templateObject['app-menu-template'],
         computed: {
             classObjectIcon: function() {
                 var classObject = {};

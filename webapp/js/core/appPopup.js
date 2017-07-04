@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/popup/contextMenu',
             'js/popup/eventMenu',
         ], factory);
@@ -14,11 +15,11 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(contextMenu, eventMenu) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, contextMenu, eventMenu) {
 
     Vue.component('app-popup-template', {
         props: ['dataObject'],
-        template: '#app-popup-template'
+        template: templateObject['app-popup-template']
     });
 
     return {};

@@ -4,7 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'mixins'
+            'js/data/templateObject',
+            'js/core/mixins'
         ], factory);
     }else {
         global.dummy = factory(
@@ -12,7 +13,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, mixins) {
 
     var type = 'dummy';
     var name = 'Button';
@@ -22,7 +23,7 @@
 
     Vue.component('app-control-dummy-template', {
         mixins: [mixins.getComponentMixin()],
-        template: '#app-control-dummy-template',
+        template: templateObject['app-control-dummy-template'],
         methods: {
             onMouseMove: function(e) {
                 console.log('app-control-button', 'onMouseMove', e);

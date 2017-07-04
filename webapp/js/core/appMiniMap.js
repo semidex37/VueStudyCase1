@@ -4,8 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'publicObject',
-            'eventObject',
+            'js/data/publicObject',
+            'js/data/eventObject',
+            'js/data/templateObject',
             'js/core/appPanel',
             'js/core/appSVG',
             'js/controls/controls'
@@ -20,11 +21,11 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, appPanel, appSVG, controls) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, templateObject, appPanel, appSVG, controls) {
 
     Vue.component('app-mini-map-template', {
         props: ['dataObject'],
-        template: '#app-mini-map-template',
+        template: templateObject['app-mini-map-template'],
         computed: {
             transform: function() {
                 var w = 150 / window.innerWidth;
