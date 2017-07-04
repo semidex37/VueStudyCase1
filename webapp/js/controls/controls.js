@@ -11,6 +11,7 @@
             'js/controls/dummy',
             'js/controls/control/button',
             'js/controls/arrow/arrow',
+            'js/controls/event/doRefresh',
         ], factory);
     }else {
         global.controls = factory(

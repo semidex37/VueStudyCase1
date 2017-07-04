@@ -147,8 +147,8 @@
         top: 40
     });
 
-    var item2 = AddItem(controlObject.button, {
-        name: 'D-Button 2',
+    var item2 = AddItem(controlObject.doRefresh, {
+        name: 'doRefresh 2',
         left: 460,
         top: 40
     });

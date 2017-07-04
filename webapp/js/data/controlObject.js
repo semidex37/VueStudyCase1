@@ -7,22 +7,25 @@
             'js/controls/dummy',
             'js/controls/control/button',
             'js/controls/arrow/arrow',
+            'js/controls/event/doRefresh',
             'js/util/util'
             ], factory);
     }else {
         global.controlObject = factory(
             global.dummy,
             global.button,
+            global.arrow,
+            global.doRefresh,
             global.util
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dummy, button, arrow, util) {
+})(typeof window !== 'undefined' ? window : this, function(dummy, button, arrow, doRefresh, util) {
 
     var controlObject = {};
 
     var AutoRefresh =   {   type: 'Event',          name: 'AutoRefresh'     };
-    var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
+    // var doRefresh =     {   type: 'Event',          name: 'doRefresh'       };
     var doExport =      {   type: 'Event',          name: 'doExport'        };
 
     var browser =       {   type: 'browser',        name: 'Browser'         };
