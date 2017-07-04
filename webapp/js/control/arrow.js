@@ -73,9 +73,6 @@
             //     return 'translate(70, 7)';
             // },
             eventText: function() {
-                console.log(this.item.selectedEvent);
-
-                // this.item.source.
                 if(this.item.selectedEvent) {
                     return this.item.selectedEvent.name;
                 }

@@ -243,9 +243,7 @@
                         >
                             <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
                                 <g v-bind:transform="transform">
-                                    <app-controls-template v-bind:id="id"></app-controls-template>
-
-
+                                    <app-controls-template v-bind:id="controlsId"></app-controls-template>
 
                                     <!--<g class="translate" transform="translate(270, 150)">-->
                                         <!--<path d="M100,10 L150,10 L150,60 L200,60"-->
@@ -275,9 +273,6 @@
                                     <!--<g class="translate" transform="translate(270, 150)">-->
                                     <!--</g>-->
                                 </g>
-
-
-
 
                             </svg>
                         </div>
@@ -343,7 +338,13 @@
     <script type="text/x-template" id="app-mini-map-template">
         <div class="app-mini-map">
             <div class="app-mini-map-background"></div>
-            <div class="app-mini-map-svg"></div>
+            <div class="app-mini-map-svg">
+                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" width="100%" height="100%">
+                    <g v-bind:transform="transform">
+                        <app-controls-template></app-controls-template>
+                    </g>
+                </svg>
+            </div>
         </div>
     </script>
 

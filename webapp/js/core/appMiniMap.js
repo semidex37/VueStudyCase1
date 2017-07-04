@@ -14,6 +14,8 @@
         global.appMiniMap = factory(
             global.publicObject,
             global.eventObject,
+            global.controls,
+            global.appSVG,
             global.controls
         );
     }
@@ -22,7 +24,15 @@
 
     Vue.component('app-mini-map-template', {
         props: ['dataObject'],
-        template: '#app-mini-map-template'
+        template: '#app-mini-map-template',
+        computed: {
+            transform: function() {
+                var w = 150 / window.innerWidth;
+                var h = 100 / window.innerHeight;
+
+                return 'matrix('+w+',0,0,'+h+',0,0)';
+            }
+        }
     });
 
     return {};

@@ -4,26 +4,30 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/util/generator',
             'js/data/publicObject',
             'js/data/itemObject',
             'js/data/eventObject'
         ], factory);
     }else {
         global.appSVG = factory(
+            global.generator,
             global.publicObject,
             global.itemObject,
             global.eventObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, itemObject, eventObject) {
+})(typeof window !== 'undefined' ? window : this, function(generator, publicObject, itemObject, eventObject) {
+
+    var controlsId = generator.GeneratorId('app-controls');
 
     Vue.component('app-svg-template', {
         props: ['dataObject'],
         template: '#app-svg-template',
         computed: {
-            id: function () {
-                return 'app-controls';
+            controlsId: function () {
+                return controlsId;
             },
             items: function() {
                 return this.itemObject;
