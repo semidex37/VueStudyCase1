@@ -347,7 +347,8 @@
         enableMouseResize: enableMouseResize,
         enableMouseRotation: enableMouseRotation,
         enablePopup: enablePopup,
-        disablePopup: disablePopup
+        disablePopup: disablePopup,
+        disableBusObject: disableBusObject
     };
 
     return eventObject;

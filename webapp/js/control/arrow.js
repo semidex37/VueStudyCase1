@@ -43,17 +43,25 @@
                     y: this.item.target.top + (this.item.target.height / 2)
                 };
             },
-            eventTransform: function() {
+            eventPoint: function() {
                 var x = this.startPoint.x < this.endPoint.x ? this.startPoint.x : this.endPoint.x;
                 var y = this.startPoint.y < this.endPoint.y ? this.startPoint.y : this.endPoint.y;
 
                 x += (Math.abs(this.startPoint.x-this.endPoint.x) / 2);
                 y += (Math.abs(this.startPoint.y-this.endPoint.y) / 2);
 
-                x -= 30;
+                x -= 45;
+                // x += 10;
+                y += 5;
                 // y -= 10;
 
-                return 'translate(' + x + ', ' + y + ')';
+                return {
+                    x: x,
+                    y: y
+                }
+            },
+            eventTransform: function() {
+                return 'translate(' + this.eventPoint.x + ', ' + this.eventPoint.y + ')';
             },
             iconTransform: function() {
                 return 'translate(2, 2)';
@@ -61,13 +69,26 @@
             textTransform: function() {
                 return 'translate(20, 5)';
             },
-            buttonTransform: function() {
-                return 'translate(70, 7)';
+            // buttonTransform: function() {
+            //     return 'translate(70, 7)';
+            // },
+            eventText: function() {
+                console.log(this.item.selectedEvent);
+
+                // this.item.source.
+                if(this.item.selectedEvent) {
+                    return this.item.selectedEvent.name;
+                }
+
+                return this.item.defaultSelectedEvent.name;
             }
         },
         methods: {
-            changeEvent: function() {
-                eventObject.bus.$emit(eventObject.busEvent.clickEventContextMenu, this);
+            clickEvent: function(event) {
+                eventObject.bus.$emit(eventObject.busEvent.clickEventContextMenu, this, event);
+            },
+            changeEvent: function(event) {
+                this.item.selectedEvent = event;
             }
         }
 
@@ -80,47 +101,5 @@
         type: type,
         fillOpacity: fillOpacity
     };
-
-    // var type = 'button';
-    // var name = 'Button';
-    // var width = 120;
-    // var height = 60;
-    // var minWidth = 80;
-    // var minHeight = 40;
-    // var fill = 'rgb(198, 217, 241)';
-    //
-    // Vue.component('app-control-button-template', {
-    //     mixins: [mixins.getComponentMixin()],
-    //     template: '#app-control-button-template',
-    //     computed: {
-    //         addButtonTransform: function() {
-    //             return 'translate(' + (this.width - 20) + ', 5)';
-    //         }
-    //     },
-    //     methods: {
-    //         onMouseMove: function(e) {
-    //             console.log('app-control-button', 'onMouseMove', e);
-    //         },
-    //         onMouseUp: function(e) {
-    //             console.log('app-control-button', 'onMouseUp', e);
-    //         },
-    //         onClick: function(e) {
-    //             console.log('app-control-button', 'onClick', e);
-    //         // },
-    //         // onMouseDownAddItem: function(e) {
-    //         //     console.log('app-control-button', 'onMouseDownAddItem');
-    //         }
-    //     }
-    // });
-    //
-    // return {
-    //     type: type,
-    //     name: name,
-    //     width: width,
-    //     height: height,
-    //     // minWidth: minWidth,
-    //     // minHeight: minHeight,
-    //     fill: fill
-    // };
 
 });

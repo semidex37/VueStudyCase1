@@ -53,32 +53,23 @@
             calculatorRect: function() {
                 var left = 0;
                 var top = 0;
-                var width = 0;
                 var zoomToFitRatio;
 
-                // if(eventObject.ActiveObject) {
-                //     zoomToFitRatio = publicObject.ZoomToFit / 100;
-                //     left = eventObject.ActiveObject.item.left * zoomToFitRatio;
-                //     top = eventObject.ActiveObject.item.top * zoomToFitRatio;
-                //     width = eventObject.ActiveObject.item.width * zoomToFitRatio;
-                // }
+                if(eventObject.busObject[eventObject.busEvent.clickEventContextMenu] != null) {
+                    zoomToFitRatio = publicObject.ZoomToFit / 100;
 
-                // return {
-                //     left: left + width + contextMarginLeft,
-                //     top: top + contextMarginTop
-                // };
+                    var vue = eventObject.busObject[eventObject.busEvent.clickEventContextMenu];
+                    left = vue.eventPoint.x * zoomToFitRatio;
+                    top = (vue.eventPoint.y + 20) * zoomToFitRatio;
+
+                }
+
                 return {
-                    left: 50,
-                    top: 50
+                    left: left,
+                    top: top
                 };
             },
             contexts: function() {
-                // if(eventObject.ActiveObject != null) {
-                //     if(typeof eventObject.ActiveObject.item.contexts == 'object') {
-                //         return eventObject.ActiveObject.item.contexts;
-                //     }
-                // }
-
                 if(eventObject.busObject[eventObject.busEvent.clickEventContextMenu] != null) {
                     var vue = eventObject.busObject[eventObject.busEvent.clickEventContextMenu];
 
@@ -146,16 +137,20 @@
             onClickLeft: function(e) {
                 console.log('onClickLeft', this.context.type);
 
-                // var item = itemObject.AddItem(this.context.type, {
-                //     left: eventObject.ActiveObject.item.left
-                //         + eventObject.ActiveObject.item.width
-                //         + 100,
-                //     top: eventObject.ActiveObject.item.top
-                // });
-                //
-                // itemObject.AddArrow(eventObject.ActiveObject.item, item);
-                //
-                // eventObject.disablePopup();
+                if(eventObject.busObject[eventObject.busEvent.clickEventContextMenu] != null) {
+                    var vue = eventObject.busObject[eventObject.busEvent.clickEventContextMenu];
+                    var source = vue.item.source;
+                    var events = source.events;
+                    var event;
+                    for(var idx in events) {
+                        event = events[idx];
+                        if(event.type == this.context.type) {
+                            vue.changeEvent(event);
+                        }
+                    }
+                }
+
+                eventObject.disableBusObject();
             }
         }
     });

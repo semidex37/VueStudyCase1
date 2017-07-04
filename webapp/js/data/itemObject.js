@@ -91,7 +91,7 @@
         return itemObject[id];
     };
 
-    var AddArrow = function(item1, item2) {
+    var AddArrow = function(item1, item2, selectedEvent) {
         var _item;
 
         _item = {
@@ -102,12 +102,19 @@
             top: 0,
             width: 0,
             height: 0,
-            rotate: 0
+            rotate: 0,
+            selectedEvent: selectedEvent,
+            defaultSelectedEvent: {
+                type: 'click',
+                icon: 'browser',
+                name: 'Click'
+            }
         };
 
         return AddItem(_item);
     };
 
+    // temp - dummy
     var item1 = AddItem(controlObject.button, {
         name: 'D-Button',
         left: 220,
@@ -132,9 +139,18 @@
         top: 240,
     });
 
-    var arrow1 = AddArrow(item1, item2);
-    var arrow2 = AddArrow(item3, item4);
+    var arrow1 = AddArrow(item1, item2, {
+        type: 'click',
+        icon: 'browser',
+        name: 'Click'
+    });
+    var arrow2 = AddArrow(item3, item4, {
+        type: 'dblClick',
+        icon: 'chart',
+        name: 'DoubleClick'
+    });
 
+    // temp
     window.itemObject = itemObject;
 
     return {

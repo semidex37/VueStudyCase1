@@ -6,15 +6,19 @@
         define([
             'js/core/mixins',
             'js/data/constObject',
+            'js/data/eventMenuObject',
+            'js/data/contextMenuObject'
         ], factory);
     }else {
         global.button = factory(
             global.mixins,
-            global.constObject
+            global.constObject,
+            global.eventMenuObject,
+            global.contextMenuObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(mixins, constObject) {
+})(typeof window !== 'undefined' ? window : this, function(mixins, constObject, eventMenuObject, contextMenuObject) {
 
     var type = 'button';
     var name = 'Button';
@@ -38,39 +42,13 @@
 
     // Contexts
     var contexts = [
-        {
-            type: 'doRefresh',
-            icon: 'browser',
-            name: 'doRefresh'
-        // }, {
-        //     type: 'setProperties',
-        //     icon: 'button',
-        //     name: 'SetProperties'
-        // }, {
-        //     type: 'clearData',
-        //     name: 'ClearData'
-        // }, {
-        //     type: 'export',
-        //     icon: 'polygon',
-        //     name: 'Export'
-        // }, {
-        //     type: 'createRow',
-        //     icon: 'chart',
-        //     name: 'CreateRow'
-        }
+        contextMenuObject.doRefresh
     ];
 
     // Events
     var events = [
-        {
-            type: 'click',
-            icon: 'browser',
-            name: 'Click'
-        }, {
-            type: 'dblClick',
-            icon: 'chart',
-            name: 'DoubleClick'
-        }
+        eventMenuObject.click,
+        eventMenuObject.dblClick
     ];
 
     Vue.component('app-control-button-template', {

@@ -472,7 +472,7 @@
                                          "/>
                 <g class="app-cursor-pointer"
                    v-bind:transform="eventTransform"
-                   v-on:click.stop="changeEvent">
+                   v-on:click.stop="clickEvent($event)">
                     <rect class=""
                           v-bind:fill-opacity="fillOpacity"
                           width="100"
@@ -485,12 +485,12 @@
                     </g>
                     <g v-bind:transform="textTransform">
                         <text font-size="14" y="0.8em" xml:space="preserve" fill="#000" font-family="맑은고딕, 돋움, Arial, sans-serif" style="user-select: none;">
-                            <tspan class="" dy="0em" x="0">Click</tspan>
+                            <tspan class="" dy="0em" x="0" v-text="eventText">Click</tspan>
                         </text>
                     </g>
-                    <g v-bind:transform="buttonTransform">
-                        <polygon points="0,0 14,0, 7,7" fill="rgb(0, 0, 0)"></polygon>
-                    </g>
+                    <!--<g v-bind:transform="buttonTransform">-->
+                        <!--<polygon points="0,0 14,0, 7,7" fill="rgb(0, 0, 0)"></polygon>-->
+                    <!--</g>-->
                 </g>
 
             </g>

@@ -11,7 +11,9 @@
             'js/data/leftMenuObject',
             'js/data/leftMenuTree',
             'js/data/itemObject',
-            'js/data/controlObject'
+            'js/data/controlObject',
+            'js/data/contextMenuObject',
+            'js/data/eventMenuObject'
         ], factory);
     }else {
         global.dataObject = factory(
@@ -22,11 +24,13 @@
             global.leftMenuObject,
             global.leftMenuTree,
             global.itemObject,
-            global.controlObject
+            global.controlObject,
+            global.contextMenuObject,
+            global.eventMenuObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, eventMenuObject) {
     console.log("Loaded: dataObject!");
     // console.log("dataObject-publicObject", publicObject);
 
@@ -38,7 +42,9 @@
         leftMenuObject: leftMenuObject,
         leftMenuTree: leftMenuTree,
         itemObject: itemObject,
-        controlObject: controlObject
+        controlObject: controlObject,
+        contextMenuObject: contextMenuObject,
+        eventMenuObject: eventMenuObject
     };
 
 });
