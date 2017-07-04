@@ -4,7 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/dataObject',
+            'dataObject',
             'js/core/appLeft',
             'js/core/appCenter',
             'js/core/appRight'

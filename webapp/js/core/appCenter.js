@@ -4,8 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject',
+            'publicObject',
+            'eventObject',
             'js/core/appPanel',
             'js/core/appSelection',
             'js/core/appPaper',

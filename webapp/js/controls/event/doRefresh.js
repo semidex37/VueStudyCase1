@@ -4,10 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/core/mixins',
-            'js/data/constObject',
-            'js/data/eventMenuObject',
-            'js/data/contextMenuObject'
+            'mixins',
+            'constObject',
+            'eventMenuObject',
+            'contextMenuObject'
         ], factory);
     }else {
         global.doRefresh = factory(

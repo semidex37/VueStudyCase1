@@ -4,6 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
+            'js/data/templateObject',
             'js/data/publicObject',
             'js/data/constObject',
             'js/data/eventObject',
@@ -30,11 +31,12 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, eventMenuObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, eventMenuObject) {
     console.log("Loaded: dataObject!");
     // console.log("dataObject-publicObject", publicObject);
 
     return {
+        templateObject: templateObject,
         publicObject: publicObject,
         constObject: constObject,
         eventObject: eventObject,

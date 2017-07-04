@@ -4,8 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/core/mixins',
-            'js/data/eventObject'
+            'mixins',
+            'eventObject'
         ], factory);
     }else {
         global.arrow = factory(

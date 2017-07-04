@@ -4,9 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject',
-            'js/core/mixins'
+            'publicObject',
+            'eventObject',
+            'mixins'
         ], factory);
     }else {
         global.appPanel = factory(

@@ -1,0 +1,9 @@
+<div class="app-header">
+    <app-header-group-template
+            v-for="(group, index) in groups.children"
+            :key="group.index"
+            :group="group"
+            :index="index">
+    </app-header-group-template>
+    <!--<div class="app-header-split"></div>-->
+</div>

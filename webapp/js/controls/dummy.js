@@ -4,7 +4,7 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/core/mixins'
+            'mixins'
         ], factory);
     }else {
         global.dummy = factory(
