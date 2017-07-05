@@ -27,21 +27,26 @@
             return {
                 defaultContexts: [
                     {
+                        action: 'newControl',
                         type: 'doRefresh',
                         icon: 'browser',
                         name: 'doRefresh'
                     }, {
+                        action: '',
                         type: 'setProperties',
                         icon: 'button',
                         name: 'SetProperties'
                     }, {
+                        action: '',
                         type: 'clearData',
                         name: 'ClearData'
                     }, {
+                        action: '',
                         type: 'export',
                         icon: 'polygon',
                         name: 'Export'
                     }, {
+                        action: '',
                         type: 'createRow',
                         icon: 'chart',
                         name: 'CreateRow'
@@ -52,7 +57,7 @@
         template: templateObject['app-contexts-template'],
         computed: {
             isContextObject: function() {
-                return eventObject.isPopup && !eventObject.isDrag;
+                return eventObject.isPopup && !eventObject.isDrag && this.contexts.length > 0;
             },
             styleObject: function() {
                 var rect = this.calculatorRect;
@@ -132,21 +137,32 @@
         },
         methods: {
             onClickLeft: function(e) {
-                console.log('onClickLeft', this.context.type);
+                console.log('onClickLeft', this.context.type, this.context.action);
 
-                var item = itemObject.AddItem(this.context.type, {
-                    left: eventObject.ActiveObject.item.left
-                        + eventObject.ActiveObject.item.width
-                        + 100,
-                    top: eventObject.ActiveObject.item.top
-                });
+                switch(this.context.action) {
+                    case 'newControl':
+                        AddArrow(this.context);
+                        break;
+                    case 'popup':
 
-                itemObject.AddArrow(eventObject.ActiveObject.item, item);
+                        break;
+                }
 
                 eventObject.disablePopup();
             }
         }
     });
+
+    var AddArrow = function(context) {
+        var item = itemObject.AddItem(context.type, {
+            left: eventObject.ActiveObject.item.left
+            + eventObject.ActiveObject.item.width
+            + 100,
+            top: eventObject.ActiveObject.item.top
+        });
+
+        itemObject.AddArrow(eventObject.ActiveObject.item, item);
+    };
 
     return {};
 

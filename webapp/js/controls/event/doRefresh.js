@@ -43,7 +43,16 @@
 
     // Contexts
     var contexts = [
-        contextMenuObject.doRefresh
+        // contextMenuObject.doRefresh
+        {
+            action: '',
+            type: '1',
+            icon: 'browser',
+            name: '-'
+        }
+
+
+
     ];
 
     // Events

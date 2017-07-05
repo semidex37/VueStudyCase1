@@ -12,7 +12,7 @@
             'js/controls/dummy',
             'js/controls/control/button',
             'js/controls/arrow/arrow',
-            'js/controls/event/doRefresh',
+            'js/controls/event/doRefresh'
         ], factory);
     }else {
         global.controls = factory(
@@ -65,15 +65,7 @@
                 return this.item.top;
             },
             transform: function() {
-                // console.log('translate('+this.left+', '+this.top+')');
-                // if(this.item.type == 'arrow') {
-                //     var source = this.item.source;
-                //
-                //     return 'translate('+ (source.left+source.width) + ', ' + (source.top + source.height/2) +')';
-                //
-                // }else {
-                    return 'translate('+this.left+', '+this.top+')';
-                // }
+                return 'translate('+this.left+', '+this.top+')';
             },
             rotate: function() {
                 if(this.item.rotate == 0) return '';
@@ -86,17 +78,6 @@
             }
         }
     });
-
-    // util.CalculatorMousePoint;
-
-
-    // new Vue('', {
-    //     el: '#app-controls',
-    //     data: {
-    //
-    //     }
-    // });
-
 
     return {};
 

@@ -143,26 +143,26 @@
     // temp - dummy
     var item1 = AddItem(controlObject.button, {
         name: 'D-Button',
-        left: 220,
+        left: 120,
         top: 40
     });
 
     var item2 = AddItem(controlObject.doRefresh, {
         name: 'doRefresh 2',
-        left: 460,
+        left: 360,
         top: 40
     });
 
     var item3 = AddItem(controlObject.dummy, {
         name: 'D-Text 1',
-        left: 60,
-        top: 120
+        left: 20,
+        top: 160
     });
 
     var item4 = AddItem(controlObject.dummy, {
         name: 'D-Arrow 1',
-        left: 300,
-        top: 120,
+        left: 260,
+        top: 160,
     });
 
     var arrow1 = AddArrow(item1, item2, {

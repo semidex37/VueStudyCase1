@@ -6,6 +6,7 @@
         console.log('export as AMD!');
         define([
             'js/data/dataObject',
+            'js/module/module',
             'js/core/appHeader',
             'js/core/appBody',
             'js/core/appFooter'
@@ -20,7 +21,7 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(dataObject, appHeader, appBody, appFooter) {
+})(typeof window !== 'undefined' ? window : this, function(dataObject, module, appHeader, appBody, appFooter) {
     console.log("Loaded: iWorkflow.js");
 
     appHeader.init();

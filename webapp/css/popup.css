@@ -1,0 +1,106 @@
+.app-popup-container {
+    position: absolute;
+    min-width: 200px;
+    left: 300px;
+    top: 300px;
+    border: solid 1px lightgray;
+    background-color: #ffffff;
+
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    padding-bottom: 1px;
+}
+
+.app-popup-header {
+    /*position: relative;*/
+}
+
+.app-popup-body {
+    /*position: relative;*/
+    margin-bottom: 1px;
+}
+
+.app-popup-footer {
+    /*position: relative;*/
+}
+
+.app-popup-title {
+    font-size: 14px;
+    font-weight: bold;
+    padding-left: 3px;
+    background-color: lightgray;
+    border-top-left-radius: 5px;
+    border-top-right-radius: 5px;
+    -moz-border-top-left-radius: 5px;
+    -moz-border-top-right-radius: 5px;
+    -webkit-border-top-left-radius: 5px;
+    -webkit-border-top-right-radius: 5px;
+    user-select: none;
+}
+
+.app-popup-icon-layer {
+    position: absolute;
+    right: 0;
+    top: 0;
+}
+
+.app-popup-icon {
+    float: right;
+    margin-top: 1px;
+    margin-right: 1px;
+}
+
+.app-popup-search {
+    padding-left: 1px;
+    padding-right: 1px;
+}
+
+.app-popup-search-control {
+    width: 100%;
+}
+
+.app-popup-tree {
+    position: relative;
+    border: solid 1px lightgray;
+    margin: 1px;
+
+    min-height: 178px;
+    overflow-x: hidden;
+    overflow-y: auto;
+}
+
+.app-popup-buttons {
+    text-align: center;
+    float: right;
+    position: relative;
+    left: -50%;
+}
+
+.app-popup-buttons > * {
+    float: left;
+    position: relative;
+    left: 50%;
+
+    border-radius: 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    user-select: none;
+}
+
+.app-popup-button {
+    padding: 2px 7px 2px 7px;
+    border: 1px solid #eaeaea;
+    background-color: lightgray;
+    color: #000;
+    cursor: pointer;
+}
+
+.app-popup-button:hover {
+    background-color: #2e2e2e;
+    color: #F0F0F0;
+
+}

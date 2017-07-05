@@ -57,11 +57,15 @@
                 stroke: function () {
                     return 'rgb(85, 142, 123)';
                 },
+                titleTransform: function() {
+                    return 'translate(4, 4)';
+                },
                 textTransform: function() {
-                    return 'translate(5, 5)';
+                    // 중앙 정렬
+                    return 'translate(' + (this.width / 2) + ', ' + (15) + ')';
                 },
                 addButtonTransform: function() {
-                    return 'translate(' + (this.width - 20) + ', 5)';
+                    return 'translate(' + (this.width - 20) + ', ' + (5) + ')';
                 }
             },
             methods: {

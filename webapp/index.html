@@ -8,12 +8,425 @@
     <!--<link rel="stylesheet" href="">-->
     <!--<style type="text/css"></style>-->
     <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/popup.css">
+    <link rel="stylesheet" href="css/control.css">
+
+    <!--<script type="text/x-template" id="hello-world-template">-->
+        <!--<p>Hello hello hello</p>-->
+    <!--</script>-->
+    <script type="text/x-template" id="app-popup-container-template">
+        <div class="app-popup-container">
+            <app-popup-header-template></app-popup-header-template>
+            <app-popup-body-template></app-popup-body-template>
+            <app-popup-footer-template></app-popup-footer-template>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-header-template">
+        <div class="app-popup-header">
+            <div class="app-popup-title">Search Controls</div>
+            <div class="app-popup-icon-layer">
+                <div class="app-popup-icon app-icon-selection-close"></div>
+                <div class="app-popup-icon app-icon-selection-add"></div>
+            </div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-body-template">
+        <div>
+            <app-popup-search-template></app-popup-search-template>
+            <app-popup-tree-template></app-popup-tree-template>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-footer-template">
+        <div>
+            <app-popup-buttons-template></app-popup-buttons-template>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-buttons-template">
+        <div class="app-popup-buttons">
+            <app-popup-button-template :type="button.OK"></app-popup-button-template>
+            <app-popup-button-template :type="button.CANCEL"></app-popup-button-template>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-button-template">
+        <div>
+            <div v-if="type == 'OK'" class="app-popup-button app-command-button">O.K</div>
+            <div v-else-if="type == 'CANCEL'" class="app-popup-button">Cancel</div>
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-search-template">
+        <div class="app-popup-search">
+            <input class="app-popup-search-control" type="search" placeholder="Search TextBox">
+        </div>
+    </script>
+
+    <script type="text/x-template" id="app-popup-tree-template">
+        <div class="app-popup-tree">
+            <div class="app-tree-root">
+                <div class="app-tree-node">
+                    <div class="app-tree-header">
+                        <div class="app-tree-icon app-icon-minus"></div>
+                        <div class="app-tree-check">
+                            <input type="checkbox">
+                        </div>
+                        <div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>
+                        <div class="app-tree-title">Node 1</div>
+
+                        <div class="app-tree-contents">
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-browser"></div>
+                                <div class="app-tree-content-text">Browser</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-button"></div>
+                                <div class="app-tree-content-text">Button</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-chart"></div>
+                                <div class="app-tree-content-text">Chart</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="app-tree-node">
+                    <div class="app-tree-header">
+                        <div class="app-tree-icon app-icon-minus"></div>
+                        <div class="app-tree-check">
+                            <input type="checkbox">
+                        </div>
+                        <div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>
+                        <div class="app-tree-title">Node 2</div>
+
+                        <div class="app-tree-contents">
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-combobox"></div>
+                                <div class="app-tree-content-text">Combobox</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-custom"></div>
+                                <div class="app-tree-content-text">Custom</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-datepicker"></div>
+                                <div class="app-tree-content-text">DatePicker</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-groupbox"></div>
+                                <div class="app-tree-content-text">GroupBox</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-scatterchart"></div>
+                                <div class="app-tree-content-text">ScatterChart</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-tablelayout"></div>
+                                <div class="app-tree-content-text">TableLayout</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-textbox"></div>
+                                <div class="app-tree-content-text">TextBox</div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+                <div class="app-tree-node">
+                    <div class="app-tree-header">
+                        <div class="app-tree-icon app-icon-minus"></div>
+                        <div class="app-tree-check">
+                            <input type="checkbox">
+                        </div>
+                        <div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>
+                        <div class="app-tree-title">Node 3</div>
+
+                        <div class="app-tree-contents">
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-pivotgrid"></div>
+                                <div class="app-tree-content-text">PivotGrid</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-polarchart"></div>
+                                <div class="app-tree-content-text">PolarChart</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-polygon"></div>
+                                <div class="app-tree-content-text">Polygon</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-radiobutton"></div>
+                                <div class="app-tree-content-text">RadioButton</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-scatterchart"></div>
+                                <div class="app-tree-content-text">ScatterChart</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-tablelayout"></div>
+                                <div class="app-tree-content-text">TableLayout</div>
+                            </div>
+                            <div class="app-tree-content">
+                                <div class="app-tree-check">
+                                    <input type="checkbox">
+                                </div>
+                                <div class="app-tree-content-icon app-icon-control-textbox"></div>
+                                <div class="app-tree-content-text">TextBox</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </script>
+
 </head>
 <body>
     <div id="app" class="viewer-app" style="width: 100%; height: 600px;">
 
         <app-header-template id="app-header" :groups="groups"></app-header-template>
         <app-body-template id="app-body" :data-object="dataObject"></app-body-template>
+
+        <app-popup-container-template id="app-popup-search-controls"></app-popup-container-template>
+
+
+        <!--<div class="app-popup-container">-->
+            <!--<div class="app-popup-header">-->
+                <!--<div class="app-popup-title">Search Controls</div>-->
+                <!--<div class="app-popup-icon-layer">-->
+                    <!--<div class="app-popup-icon app-icon-selection-close"></div>-->
+                    <!--<div class="app-popup-icon app-icon-selection-add"></div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="app-popup-body">-->
+                <!--<div class="app-popup-search">-->
+                    <!--<input class="app-popup-search-control" type="search" placeholder="Search TextBox">-->
+                <!--</div>-->
+                <!--<div class="app-popup-tree">-->
+                    <!--<div class="app-tree-root">-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-check">-->
+                                    <!--<input type="checkbox">-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Node 1</div>-->
+
+                                <!--<div class="app-tree-contents">-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-browser"></div>-->
+                                        <!--<div class="app-tree-content-text">Browser</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-button"></div>-->
+                                        <!--<div class="app-tree-content-text">Button</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-chart"></div>-->
+                                        <!--<div class="app-tree-content-text">Chart</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-check">-->
+                                    <!--<input type="checkbox">-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Node 2</div>-->
+
+                                <!--<div class="app-tree-contents">-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-combobox"></div>-->
+                                        <!--<div class="app-tree-content-text">Combobox</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-custom"></div>-->
+                                        <!--<div class="app-tree-content-text">Custom</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-datepicker"></div>-->
+                                        <!--<div class="app-tree-content-text">DatePicker</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-groupbox"></div>-->
+                                        <!--<div class="app-tree-content-text">GroupBox</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-scatterchart"></div>-->
+                                        <!--<div class="app-tree-content-text">ScatterChart</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-tablelayout"></div>-->
+                                        <!--<div class="app-tree-content-text">TableLayout</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-textbox"></div>-->
+                                        <!--<div class="app-tree-content-text">TextBox</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+
+                            <!--</div>-->
+                        <!--</div>-->
+                        <!--<div class="app-tree-node">-->
+                            <!--<div class="app-tree-header">-->
+                                <!--<div class="app-tree-icon app-icon-minus"></div>-->
+                                <!--<div class="app-tree-check">-->
+                                    <!--<input type="checkbox">-->
+                                <!--</div>-->
+                                <!--<div class="app-tree-icon app-icon-folder app-icon-folder-open"></div>-->
+                                <!--<div class="app-tree-title">Node 3</div>-->
+
+                                <!--<div class="app-tree-contents">-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-pivotgrid"></div>-->
+                                        <!--<div class="app-tree-content-text">PivotGrid</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-polarchart"></div>-->
+                                        <!--<div class="app-tree-content-text">PolarChart</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-polygon"></div>-->
+                                        <!--<div class="app-tree-content-text">Polygon</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-radiobutton"></div>-->
+                                        <!--<div class="app-tree-content-text">RadioButton</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-scatterchart"></div>-->
+                                        <!--<div class="app-tree-content-text">ScatterChart</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-tablelayout"></div>-->
+                                        <!--<div class="app-tree-content-text">TableLayout</div>-->
+                                    <!--</div>-->
+                                    <!--<div class="app-tree-content">-->
+                                        <!--<div class="app-tree-check">-->
+                                            <!--<input type="checkbox">-->
+                                        <!--</div>-->
+                                        <!--<div class="app-tree-content-icon app-icon-control-textbox"></div>-->
+                                        <!--<div class="app-tree-content-text">TextBox</div>-->
+                                    <!--</div>-->
+                                <!--</div>-->
+                            <!--</div>-->
+                        <!--</div>-->
+                    <!--</div>-->
+                <!--</div>-->
+            <!--</div>-->
+            <!--<div class="app-popup-footer">-->
+                <!--<div class="app-popup-buttons">-->
+                    <!--<div class="app-popup-button app-command-button">O.K</div>-->
+                    <!--<div class="app-popup-button">Cancel</div>-->
+                <!--</div>-->
+            <!--</div>-->
+
+        <!--</div>-->
 
         <!--<div id="app-body1" class="app-body">-->
             <!--<div id="app-left" class="app-left">-->
