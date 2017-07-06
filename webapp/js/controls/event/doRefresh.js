@@ -84,10 +84,12 @@
                 console.log("openSearchControls");
 
                 if(!popupObject.isPopup(this)) {
+                    var rect = this.$el.getClientRects()[0];
+
                     popupObject.AddPopup({
                         vue: this,
-                        left: e.clientX,
-                        top: e.clientY,
+                        left: rect.left + rect.width,
+                        top: rect.top,
                         title: 'Search Controls',
                         headerIcons: [
                             {
