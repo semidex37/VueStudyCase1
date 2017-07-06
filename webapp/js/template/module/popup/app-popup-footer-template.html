@@ -1,3 +1,5 @@
-<div>
-    <app-popup-buttons-template></app-popup-buttons-template>
+<div class="app-popup-footer">
+    <app-popup-buttons-template :buttons="buttons"
+                                v-on:onPopupButtonsClick="onClick"
+    ></app-popup-buttons-template>
 </div>

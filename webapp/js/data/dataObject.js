@@ -14,6 +14,7 @@
             'js/data/itemObject',
             'js/data/controlObject',
             'js/data/contextMenuObject',
+            'js/data/popupObject',
             'js/data/eventMenuObject'
         ], factory);
     }else {
@@ -27,11 +28,12 @@
             global.itemObject,
             global.controlObject,
             global.contextMenuObject,
+            global.popupObject,
             global.eventMenuObject
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, eventMenuObject) {
+})(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, popupObject, eventMenuObject) {
     console.log("Loaded: dataObject!");
     // console.log("dataObject-publicObject", publicObject);
 
@@ -46,6 +48,7 @@
         itemObject: itemObject,
         controlObject: controlObject,
         contextMenuObject: contextMenuObject,
+        popupObject: popupObject,
         eventMenuObject: eventMenuObject
     };
 

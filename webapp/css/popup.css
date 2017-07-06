@@ -1,5 +1,7 @@
 .app-popup-container {
-
+    position: absolute;
+    left: 0;
+    top: 0;
 }
 
 .app-popup-search-controls-container {
@@ -43,6 +45,7 @@
     -webkit-border-top-left-radius: 5px;
     -webkit-border-top-right-radius: 5px;
     user-select: none;
+    padding-bottom: 2px;
 }
 
 .app-popup-icon-layer {

@@ -1,4 +1,8 @@
 <div class="app-popup-buttons">
-    <app-popup-button-template :type="button.OK"></app-popup-button-template>
-    <app-popup-button-template :type="button.CANCEL"></app-popup-button-template>
+    <app-popup-button-template v-for="(obj, index) in buttons"
+                               :key="index"
+                               :data="obj"
+                               v-on:onPopupButtonClick="onClick"
+    >
+    </app-popup-button-template>
 </div>

@@ -1,0 +1,16 @@
+<div class="app-popup-search-controls-container"
+     v-bind:style="styleObject">
+    <app-popup-header-template v-if="data.isHeader == true"
+                               :title="data.title"
+                               :header-icons="data.headerIcons"
+                               v-on:onMouseMove.stop="onMouseDrag"
+    >
+    </app-popup-header-template>
+    <app-popup-body-template v-if="data.isBody == true"
+
+    ></app-popup-body-template>
+    <app-popup-footer-template v-if="data.isFooter == true"
+                               :buttons="data.buttons"
+                               v-on:onFooterClick="onFooterClick"
+    ></app-popup-footer-template>
+</div>

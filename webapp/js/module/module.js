@@ -4,36 +4,36 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/',
+            'js/data/publicObject',
+            'js/data/templateObject',
+            'js/data/popupObject',
             'js/module/popup/popup'
         ], factory);
     }else {
-        global.popup = factory();
+        global.popup = factory(
+            global.publicObject,
+            global.templateObject,
+            global.popupObject,
+            global.popup
+        );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(popup) {
+})(typeof window !== 'undefined' ? window : this, function(publicObject, templateObject, popupObject, popup) {
     // console.log("Loaded module!");
 
-
+    Vue.component('app-popup-container-template', {
+        props: {
+            popupList: {
+                type: Array
+            }
+        },
+        template: templateObject['app-popup-container-template']
+    });
 
     new Vue({
-        el: '#app-popup-search-controls',
+        el: '#app-popup-container',
         data: {
-            title: 'Search Controls',
-            headerIcons: [
-                {
-                    type: 'image',
-                    icon: 'app-icon-selection-close',
-                    text: 'Add'
-                }, {
-                    type: 'image',
-                    icon: 'app-icon-selection-add',
-                    text: 'Close'
-                }
-            ],
-            isHeader: true,
-            isBody: true,
-            isFooter: true
+            popupList: popupObject.$popups
         }
     });
 
