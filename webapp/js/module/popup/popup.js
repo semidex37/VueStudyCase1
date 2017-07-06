@@ -148,26 +148,26 @@
         template: templateObject['app-popup-tree-template']
     });
 
-    new Vue({
-        el: '#app-popup-search-controls',
-        data: {
-            title: 'Search Controls',
-            headerIcons: [
-                {
-                    type: 'image',
-                    icon: 'app-icon-selection-close',
-                    text: 'Add'
-                }, {
-                    type: 'image',
-                    icon: 'app-icon-selection-add',
-                    text: 'Close'
-                }
-            ],
-            isHeader: true,
-            isBody: true,
-            isFooter: true
-        }
-    });
+    // new Vue({
+    //     el: '#app-popup-search-controls',
+    //     data: {
+    //         title: 'Search Controls',
+    //         headerIcons: [
+    //             {
+    //                 type: 'image',
+    //                 icon: 'app-icon-selection-close',
+    //                 text: 'Add'
+    //             }, {
+    //                 type: 'image',
+    //                 icon: 'app-icon-selection-add',
+    //                 text: 'Close'
+    //             }
+    //         ],
+    //         isHeader: true,
+    //         isBody: true,
+    //         isFooter: true
+    //     }
+    // });
 
     return {};
 

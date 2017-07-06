@@ -13,7 +13,6 @@
 
     var contextMenuObject = {
         doRefresh: {
-            action: 'newControl',
             type: 'doRefresh',
             icon: 'browser',
             name: 'doRefresh'

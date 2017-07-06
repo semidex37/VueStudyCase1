@@ -8,6 +8,9 @@
                 <app-control-arrow-template v-else-if="item.type == 'arrow'"
                                             :item="item">
                 </app-control-arrow-template>
+                <app-control-do-refresh-template v-else-if="item.type == 'doRefresh'"
+                                            :item="item">
+                </app-control-do-refresh-template>
                 <app-control-dummy-template v-else
                                             :item="item">
                 </app-control-dummy-template>

@@ -21,7 +21,7 @@
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, constObject, eventMenuObject, contextMenuObject) {
 
-    var type = 'Event';
+    var type = 'doRefresh';
     var name = 'doRefresh';
     var width = 140;
     var height = 60;
@@ -45,8 +45,8 @@
     var contexts = [
         // contextMenuObject.doRefresh
         {
-            action: '',
-            type: '1',
+            action: 'method',
+            type: 'openSearchControls',
             icon: 'browser',
             name: 'Search Controls'
         }
@@ -78,6 +78,12 @@
             // },
             // onMouseDownAddItem: function(e) {
             //     console.log('app-control-button', 'onMouseDownAddItem');
+            },
+            openSearchControls: function(e) {
+                console.log("openSearchControls");
+
+                
+
             }
         }
     });

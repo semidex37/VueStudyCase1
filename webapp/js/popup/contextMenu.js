@@ -27,7 +27,7 @@
             return {
                 defaultContexts: [
                     {
-                        action: 'newControl',
+                        action: '',
                         type: 'doRefresh',
                         icon: 'browser',
                         name: 'doRefresh'
@@ -143,8 +143,18 @@
                     case 'newControl':
                         AddArrow(this.context);
                         break;
-                    case 'popup':
+                    case 'method':
+                        console.log("ActiveObject Method Call!", this.context.type);
 
+                        if(typeof eventObject.ActiveObject[this.context.type] == 'function') {
+                            eventObject.ActiveObject[this.context.type](e);
+                        }else {
+                            console.log('Not Found Function!', this.context.type);
+                        }
+
+                        break;
+                    default:
+                        AddArrow(this.context);
                         break;
                 }
 
