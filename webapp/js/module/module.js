@@ -10,7 +10,8 @@
         global.popup = factory();
     }
 
-})(typeof window !== 'undefined' ? window : this, function() {
+})(typeof window !== 'undefined' ? window : this, function(popup) {
+    // console.log("Loaded module!");
 
     return {};
 

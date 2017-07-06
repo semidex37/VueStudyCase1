@@ -1,8 +1,6 @@
 .app-popup-container {
     position: absolute;
     min-width: 200px;
-    left: 300px;
-    top: 300px;
     border: solid 1px lightgray;
     background-color: #ffffff;
 
@@ -33,6 +31,7 @@
     font-weight: bold;
     padding-left: 3px;
     background-color: lightgray;
+    cursor: pointer;
     border-top-left-radius: 5px;
     border-top-right-radius: 5px;
     -moz-border-top-left-radius: 5px;
@@ -52,6 +51,7 @@
     float: right;
     margin-top: 1px;
     margin-right: 1px;
+    cursor: pointer;
 }
 
 .app-popup-search {

@@ -48,11 +48,8 @@
             action: '',
             type: '1',
             icon: 'browser',
-            name: '-'
+            name: 'Search Controls'
         }
-
-
-
     ];
 
     // Events

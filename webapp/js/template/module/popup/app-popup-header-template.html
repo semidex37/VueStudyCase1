@@ -1,7 +1,18 @@
-<div class="app-popup-header">
-    <div class="app-popup-title">Search Controls</div>
-    <div class="app-popup-icon-layer">
-        <div class="app-popup-icon app-icon-selection-close"></div>
-        <div class="app-popup-icon app-icon-selection-add"></div>
+<div class="app-popup-header"
+     v-on:mousedown.stop="onMouseDown"
+     v-on:mousemove.stop="onMouseMove"
+     v-on:mouseup.stop="onMouseUp"
+>
+    <div class="app-popup-title" v-text="title">#Search Controls</div>
+    <div class="app-popup-icon-layer"
+         v-on:mousedown.stop=""
+         v-on:mouseup.stop=""
+    >
+        <div v-for="(obj, index) in headerIcons"
+             :key="index"
+             class="app-popup-icon app-icon-selection-close"
+             v-bind:class="obj.icon"
+             v-on:click="onClick($event, obj)"
+        ></div>
     </div>
 </div>
