@@ -7,11 +7,17 @@
             'vue/data/publicObject',
             'vue/data/templateObject',
             'vue/data/popupObject',
-            'vue/module/popup/popup'
+            'vue/module/popup/popup',
+            'vue/module/tree/tree'
         ], factory);
     }
 
-})(typeof window !== 'undefined' ? window : this, function(publicObject, templateObject, popupObject, popup) {
+})(typeof window !== 'undefined' ? window : this, function(
+    publicObject,
+    templateObject,
+    popupObject,
+    popup,
+    tree) {
     // console.log("Loaded module!");
 
     Vue.component('app-popup-container-template', {
