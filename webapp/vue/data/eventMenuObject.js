@@ -4,8 +4,6 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define(factory);
-    }else {
-        global.eventMenuObject = factory();
     }
 
 })(typeof window !== 'undefined' ? window : this, function() {

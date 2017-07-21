@@ -4,22 +4,13 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/data/publicObject',
-            'js/data/constObject',
-            'js/data/eventObject',
-            'js/data/itemObject',
-            'js/core/mixins'
+            'vue/data/templateObject',
+            'vue/data/publicObject',
+            'vue/data/constObject',
+            'vue/data/eventObject',
+            'vue/data/itemObject',
+            'vue/core/mixins'
         ], factory);
-    }else {
-        global.appSelection = factory(
-            global.templateObject,
-            global.publicObject,
-            global.constObject,
-            global.eventObject,
-            global.itemObject,
-            global.mixins
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, itemObject, mixins) {

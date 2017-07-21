@@ -4,14 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject'
+            'vue/data/publicObject',
+            'vue/data/eventObject'
         ], factory);
-    }else {
-        global.mixins = factory(
-            global.publicObject,
-            global.eventObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject) {

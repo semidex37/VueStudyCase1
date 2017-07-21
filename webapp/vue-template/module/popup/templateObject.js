@@ -1,7 +1,7 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/module/popup/';
+    var loadText = 'loadText!vue/module/popup/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
@@ -15,19 +15,6 @@
             loadText+'app-popup-search-template.html',
             loadText+'app-popup-tree-template.html'
             ], factory);
-    }else {
-        global.templateObject = factory([
-            global['app-popup-template'],
-            global['app-popup-body-template'],
-            global['app-popup-button-template'],
-            global['app-popup-buttons-template'],
-            global['app-popup-search-container-template'],
-            global['app-popup-footer-template'],
-            global['app-popup-header-template'],
-            global['app-popup-search-template'],
-            global['app-popup-tree-template']
-            
-        ]);
     }
 
 })(typeof window !== 'undefined' ? window : this, function(

@@ -4,25 +4,16 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/data/publicObject',
-            'js/data/eventObject',
-            'js/data/itemObject',
-            'js/util/util',
-            'js/controls/dummy',
-            'js/controls/control/button',
-            'js/controls/arrow/arrow',
-            'js/controls/event/doRefresh'
+            'vue/data/templateObject',
+            'vue/data/publicObject',
+            'vue/data/eventObject',
+            'vue/data/itemObject',
+            'vue/util/util',
+            'vue/controls/dummy/dummy',
+            'vue/controls/control/button',
+            'vue/controls/arrow/arrow',
+            'vue/controls/event/doRefresh'
         ], factory);
-    }else {
-        global.controls = factory(
-            global.publicObject,
-            global.eventObject,
-            global.itemObject,
-            global.util,
-            global.dummy,
-            global.button
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, eventObject, itemObject, util, dummy, button) {

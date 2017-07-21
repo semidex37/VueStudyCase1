@@ -4,19 +4,12 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/core/mixins',
-            'js/data/constObject',
-            'js/data/eventMenuObject',
-            'js/data/contextMenuObject'
+            'vue/data/templateObject',
+            'vue/core/mixins',
+            'vue/data/constObject',
+            'vue/data/eventMenuObject',
+            'vue/data/contextMenuObject'
         ], factory);
-    }else {
-        global.button = factory(
-            global.mixins,
-            global.constObject,
-            global.eventMenuObject,
-            global.contextMenuObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, constObject, eventMenuObject, contextMenuObject) {

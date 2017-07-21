@@ -4,14 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/util/util'
+            'vue/data/publicObject',
+            'vue/util/util'
         ], factory);
-    }else {
-        global.eventObject = factory(
-            global.publicObject,
-            global.util
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, util) {

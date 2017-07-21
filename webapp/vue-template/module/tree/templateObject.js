@@ -1,7 +1,7 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/module/tree/';
+    var loadText = 'loadText!vue/module/tree/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {

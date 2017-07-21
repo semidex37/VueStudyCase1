@@ -4,15 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/core/mixins',
-            'js/data/eventObject'
+            'vue/data/templateObject',
+            'vue/core/mixins',
+            'vue/data/eventObject'
         ], factory);
-    }else {
-        global.arrow = factory(
-            global.mixins,
-            global.eventObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, eventObject) {

@@ -4,21 +4,13 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject',
-            'js/data/templateObject',
-            'js/core/appPanel',
-            'js/core/appSVG',
-            'js/controls/controls'
+            'vue/data/publicObject',
+            'vue/data/eventObject',
+            'vue/data/templateObject',
+            'vue/core/appPanel',
+            'vue/core/appSVG',
+            'vue/controls/controls'
         ], factory);
-    }else {
-        global.appMiniMap = factory(
-            global.publicObject,
-            global.eventObject,
-            global.controls,
-            global.appSVG,
-            global.controls
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, templateObject, appPanel, appSVG, controls) {

@@ -4,16 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/util/generator',
-            'js/data/controlObject',
-            'js/util/util'
+            'vue/util/generator',
+            'vue/data/controlObject',
+            'vue/util/util'
         ], factory);
-    }else {
-        global.itemObject = factory(
-            global.Generator,
-            global.controlObject,
-            global.util
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(generator, controlObject, util) {

@@ -4,12 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/controlObject'
+            'vue/data/controlObject'
         ], factory);
-    }else {
-        global.leftMenuTree = factory(
-            global.controlObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(controlObject) {

@@ -4,20 +4,12 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/controls/dummy',
-            'js/controls/control/button',
-            'js/controls/arrow/arrow',
-            'js/controls/event/doRefresh',
-            'js/util/util'
+            'vue/controls/dummy/dummy',
+            'vue/controls/control/button',
+            'vue/controls/arrow/arrow',
+            'vue/controls/event/doRefresh',
+            'vue/util/util'
             ], factory);
-    }else {
-        global.controlObject = factory(
-            global.dummy,
-            global.button,
-            global.arrow,
-            global.doRefresh,
-            global.util
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(dummy, button, arrow, doRefresh, util) {

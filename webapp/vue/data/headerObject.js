@@ -3,9 +3,7 @@
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
-        define(['js/data/publicObject'], factory);
-    }else {
-        global.headerObject = factory(global.publicObject);
+        define(['vue/data/publicObject'], factory);
     }
 
 })(typeof window !== 'undefined' ? window : this, function(/* object */ publicObject) {

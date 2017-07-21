@@ -1,25 +1,29 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/';
+    var loadText = 'loadText!vue/popup/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            loadText+'popup/app-popup-template.html'
+            loadText+'app-menus-template.html',
+            loadText+'app-menu-template.html'
             ], factory);
     }else {
         global.templateObject = factory([
-            global['app-popup-template']
+            global['app-menus-template'],
+            global['app-menu-template']
         ]);
     }
 
 })(typeof window !== 'undefined' ? window : this, function(
-        appPopupTemplate
+        appMenusTemplate,
+        appMenuTemplate
 ) {
 
     var templateObject = {
-        'app-popup-template': appPopupTemplate
+        'app-menus-template': appMenusTemplate,
+        'app-menu-template': appMenuTemplate
     };
 
     return templateObject;

@@ -4,18 +4,11 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/util/util',
-            'js/data/templateObject',
-            'js/data/eventObject',
-            'js/data/publicObject'
+            'vue/util/util',
+            'vue/data/templateObject',
+            'vue/data/eventObject',
+            'vue/data/publicObject'
         ], factory);
-    }else {
-        global.popup = factory(
-            global.util,
-            global.templateObject,
-            global.eventObject,
-            global.publicObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(util, templateObject, eventObject, publicObject) {

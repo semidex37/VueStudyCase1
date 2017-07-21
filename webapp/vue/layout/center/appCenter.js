@@ -4,29 +4,17 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject',
-            'js/data/templateObject',
-            'js/core/appPanel',
-            'js/core/appSelection',
-            'js/core/appPaper',
-            'js/core/appMiniMap',
-            'js/core/appSVG',
-            'js/core/appPopup',
-            'js/controls/controls'
+            'vue/data/publicObject',
+            'vue/data/eventObject',
+            'vue/data/templateObject',
+            'vue/core/appPanel',
+            'vue/core/appSelection',
+            'vue/core/appPaper',
+            'vue/core/appMiniMap',
+            'vue/core/appSVG',
+            'vue/core/appPopup',
+            'vue/controls/controls'
         ], factory);
-    }else {
-        global.appCenter = factory(
-            global.publicObject,
-            global.eventObject,
-            global.appPanel,
-            global.appSelection,
-            global.appPaper,
-            global.appMiniMap,
-            global.appSVG,
-            global.appPopup,
-            global.controls
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(

@@ -4,10 +4,8 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject'
+            'vue/data/templateObject'
         ], factory);
-    }else {
-        global.appHeader = factory();
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject) {

@@ -4,24 +4,14 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/core/mixins',
-            'js/data/constObject',
-            'js/data/eventMenuObject',
-            'js/data/contextMenuObject',
-            'js/data/publicObject',
-            'js/data/popupObject'
+            'vue/data/templateObject',
+            'vue/core/mixins',
+            'vue/data/constObject',
+            'vue/data/eventMenuObject',
+            'vue/data/contextMenuObject',
+            'vue/data/publicObject',
+            'vue/data/popupObject'
         ], factory);
-    }else {
-        global.doRefresh = factory(
-            global.templateObject,
-            global.mixins,
-            global.constObject,
-            global.eventMenuObject,
-            global.contextMenuObject,
-            global.publicObject,
-            global.popupObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(

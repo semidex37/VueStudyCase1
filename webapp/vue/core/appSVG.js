@@ -4,19 +4,12 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/util/generator',
-            'js/data/publicObject',
-            'js/data/itemObject',
-            'js/data/eventObject'
+            'vue/data/templateObject',
+            'vue/util/generator',
+            'vue/data/publicObject',
+            'vue/data/itemObject',
+            'vue/data/eventObject'
         ], factory);
-    }else {
-        global.appSVG = factory(
-            global.generator,
-            global.publicObject,
-            global.itemObject,
-            global.eventObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, generator, publicObject, itemObject, eventObject) {

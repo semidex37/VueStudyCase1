@@ -1,14 +1,14 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/';
+    var loadText = 'loadText!vue/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/util/util',
-            'js/template/module/popup/templateObject',
-            'js/template/module/tree/templateObject',
+            'vue/util/util',
+            'vue-template/module/popup/templateObject',
+            'vue-template/module/tree/templateObject',
             loadText+'module/app-popup-container-template.html'
             ], factory);
     }
@@ -23,6 +23,8 @@
     var templateObject = {
         'app-popup-container-template': appPopupContainerTemplate
     };
+
+    console.log('AppPopupContainerTemplate', appPopupContainerTemplate);
 
     templateObject = util.assign(templateObject, popup);
 

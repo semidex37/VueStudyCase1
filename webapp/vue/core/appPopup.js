@@ -4,15 +4,10 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/popup/contextMenu',
-            'js/popup/eventMenu',
+            'vue/data/templateObject',
+            'vue/context/contextMenu',
+            'vue/popup/eventMenu',
         ], factory);
-    }else {
-        global.appPopup = factory(
-            global.contextMenu,
-            global.eventMenu
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, contextMenu, eventMenu) {

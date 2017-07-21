@@ -4,14 +4,12 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/dataObject',
-            'js/data/templateObject',
-            'js/core/appLeft',
-            'js/core/appCenter',
-            'js/core/appRight'
+            'vue/data/dataObject',
+            'vue/data/templateObject',
+            'vue/layout/left/appLeft',
+            'vue/layout/center/appCenter',
+            'vue/layout/right/appRight'
         ], factory);
-    }else {
-        global.appHeader = factory( global.dataObject, global.appLeft );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(dataObject, templateObject, appLeft, appCenter, appRight) {

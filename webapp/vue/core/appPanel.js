@@ -4,17 +4,11 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/eventObject',
-            'js/data/templateObject',
-            'js/core/mixins'
+            'vue/data/publicObject',
+            'vue/data/eventObject',
+            'vue/data/templateObject',
+            'vue/core/mixins'
         ], factory);
-    }else {
-        global.appPanel = factory(
-            global.publicObject,
-            global.eventObject,
-            global.mixins
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, eventObject, templateObject, mixins) {

@@ -4,13 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/core/mixins'
+            'vue/data/templateObject',
+            'vue/core/mixins'
         ], factory);
-    }else {
-        global.dummy = factory(
-            global.mixins
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, mixins) {

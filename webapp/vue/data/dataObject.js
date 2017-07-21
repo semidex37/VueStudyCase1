@@ -4,33 +4,19 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/data/publicObject',
-            'js/data/constObject',
-            'js/data/eventObject',
-            'js/data/headerObject',
-            'js/data/leftMenuObject',
-            'js/data/leftMenuTree',
-            'js/data/itemObject',
-            'js/data/controlObject',
-            'js/data/contextMenuObject',
-            'js/data/popupObject',
-            'js/data/eventMenuObject'
+            'vue/data/templateObject',
+            'vue/data/publicObject',
+            'vue/data/constObject',
+            'vue/data/eventObject',
+            'vue/data/headerObject',
+            'vue/data/leftMenuObject',
+            'vue/data/leftMenuTree',
+            'vue/data/itemObject',
+            'vue/data/controlObject',
+            'vue/data/contextMenuObject',
+            'vue/data/popupObject',
+            'vue/data/eventMenuObject'
         ], factory);
-    }else {
-        global.dataObject = factory(
-            global.publicObject,
-            global.constObject,
-            global.eventObject,
-            global.headerObject,
-            global.leftMenuObject,
-            global.leftMenuTree,
-            global.itemObject,
-            global.controlObject,
-            global.contextMenuObject,
-            global.popupObject,
-            global.eventMenuObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, constObject, eventObject, headerObject, leftMenuObject, leftMenuTree, itemObject, controlObject, contextMenuObject, popupObject, eventMenuObject) {

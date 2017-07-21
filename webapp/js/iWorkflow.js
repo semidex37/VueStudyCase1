@@ -5,11 +5,11 @@
     if(typeof define !== 'undefined' && define.amd) {
         console.log('export as AMD!');
         define([
-            'js/data/dataObject',
-            'js/module/module',
-            'js/core/appHeader',
-            'js/core/appBody',
-            'js/core/appFooter'
+            'vue/data/dataObject',
+            'vue/module/module',
+            'vue/layout/header/appHeader',
+            'vue/layout/body/appBody',
+            'vue/layout/footer/appFooter'
         ], factory);
     }else {
         console.log('export Global!');

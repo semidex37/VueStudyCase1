@@ -1,13 +1,13 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/';
+    var loadText = 'loadText!vue/layout/header/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            loadText+'header/app-header-group-template.html',
-            loadText+'header/app-header-item-template.html'
+            loadText+'app-header-group-template.html',
+            loadText+'app-header-item-template.html'
             ], factory);
     }else {
         global.templateObject = factory([

@@ -4,13 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/publicObject',
-            'js/data/templateObject'
+            'vue/data/publicObject',
+            'vue/data/templateObject'
         ], factory);
-    }else {
-        global.appPaper = factory(
-            global.publicObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(publicObject, templateObject) {

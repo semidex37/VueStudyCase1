@@ -4,17 +4,11 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/data/publicObject',
-            'js/data/itemObject',
-            'js/data/eventObject'
+            'vue/data/templateObject',
+            'vue/data/publicObject',
+            'vue/data/itemObject',
+            'vue/data/eventObject'
         ], factory);
-    }else {
-        global.contextMenu = factory(
-            global.publicObject,
-            global.itemObject,
-            global.eventObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, publicObject, itemObject, eventObject) {

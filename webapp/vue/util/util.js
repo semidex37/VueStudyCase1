@@ -4,14 +4,9 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/util/generator',
-            'js/util/mouseEvent'
+            'vue/util/generator',
+            'vue/util/mouseEvent'
             ], factory);
-    }else {
-        global.mouseEvent = factory(
-            global.generator,
-            global.mouseEvent
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(generator, mouseEvent) {

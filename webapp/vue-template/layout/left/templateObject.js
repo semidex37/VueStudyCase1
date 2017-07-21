@@ -1,15 +1,15 @@
 (function(global, factory) {
     'use strict';
 
-    var loadText = 'loadText!js/template/';
+    var loadText = 'loadText!vue/layout/left/';
 
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            loadText+'left/app-left-menu-item-template.html',
-            loadText+'left/app-left-menu-template.html',
-            loadText+'left/app-left-search-template.html',
-            loadText+'left/app-left-tree-template.html'
+            loadText+'app-left-menu-item-template.html',
+            loadText+'app-left-menu-template.html',
+            loadText+'app-left-search-template.html',
+            loadText+'app-left-tree-template.html'
             ], factory);
     }else {
         global.templateObject = factory([

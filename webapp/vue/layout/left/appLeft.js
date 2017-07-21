@@ -4,17 +4,11 @@
     // export as AMD...
     if(typeof define !== 'undefined' && define.amd) {
         define([
-            'js/data/templateObject',
-            'js/data/leftMenuObject',
-            'js/data/leftMenuTree',
-            'js/data/itemObject'
+            'vue/data/templateObject',
+            'vue/data/leftMenuObject',
+            'vue/data/leftMenuTree',
+            'vue/data/itemObject'
         ], factory);
-    }else {
-        global.appLeft = factory(
-            global.leftMenuObject,
-            global.leftMenuTree,
-            global.itemObject
-        );
     }
 
 })(typeof window !== 'undefined' ? window : this, function(templateObject, leftMenuObject, leftMenuTree, itemObject) {
@@ -72,6 +66,7 @@
         template: templateObject['app-tree-header-template']
     });
 
+    console.log('app-tree-root-template', templateObject['app-tree-root-template']);
     Vue.component('app-tree-root-template', {
         props: {
             items: Object
