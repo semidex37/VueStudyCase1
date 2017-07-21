@@ -1,6 +1,12 @@
 <div class="app-tree-node">
     <div class="app-tree-header">
         <div class="app-tree-icon" v-bind:class="classObjectSign" v-on:click="expand"></div>
+        <div v-if="useCheck"
+             class="app-tree-check">
+            <input type="checkbox"
+                   v-model="item.isChecked"
+            >
+        </div>
         <div class="app-tree-icon" v-bind:class="classObjectFolder" v-on:click="expand"></div>
         <div class="app-tree-title">{{item.name}}</div>
     </div>

@@ -1,6 +1,12 @@
 <div class="app-tree-content"
      v-on:dblclick="onDblClick"
 >
+    <div v-if="useCheck"
+         class="app-tree-check">
+        <input type="checkbox"
+               v-model="item.isChecked"
+        >
+    </div>
     <div v-bind:class="classObjectIcon"></div>
     <div class="app-tree-content-text">{{item.name}}</div>
 </div>

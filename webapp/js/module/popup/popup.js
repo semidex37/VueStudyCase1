@@ -105,8 +105,13 @@
     });
 
     Vue.component('app-popup-body-template', {
-        template: templateObject['app-popup-body-template']
-
+        template: templateObject['app-popup-body-template'],
+        props: {
+            data: {
+                type: Object,
+                require: true
+            }
+        }
     });
 
     Vue.component('app-popup-footer-template', {
@@ -163,7 +168,13 @@
     });
 
     Vue.component('app-popup-tree-template', {
-        template: templateObject['app-popup-tree-template']
+        template: templateObject['app-popup-tree-template'],
+        props: {
+            data: {
+                type: Object,
+                require: true
+            }
+        }
     });
 
     return {};

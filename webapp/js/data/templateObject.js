@@ -15,8 +15,7 @@
             'js/template/layout/' + templateObjectName,
             'js/template/left/' + templateObjectName,
             'js/template/module/' + templateObjectName,
-            'js/template/popup/' + templateObjectName,
-            'js/template/tree/' + templateObjectName
+            'js/template/popup/' + templateObjectName
             ], factory);
     }else {
         global.templateObject = factory([
@@ -28,8 +27,7 @@
             global['app-layout-arrow-normal-template'],
             global['app-left-arrow-template'],
             global['app-module-button-template'],
-            global['app-popup-dummy-template'],
-            global['app-tree-template']
+            global['app-popup-dummy-template']
         ]);
     }
 

@@ -87,7 +87,8 @@
         template: templateObject['app-tree-node-template'],
         data: function() {
             return {
-                isExpand: true
+                isExpand: true,
+                useCheck: false
             }
         },
         computed: {
@@ -125,6 +126,11 @@
             index: Number
         },
         template: templateObject['app-tree-content-template'],
+        data: function() {
+            return {
+                useCheck: false
+            }
+        },
         computed: {
             classObjectIcon: function() {
                 var classObject = {

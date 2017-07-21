@@ -7,10 +7,12 @@
     >
     </app-popup-header-template>
     <app-popup-body-template v-if="data.isBody == true"
-
-    ></app-popup-body-template>
+                             :data="data"
+    >
+    </app-popup-body-template>
     <app-popup-footer-template v-if="data.isFooter == true"
                                :buttons="data.buttons"
                                v-on:onFooterClick="onFooterClick"
-    ></app-popup-footer-template>
+    >
+    </app-popup-footer-template>
 </div>

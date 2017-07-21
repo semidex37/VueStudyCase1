@@ -185,6 +185,8 @@
         For: For
     });
 
+    console.log('controlObject', controlObject);
+
     return controlObject;
 
 });

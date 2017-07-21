@@ -14,6 +14,7 @@
         ], factory);
     }else {
         global.doRefresh = factory(
+            global.templateObject,
             global.mixins,
             global.constObject,
             global.eventMenuObject,
@@ -23,7 +24,17 @@
         );
     }
 
-})(typeof window !== 'undefined' ? window : this, function(templateObject, mixins, constObject, eventMenuObject, contextMenuObject, publicObject, popupObject) {
+})(typeof window !== 'undefined' ? window : this, function(
+    templateObject,
+    mixins,
+    constObject,
+    eventMenuObject,
+    contextMenuObject,
+    publicObject,
+    popupObject
+) {
+
+    console.log('Loaded: doRefresh!');
 
     var type = 'doRefresh';
     var name = 'doRefresh';
@@ -102,9 +113,30 @@
                                 text: 'Close'
                             }
                         ],
-                        data: {
-
-                        },
+                        data: [
+                            {
+                                type: 'folder',
+                                name: 'Node 1',
+                                checked: false,
+                                children: [{
+                                    type: 'browser',
+                                    name: 'Browser'
+                                }, {
+                                    type: 'button',
+                                    name: 'Button 3'
+                                }]
+                            }, {
+                                type: 'folder',
+                                name: 'Node 2',
+                                children: [{
+                                    type: 'button',
+                                    name: 'Button 1'
+                                }, {
+                                    type: 'button',
+                                    name: 'Button 2'
+                                }]
+                            }
+                        ],
                         buttons: [
                             {
                                 action: 'method',
