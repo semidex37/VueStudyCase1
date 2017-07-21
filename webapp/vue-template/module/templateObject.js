@@ -24,8 +24,6 @@
         'app-popup-container-template': appPopupContainerTemplate
     };
 
-    console.log('AppPopupContainerTemplate', appPopupContainerTemplate);
-
     templateObject = util.assign(templateObject, popup);
 
     templateObject = util.assign(templateObject, tree);
